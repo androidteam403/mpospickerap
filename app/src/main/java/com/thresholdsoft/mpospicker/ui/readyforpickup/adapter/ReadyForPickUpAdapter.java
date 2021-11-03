@@ -71,13 +71,6 @@ public class ReadyForPickUpAdapter extends RecyclerView.Adapter<ReadyForPickUpAd
 
     }
 
-    private boolean layVis = false;
-
-    public boolean isLayVie(boolean layVis) {
-        this.layVis = layVis;
-        return layVis;
-    }
-
     @Override
     public int getItemCount() {
         return fullfillmentDataList.size();

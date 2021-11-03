@@ -2,6 +2,8 @@ package com.thresholdsoft.mpospicker.di.module;
 
 import android.content.Context;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.thresholdsoft.mpospicker.di.ActivityContext;
 import com.thresholdsoft.mpospicker.di.PerActivity;
 import com.thresholdsoft.mpospicker.ui.login.LoginMvpPresenter;
@@ -11,6 +13,9 @@ import com.thresholdsoft.mpospicker.ui.main.MainMvpPresenter;
 import com.thresholdsoft.mpospicker.ui.main.MainMvpView;
 import com.thresholdsoft.mpospicker.ui.main.MainPresenter;
 import com.thresholdsoft.mpospicker.ui.main.RssAdapter;
+import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickeduporders.PickedUpOrdersMvpPresenter;
+import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickeduporders.PickedUpOrdersMvpView;
+import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickeduporders.PickedUpOrdersPresenter;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpMvpPresenter;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpMvpView;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpPresenter;
@@ -19,7 +24,6 @@ import com.thresholdsoft.mpospicker.utils.rx.SchedulerProvider;
 
 import java.util.ArrayList;
 
-import androidx.appcompat.app.AppCompatActivity;
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.disposables.CompositeDisposable;
@@ -79,6 +83,11 @@ public class ActivityModule {
         return presenter;
     }
 
+    @Provides
+    @PerActivity
+    PickedUpOrdersMvpPresenter<PickedUpOrdersMvpView> pickedUpOrdersMvpPresenter(PickedUpOrdersPresenter<PickedUpOrdersMvpView> presenter) {
+        return presenter;
+    }
 
     @Provides
     RssAdapter provideRssAdapter() {
