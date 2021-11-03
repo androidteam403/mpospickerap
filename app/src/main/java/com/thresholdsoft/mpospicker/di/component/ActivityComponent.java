@@ -5,6 +5,7 @@ import com.thresholdsoft.mpospicker.di.PerActivity;
 import com.thresholdsoft.mpospicker.di.module.ActivityModule;
 import com.thresholdsoft.mpospicker.ui.login.LoginActivity;
 import com.thresholdsoft.mpospicker.ui.main.MainActivity;
+import com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersActivity;
 
 import dagger.Component;
 
@@ -20,4 +21,6 @@ public interface ActivityComponent {
     void inject(LoginActivity loginActivity);
 
     void inject(MainActivity mainActivity);
+
+    void inject(OpenOrdersActivity openOrdersActivity);
 }
