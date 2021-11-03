@@ -11,6 +11,9 @@ import com.thresholdsoft.mpospicker.ui.main.MainMvpPresenter;
 import com.thresholdsoft.mpospicker.ui.main.MainMvpView;
 import com.thresholdsoft.mpospicker.ui.main.MainPresenter;
 import com.thresholdsoft.mpospicker.ui.main.RssAdapter;
+import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpMvpPresenter;
+import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpMvpView;
+import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpPresenter;
 import com.thresholdsoft.mpospicker.utils.rx.AppSchedulerProvider;
 import com.thresholdsoft.mpospicker.utils.rx.SchedulerProvider;
 
@@ -67,6 +70,12 @@ public class ActivityModule {
     @Provides
     @PerActivity
     MainMvpPresenter<MainMvpView> provideMainPresenter(MainPresenter<MainMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    @PerActivity
+    ReadyForPickUpMvpPresenter<ReadyForPickUpMvpView> readyForPickUpPresenter(ReadyForPickUpPresenter<ReadyForPickUpMvpView> presenter) {
         return presenter;
     }
 
