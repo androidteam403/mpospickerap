@@ -17,6 +17,7 @@ import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.ActivityReadyForPickupBinding;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessActivity;
+import com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersActivity;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.adapter.ReadyForPickUpAdapter;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.dialog.ScanQrCodeDialog;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.dialog.UnTagQrCodeDialog;
@@ -44,7 +45,7 @@ public class ReadyForPickUpActivity extends BaseActivity implements ReadyForPick
         super.onCreate(savedInstanceState);
         activityReadyForPickupBinding = DataBindingUtil.setContentView(this, R.layout.activity_ready_for_pickup);
         getActivityComponent().inject(this);
-        mPresenter.onAttach(ReadyForPickUpActivity.this);
+        mpresenter.onAttach(ReadyForPickUpActivity.this);
         setUp();
     }
 

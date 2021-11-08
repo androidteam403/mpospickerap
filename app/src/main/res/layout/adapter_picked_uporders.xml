@@ -4,6 +4,7 @@
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/parent"
         android:background="@color/white">
 
         <View
@@ -15,8 +16,9 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/fifteen_dp"
-            android:layout_marginTop="@dimen/three_dp"
+            android:layout_marginStart="@dimen/ten_dp"
+            android:layout_marginTop="@dimen/seven_dp"
+            android:layout_marginBottom="@dimen/seven_dp"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -73,56 +75,57 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:id="@+id/tag_box"
+                <TextView
+                    android:id="@+id/status_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="@dimen/five_dp">
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/five_dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center_vertical"
+                    android:text="Full"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen12sp" />
 
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal">
-
-                        <ImageView
-                            android:layout_width="@dimen/thirty_dp"
-                            android:layout_height="@dimen/thirty_dp"
-                            android:contentDescription="@string/app_name"
-                            android:src="@drawable/tag_box" />
-
-                        <ImageView
-                            android:id="@+id/tick_mark"
-                            android:layout_width="@dimen/fifteen_dp"
-                            android:layout_height="@dimen/fifteen_dp"
-                            android:layout_centerInParent="true"
-                            android:background="@drawable/ic_circular_shape"
-                            android:src="@drawable/tick_mark"
-                            android:visibility="gone" />
-                    </RelativeLayout>
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_bold"
-                        android:gravity="center_horizontal"
-                        android:text="Tag Box"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/margin_10dp" />
-                </LinearLayout>
 
                 <ImageView
-                    android:id="@+id/scan_delete"
-                    android:layout_width="@dimen/twenty_five_dp"
-                    android:layout_height="@dimen/twenty_five_dp"
-                    android:layout_marginTop="@dimen/ten_dp"
-                    android:layout_marginEnd="@dimen/five_dp"
+                    android:id="@+id/full_status_color"
+                    android:layout_width="@dimen/eighteen_dp"
+                    android:layout_height="@dimen/eighteen_dp"
+                    android:layout_marginEnd="@dimen/eight_dp"
+                    android:background="@drawable/ic_circular_shape"
+                    android:backgroundTint="@color/colorPrimary"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/cross_red_delete_icon"
+                    android:padding="@dimen/five_dp"
+                    android:src="@drawable/tick_mark"
                     android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/partial_status_color"
+                    android:layout_width="@dimen/eighteen_dp"
+                    android:layout_height="@dimen/eighteen_dp"
+                    android:layout_marginEnd="@dimen/eight_dp"
+                    android:background="@drawable/ic_circular_partial"
+                    android:contentDescription="@string/app_name"
+                    android:padding="@dimen/five_dp"
+                    android:rotation="270"
+                    android:visibility="gone"/>
+
+                <ImageView
+                    android:id="@+id/not_available_status_color"
+                    android:layout_width="@dimen/eighteen_dp"
+                    android:layout_height="@dimen/eighteen_dp"
+                    android:layout_marginEnd="@dimen/eight_dp"
+                    android:background="@drawable/ic_circular_shape"
+                    android:backgroundTint="@color/red"
+                    android:contentDescription="@string/app_name"
+                    android:padding="@dimen/five_dp"
+                    android:visibility="gone"
+                    android:src="@drawable/delete_white_icon" />
+
             </LinearLayout>
 
         </RelativeLayout>
@@ -133,4 +136,11 @@
             android:layout_alignParentBottom="true"
             android:background="@color/iron" />
     </RelativeLayout>
+
+    <data>
+
+        <variable
+            name="view"
+            type="android.view.View" />
+    </data>
 </layout>
