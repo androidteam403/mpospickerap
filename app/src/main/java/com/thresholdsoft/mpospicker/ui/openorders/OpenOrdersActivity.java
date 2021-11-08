@@ -1,6 +1,8 @@
 package com.thresholdsoft.mpospicker.ui.openorders;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -28,6 +30,10 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
     private List<FullfilmentAdapter.FullfilmentModel> fullfilmentModelList;
     private FullfilmentAdapter fullfilmentAdapter;
     private boolean isContinueEnable;
+
+    public static Intent getStartActivity(Context context) {
+        return new Intent(context, OpenOrdersActivity.class);
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

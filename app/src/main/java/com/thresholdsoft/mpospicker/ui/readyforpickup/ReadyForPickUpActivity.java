@@ -45,7 +45,7 @@ public class ReadyForPickUpActivity extends BaseActivity implements ReadyForPick
         super.onCreate(savedInstanceState);
         activityReadyForPickupBinding = DataBindingUtil.setContentView(this, R.layout.activity_ready_for_pickup);
         getActivityComponent().inject(this);
-        mpresenter.onAttach(ReadyForPickUpActivity.this);
+        mPresenter.onAttach(ReadyForPickUpActivity.this);
         setUp();
     }
 

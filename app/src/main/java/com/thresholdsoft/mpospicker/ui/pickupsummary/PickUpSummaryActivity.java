@@ -1,6 +1,10 @@
 package com.thresholdsoft.mpospicker.ui.pickupsummary;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -10,24 +14,30 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.ActivityPickUpSummaryBinding;
+import com.thresholdsoft.mpospicker.databinding.DialogFarwardtoPackerAlertBinding;
+import com.thresholdsoft.mpospicker.databinding.DialogFarwardtoPackerBinding;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
+import com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersActivity;
 import com.thresholdsoft.mpospicker.ui.pickupsummary.adapter.SummaryFullfillmentAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupsummary.adapter.SummaryProductsAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.inject.Inject;
-
 public class PickUpSummaryActivity extends BaseActivity implements PickUpSummaryMvpView {
 
-//    @Inject
+    //    @Inject
     private PickUpSummaryMvpPresenter<PickUpSummaryMvpView> mpresenter;
+
     ActivityPickUpSummaryBinding activityPickUpSummaryBinding;
     private List<SummaryFullfillmentData> fullfilmentModelList = new ArrayList<>();
     private List<SummaryProductsData> pickPackProductsDataList = new ArrayList<>();
     private SummaryFullfillmentAdapter summaryFullfilmentAdapter;
     private SummaryProductsAdapter summaryProductsAdapter;
+
+    public static Intent getStartActivity(Context context) {
+        return new Intent(context, PickUpSummaryActivity.class);
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,6 +50,10 @@ public class PickUpSummaryActivity extends BaseActivity implements PickUpSummary
 
     @Override
     protected void setUp() {
+        activityPickUpSummaryBinding.setCallback(mpresenter);
+        activityPickUpSummaryBinding.forwardToPacker.setOnClickListener(v -> {
+            forwardtoPacker();
+        });
         getPickPackDataList();
         getFullfilmentModelList();
 
@@ -48,8 +62,6 @@ public class PickUpSummaryActivity extends BaseActivity implements PickUpSummary
         activityPickUpSummaryBinding.prodRecyclerView.setLayoutManager(mLayoutManager2);
         activityPickUpSummaryBinding.prodRecyclerView.setItemAnimator(new DefaultItemAnimator());
         activityPickUpSummaryBinding.prodRecyclerView.setAdapter(summaryProductsAdapter);
-
-
 
         summaryFullfilmentAdapter = new SummaryFullfillmentAdapter(this, fullfilmentModelList, this);
         RecyclerView.LayoutManager mLayoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -207,7 +219,39 @@ public class PickUpSummaryActivity extends BaseActivity implements PickUpSummary
         fullfilmentModelList.add(fullfilmentModel);
     }
 
-    public class SummaryProductsData {
+    @Override
+    public void forwardtoPacker() {
+        Dialog dialog = new Dialog(this);
+        DialogFarwardtoPackerAlertBinding updateStatusBinding = DataBindingUtil.inflate(LayoutInflater.from(this),
+                R.layout.dialog_farwardto_packer_alert, null, false);
+        dialog.setContentView(updateStatusBinding.getRoot());
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        updateStatusBinding.no.setOnClickListener(v -> {
+            dialog.dismiss();
+        });
+        updateStatusBinding.yes.setOnClickListener(v -> {
+            dialog.dismiss();
+            dialog.cancel();
+            gotoOpenOrder();
+        });
+        dialog.show();
+    }
+
+    private void gotoOpenOrder() {
+        Dialog dialog = new Dialog(this);
+        DialogFarwardtoPackerBinding updateStatusBinding = DataBindingUtil.inflate(LayoutInflater.from(this),
+                R.layout.dialog_farwardto_packer, null, false);
+        dialog.setContentView(updateStatusBinding.getRoot());
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        updateStatusBinding.gotoOpenOrders.setOnClickListener(v -> {
+            startActivity(OpenOrdersActivity.getStartActivity(this));
+            overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+            dialog.dismiss();
+        });
+        dialog.show();
+    }
+
+    public static class SummaryProductsData {
         private String product;
         private String qty;
         private int productStatus;
@@ -237,7 +281,7 @@ public class PickUpSummaryActivity extends BaseActivity implements PickUpSummary
         }
     }
 
-    public class SummaryFullfillmentData {
+    public static class SummaryFullfillmentData {
         private String fullfilmentId;
         private int totalItems;
         private int boxId;

@@ -19,6 +19,7 @@ import com.thresholdsoft.mpospicker.databinding.DialogUpdateStatusBinding;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.OrderAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.RackAdapter;
+import com.thresholdsoft.mpospicker.ui.pickupsummary.PickUpSummaryActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -175,6 +176,12 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
     @Override
     public void onClickBack() {
         onBackPressed();
+    }
+
+    @Override
+    public void onClickContinue() {
+        startActivity(PickUpSummaryActivity.getStartActivity(this));
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
     }
 
     @Override

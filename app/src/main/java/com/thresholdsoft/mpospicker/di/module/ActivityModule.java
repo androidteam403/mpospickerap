@@ -137,10 +137,6 @@ public class ActivityModule {
         return presenter;
     }
 
-    @Provides
-    RssAdapter provideRssAdapter() {
-        return new RssAdapter(new ArrayList<>());
-    }
 
 
 }

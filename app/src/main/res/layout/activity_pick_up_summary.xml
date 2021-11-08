@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white">
@@ -15,8 +16,8 @@
 
             <ImageView
                 android:id="@+id/back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/dimen30dp"
+                android:layout_height="@dimen/dimen30dp"
                 android:layout_gravity="center_vertical"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/left_forward_white_arrow" />
@@ -308,13 +309,13 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/forward_to_packer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/forward_to_packer"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/forty_five_dp"
                 android:background="@color/material_amber_accent_700"
@@ -334,4 +335,10 @@
 
     </RelativeLayout>
 
+    <data>
+
+        <variable
+            name="callback"
+            type="com.thresholdsoft.mpospicker.ui.pickupsummary.PickUpSummaryMvpPresenter" />
+    </data>
 </layout>

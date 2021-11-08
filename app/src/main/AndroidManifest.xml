@@ -24,16 +24,22 @@
         <activity
             android:name=".ui.openorders.OpenOrdersActivity"
             android:screenOrientation="portrait">
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".ui.readyforpickup.ReadyForPickUpActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name=".ui.mpospackerflow.pickeduporders.PickedUpOrdersActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".ui.readyforpickup.ReadyForPickUpActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.mpospackerflow.pickeduporders.PickedUpOrdersActivity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity android:name=".ui.mpospackerflow.pickupverificationprocess.PickUpVerificationActivity"/>
         <activity android:name=".ui.pickupsummary.PickUpSummaryActivity">

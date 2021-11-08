@@ -13,13 +13,14 @@ import androidx.annotation.RequiresApi;
 import androidx.databinding.DataBindingUtil;
 
 import com.thresholdsoft.mpospicker.R;
+import com.thresholdsoft.mpospicker.databinding.DialogCustomUpdateStatusBinding;
 import com.thresholdsoft.mpospicker.databinding.DialogUpdateStatusBinding;
 import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickupverificationprocess.PickUpVerificationActivity;
 
 public class UpdateStatusDialog {
 
     private Dialog dialog;
-    private DialogUpdateStatusBinding dialogUpdateStatusBinding;
+    private DialogCustomUpdateStatusBinding dialogUpdateStatusBinding;
 
     private boolean negativeExist = false;
 

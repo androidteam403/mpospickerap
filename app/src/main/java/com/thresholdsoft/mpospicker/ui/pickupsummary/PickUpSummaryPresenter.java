@@ -15,4 +15,9 @@ public class PickUpSummaryPresenter<V extends PickUpSummaryMvpView> extends Base
     public PickUpSummaryPresenter(DataManager manager, SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable) {
         super(manager, schedulerProvider, compositeDisposable);
     }
+
+    @Override
+    public void forwardtoPacker() {
+        getMvpView().forwardtoPacker();
+    }
 }

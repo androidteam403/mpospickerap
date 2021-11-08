@@ -19,4 +19,9 @@ public class PickupProcessPresenter<V extends PickupProcessMvpView> extends Base
     public void onClickBack() {
         getMvpView().onClickBack();
     }
+
+    @Override
+    public void onClickContinue() {
+        getMvpView().onClickContinue();
+    }
 }
