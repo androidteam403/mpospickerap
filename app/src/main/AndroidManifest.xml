@@ -24,11 +24,6 @@
         <activity
             android:name=".ui.openorders.OpenOrdersActivity"
             android:screenOrientation="portrait">
-
-        </activity>
-        <activity
-            android:name=".ui.readyforpickup.ReadyForPickUpActivity"
-            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,7 +31,12 @@
             </intent-filter>
 
         </activity>
-
+        <activity
+            android:name=".ui.readyforpickup.ReadyForPickUpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.pickupprocess.PickupProcessActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

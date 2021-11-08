@@ -25,4 +25,7 @@
     <string name="label_fullfillment_id">Fullfillment ID: </string>
     <string name="label_total_items">Total Items: </string>
     <string name="label_space">\u00A0</string>
+    <string name="label_ready_for_pickup">Ready for pickup</string>
+    <string name="label_pickup_process">pickup process</string>
+    <string name="label_enter_batch_id">Enter Batch ID</string>
 </resources>

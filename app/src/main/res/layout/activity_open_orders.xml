@@ -15,7 +15,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen60dp"
-                android:background="#01bfbf"
+                android:background="@color/actionbar_color"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingStart="@dimen/dimen10dp"
@@ -30,8 +30,8 @@
 
                     <ImageView
                         android:id="@+id/menu_icon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="@dimen/dimen30dp"
+                        android:layout_height="@dimen/dimen30dp"
                         android:contentDescription="@string/app_name"
                         android:src="@drawable/ic_menu" />
 
@@ -137,7 +137,7 @@
                 android:gravity="center_vertical"
                 android:text="@string/label_continue"
                 android:textAllCaps="true"
-                android:textColor="#898989"
+                android:textColor="@color/text_color_grey"
                 android:textSize="@dimen/dimen14sp"
                 android:visibility="@{isContinueSelect ? view.GONE : view.VISIBLE}" />
 

@@ -14,6 +14,7 @@ import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.ActivityOpenOrdersBinding;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
 import com.thresholdsoft.mpospicker.ui.openorders.adapter.FullfilmentAdapter;
+import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,7 +93,8 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
     @Override
     public void onClickContinue() {
         if (isContinueEnable) {
-            Toast.makeText(this, "You have selected orders.", Toast.LENGTH_SHORT).show();
+            startActivity(ReadyForPickUpActivity.getStartActivity(this));
+            overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
         } else {
             Toast.makeText(this, "Selected orders.", Toast.LENGTH_SHORT).show();
         }

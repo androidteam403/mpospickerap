@@ -15,4 +15,14 @@ public class ReadyForPickUpPresenter<V extends ReadyForPickUpMvpView> extends Ba
     public ReadyForPickUpPresenter(DataManager manager, SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable) {
         super(manager, schedulerProvider, compositeDisposable);
     }
+
+    @Override
+    public void onClickStartPickup() {
+        getMvpView().onClickStartPickup();
+    }
+
+    @Override
+    public void onClickBack() {
+        getMvpView().onClickBack();
+    }
 }

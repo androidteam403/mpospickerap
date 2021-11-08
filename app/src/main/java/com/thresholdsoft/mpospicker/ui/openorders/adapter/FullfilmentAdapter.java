@@ -73,7 +73,6 @@ public class FullfilmentAdapter extends RecyclerView.Adapter<FullfilmentAdapter.
         private int totalItems;
         private boolean isSelected;
 
-
         public String getFullfilmentId() {
             return fullfilmentId;
         }

@@ -13,12 +13,15 @@ import com.thresholdsoft.mpospicker.ui.main.MainMvpPresenter;
 import com.thresholdsoft.mpospicker.ui.main.MainMvpView;
 import com.thresholdsoft.mpospicker.ui.main.MainPresenter;
 import com.thresholdsoft.mpospicker.ui.main.RssAdapter;
-import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpMvpPresenter;
-import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpMvpView;
-import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpPresenter;
 import com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersMvpPresenter;
 import com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersMvpView;
 import com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersPresenter;
+import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessMvpPresenter;
+import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessMvpView;
+import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessPresenter;
+import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpMvpPresenter;
+import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpMvpView;
+import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpPresenter;
 import com.thresholdsoft.mpospicker.utils.rx.AppSchedulerProvider;
 import com.thresholdsoft.mpospicker.utils.rx.SchedulerProvider;
 
@@ -79,19 +82,26 @@ public class ActivityModule {
 
     @Provides
     @PerActivity
+    OpenOrdersMvpPresenter<OpenOrdersMvpView> provideOpenOrdersPresenter(OpenOrdersPresenter<OpenOrdersMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    @PerActivity
     ReadyForPickUpMvpPresenter<ReadyForPickUpMvpView> readyForPickUpPresenter(ReadyForPickUpPresenter<ReadyForPickUpMvpView> presenter) {
         return presenter;
     }
 
+    @Provides
+    @PerActivity
+    PickupProcessMvpPresenter<PickupProcessMvpView> providePickupProcessPresenter(PickupProcessPresenter<PickupProcessMvpView> presenter) {
+        return presenter;
+    }
 
     @Provides
     RssAdapter provideRssAdapter() {
         return new RssAdapter(new ArrayList<>());
     }
 
-    @Provides
-    @PerActivity
-    OpenOrdersMvpPresenter<OpenOrdersMvpView> provideOpenOrdersPresenter(OpenOrdersPresenter<OpenOrdersMvpView> presenter) {
-        return presenter;
-    }
+
 }

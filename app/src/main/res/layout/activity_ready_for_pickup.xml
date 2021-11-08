@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -12,59 +12,65 @@
             android:orientation="vertical">
 
 
-            <LinearLayout
-                android:id="@+id/layout_header"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="@color/colorPrimary"
-                android:orientation="horizontal">
+                android:layout_height="@dimen/dimen60dp"
+                android:background="@color/actionbar_color"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/dimen10dp"
+                android:paddingEnd="@dimen/dimen10dp">
 
-                <ImageView
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:contentDescription="@string/app_name"
-                    android:src="@drawable/left_forward_white_arrow" />
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    tools:ignore="RelativeOverlap">
 
-                <TextView
+                    <ImageView
+                        android:id="@+id/header_back"
+                        android:layout_width="@dimen/dimen30dp"
+                        android:layout_height="@dimen/dimen30dp"
+                        android:contentDescription="@string/app_name"
+                        android:onClick="@{()-> callback.onClickBack()}"
+                        android:src="@drawable/left_forward_white_arrow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen10dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/label_ready_for_pickup"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/dimen16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/five_dp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="Ready For Pickup"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/profile_image"
-                        android:layout_width="@dimen/fifty_dp"
-                        android:layout_height="@dimen/fifty_dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="@dimen/twenty_dp"
-                        android:padding="@dimen/five_dp"
-                        android:src="@drawable/nature"
-                        app:civ_border_color="@color/white"
-                        app:civ_border_width="2dp" />
-
+                    <ImageView
+                        android:id="@+id/picker_img"
+                        android:layout_width="@dimen/dimen40dp"
+                        android:layout_height="@dimen/dimen40dp"
+                        android:background="@drawable/ic_circle_bg"
+                        android:backgroundTint="@color/white"
+                        android:contentDescription="@string/app_name"
+                        android:padding="@dimen/dimen1dp" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="@dimen/three_dp"
                         android:contentDescription="@string/app_name"
-                        android:src="@drawable/drop_down_icon" />
-                </RelativeLayout>
-            </LinearLayout>
+                        android:src="@drawable/ic_dropdown" />
+                </LinearLayout>
+            </RelativeLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -90,39 +96,41 @@
                 android:layout_marginTop="@dimen/fifteen_dp"
                 android:orientation="horizontal">
 
-                <TextView
+                <Button
                     android:layout_width="@dimen/one_hundred_fifty_dp"
                     android:layout_height="wrap_content"
                     android:background="@color/red"
-                    android:fontFamily="@font/roboto_medium"
+                    android:fontFamily="@font/roboto_bold"
                     android:gravity="center"
                     android:padding="@dimen/seven_dp"
-                    android:shadowColor="@color/jumbo"
-                    android:shadowDx="2"
-                    android:shadowDy="2"
-                    android:shadowRadius="2"
                     android:text="Cancel"
                     android:textAllCaps="true"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    tools:ignore="ButtonStyle" />
 
-                <TextView
+                <Button
+                    android:id="@+id/start_Picking"
                     android:layout_width="@dimen/one_hundred_fifty_dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/fifteen_dp"
-                    android:background="@color/light_grey"
-                    android:fontFamily="@font/roboto_medium"
+                    android:background="@drawable/btn_ripple_effect_grey"
+                    android:fontFamily="@font/roboto_bold"
                     android:gravity="center"
+                    android:onClick="@{()-> callback.onClickStartPickup()}"
                     android:padding="@dimen/seven_dp"
-                    android:shadowColor="@color/jumbo"
-                    android:shadowDx="2"
-                    android:shadowDy="2"
-                    android:shadowRadius="2"
                     android:text="Start piciking"
                     android:textAllCaps="true"
-                    android:textColor="@color/unselect_text_color" />
+                    android:textColor="@color/text_color_grey"
+                    tools:ignore="ButtonStyle" />
 
             </LinearLayout>
         </LinearLayout>
-
     </RelativeLayout>
+
+    <data>
+
+        <variable
+            name="callback"
+            type="com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpMvpPresenter" />
+    </data>
 </layout>
