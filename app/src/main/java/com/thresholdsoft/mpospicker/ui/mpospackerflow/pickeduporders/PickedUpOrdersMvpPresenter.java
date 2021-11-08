@@ -4,4 +4,6 @@ import com.thresholdsoft.mpospicker.ui.base.MvpPresenter;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpMvpView;
 
 public interface PickedUpOrdersMvpPresenter <V extends PickedUpOrdersMvpView> extends MvpPresenter<V> {
+    void startPickUp();
+    void onClickScanCode();
 }

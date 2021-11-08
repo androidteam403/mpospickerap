@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:id="@+id/layout_header"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/left_forward_white_arrow" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/five_dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Pickup Summary"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="@dimen/fifty_dp"
+                    android:layout_height="@dimen/fifty_dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/twenty_dp"
+                    android:padding="@dimen/five_dp"
+                    android:src="@drawable/nature"
+                    app:civ_border_color="@color/white"
+                    app:civ_border_width="2dp" />
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/three_dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/drop_down_icon" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_header"
+            android:layout_margin="@dimen/ten_dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="Start time : "
+                        android:textColor="@color/jumbo"
+                        android:textSize="@dimen/dimen12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="9:45 AM"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dimen12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="Total Duration : "
+                        android:textColor="@color/jumbo"
+                        android:textSize="@dimen/dimen12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="0:40:20"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dimen12sp" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/five_dp"
+                android:background="@drawable/ic_rect_stroke_bisc_color"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/ten_dp"
+                android:paddingTop="@dimen/five_dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Fullfillment ID : "
+                        android:textColor="@color/jumbo"
+                        android:textSize="@dimen/dimen_11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="887766"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dimen_11sp" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:gravity="end">
+
+                        <TextView
+                            android:id="@+id/status_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginEnd="@dimen/five_dp"
+                            android:fontFamily="@font/roboto_bold"
+                            android:gravity="center_vertical"
+                            android:text="Partial"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/dimen_11sp" />
+
+
+                        <ImageView
+                            android:id="@+id/full_status_color"
+                            android:layout_width="@dimen/eighteen_dp"
+                            android:layout_height="@dimen/eighteen_dp"
+                            android:layout_marginEnd="@dimen/eight_dp"
+                            android:layout_toRightOf="@id/status_text"
+                            android:background="@drawable/ic_circular_shape"
+                            android:backgroundTint="@color/colorPrimary"
+                            android:contentDescription="@string/app_name"
+                            android:padding="@dimen/five_dp"
+                            android:src="@drawable/tick_mark"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:id="@+id/partial_status_color"
+                            android:layout_width="@dimen/eighteen_dp"
+                            android:layout_height="@dimen/eighteen_dp"
+                            android:layout_marginEnd="@dimen/eight_dp"
+                            android:layout_toRightOf="@id/status_text"
+                            android:background="@drawable/ic_circular_partial"
+                            android:contentDescription="@string/app_name"
+                            android:padding="@dimen/five_dp"
+                            android:rotation="270"
+                            android:visibility="visible" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Total Items : "
+                        android:textColor="@color/jumbo"
+                        android:textSize="@dimen/dimen_11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="6"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dimen_11sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/three_dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Box ID: "
+                        android:textColor="@color/jumbo"
+                        android:textSize="@dimen/dimen_11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dimen_11sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/ten_dp"
+                android:paddingEnd="@dimen/ten_dp"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.7"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Products"
+                    android:textColor="@color/jumbo"
+                    android:textSize="@dimen/dimen_11sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.15"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_horizontal"
+                    android:text="Qty"
+                    android:textColor="@color/jumbo"
+                    android:textSize="@dimen/dimen_11sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.15"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_horizontal"
+                    android:text="Status"
+                    android:textColor="@color/jumbo"
+                    android:textSize="@dimen/dimen_11sp" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/prod_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/five_dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen1dp"
+                android:background="@color/very_light_biscuit_color" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fullfillment_Id_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/five_dp"
+                android:layout_marginBottom="@dimen/forty_dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/forward_to_packer"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/forty_five_dp"
+                android:background="@color/material_amber_accent_700"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="Forward to packer"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen16sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/five_dp"
+                android:background="@color/dark_yellow" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

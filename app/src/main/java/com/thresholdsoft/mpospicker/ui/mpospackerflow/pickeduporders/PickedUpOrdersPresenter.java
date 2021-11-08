@@ -15,4 +15,14 @@ public class PickedUpOrdersPresenter<V extends PickedUpOrdersMvpView> extends Ba
     public PickedUpOrdersPresenter(DataManager manager, SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable) {
         super(manager, schedulerProvider, compositeDisposable);
     }
+
+    @Override
+    public void startPickUp() {
+        getMvpView().startPickUp();
+    }
+
+    @Override
+    public void onClickScanCode() {
+        getMvpView().onClickScanCode();
+    }
 }

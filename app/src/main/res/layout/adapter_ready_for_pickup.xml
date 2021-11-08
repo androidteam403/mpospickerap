@@ -98,7 +98,7 @@
                             android:layout_width="@dimen/fifteen_dp"
                             android:layout_height="@dimen/fifteen_dp"
                             android:layout_centerInParent="true"
-                            android:background="@drawable/ic_rectangular_shape"
+                            android:background="@drawable/ic_circular_shape"
                             android:src="@drawable/tick_mark"
                             android:visibility="gone" />
                     </RelativeLayout>

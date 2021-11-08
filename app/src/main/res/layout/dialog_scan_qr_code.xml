@@ -73,11 +73,11 @@
 
         <ImageView
             android:id="@+id/dialogButtonNO"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="@dimen/margin_10dp"
+            android:layout_marginTop="@dimen/thirty_five_dp"
+            android:layout_marginEnd="@dimen/thirty_five_dp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/delete_white_icon" />
 

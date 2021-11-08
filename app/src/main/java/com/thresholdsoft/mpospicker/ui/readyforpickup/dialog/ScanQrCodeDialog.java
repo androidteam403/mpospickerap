@@ -27,8 +27,11 @@ public class ScanQrCodeDialog {
         if (dialog.getWindow() != null)
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.setCancelable(false);
-
-        dialogScanQrCodeBinding.title.setText("Scan QR/barcode to tag box for\nFullfillment ID:" + id);
+        if (id != null && !id.isEmpty()) {
+            dialogScanQrCodeBinding.title.setText("Scan QR/barcode to tag box for\nFullfillment ID:" + id);
+        } else {
+            dialogScanQrCodeBinding.title.setText("Scan QR/barcode of the box");
+        }
     }
 
 
