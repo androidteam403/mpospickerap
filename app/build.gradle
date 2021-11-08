@@ -1,6 +1,9 @@
 apply plugin: 'com.android.application'
 
 android {
+    dataBinding {
+        enabled = true
+    }
     compileSdkVersion 29
     defaultConfig {
         applicationId 'com.thresholdsoft.picker'
@@ -62,5 +65,9 @@ dependencies {
     // Room
     implementation 'androidx.room:room-runtime:2.2.5'
     annotationProcessor 'androidx.room:room-compiler:2.2.5'
+
+
+    //circular_image_view
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
 }

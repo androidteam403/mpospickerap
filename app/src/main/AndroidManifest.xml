@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.thresholdsoft.mpospicker">
 
-<uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name="com.thresholdsoft.mpospicker.root.ApplicatinApp"
@@ -20,13 +20,41 @@
         <activity
             android:name="com.thresholdsoft.mpospicker.ui.login.LoginActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.openorders.OpenOrdersActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+        <activity
+            android:name=".ui.readyforpickup.ReadyForPickUpActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.mpospackerflow.pickeduporders.PickedUpOrdersActivity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity android:name=".ui.mpospackerflow.pickupverificationprocess.PickUpVerificationActivity"/>
+        <activity android:name=".ui.pickupsummary.PickUpSummaryActivity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".ui.readyforpickup.ReadyForPickUpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.pickupprocess.PickupProcessActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
