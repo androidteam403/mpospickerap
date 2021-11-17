@@ -1,5 +1,6 @@
 package com.thresholdsoft.mpospicker.ui.mpospackerflow.pickeduporders;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.thresholdsoft.mpospicker.databinding.ActivityPickedUpOrdersBinding;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
 import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickeduporders.adapter.PickedUpOrdersAdapter;
 import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickupverificationprocess.PickUpVerificationActivity;
+import com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersActivity;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.dialog.ScanQrCodeDialog;
 
 import java.util.ArrayList;
@@ -29,6 +31,10 @@ public class PickedUpOrdersActivity extends BaseActivity implements PickedUpOrde
     private ActivityPickedUpOrdersBinding activityPickedUpOrdersBinding;
     private List<PickedUpFullfillmentData> fullfilmentModelList = new ArrayList<>();
     private PickedUpOrdersAdapter pickedUpOrdersAdapter;
+
+    public static Intent getStartActivity(Context context) {
+        return new Intent(context, PickedUpOrdersActivity.class);
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

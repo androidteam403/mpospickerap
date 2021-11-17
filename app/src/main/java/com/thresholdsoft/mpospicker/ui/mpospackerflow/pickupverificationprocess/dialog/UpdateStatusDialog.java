@@ -14,7 +14,6 @@ import androidx.databinding.DataBindingUtil;
 
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.DialogCustomUpdateStatusBinding;
-import com.thresholdsoft.mpospicker.databinding.DialogUpdateStatusBinding;
 import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickupverificationprocess.PickUpVerificationActivity;
 
 public class UpdateStatusDialog {
@@ -28,7 +27,7 @@ public class UpdateStatusDialog {
     public UpdateStatusDialog(Context context, PickUpVerificationActivity.PickPackProductsData pickPackProductsData) {
         dialog = new Dialog(context);
         dialog = new Dialog(context, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
-        dialogUpdateStatusBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_update_status, null, false);
+        dialogUpdateStatusBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_custom_update_status, null, false);
         dialog.setContentView(dialogUpdateStatusBinding.getRoot());
         if (dialog.getWindow() != null)
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -36,21 +35,40 @@ public class UpdateStatusDialog {
         if (pickPackProductsData != null) {
             dialogUpdateStatusBinding.title.setText(pickPackProductsData.getProduct());
         }
-        if (pickPackProductsData.getProductStatus() == 0) {
-            dialogUpdateStatusBinding.fullStatusColor.setChecked(true);
-            dialogUpdateStatusBinding.fullStatusColor.setButtonTintList(ColorStateList.valueOf(context.getColor(R.color.black)));
-            dialogUpdateStatusBinding.partialStatusColor.setChecked(false);
-            dialogUpdateStatusBinding.notAvailableStatusColor.setChecked(false);
-        } else if (pickPackProductsData.getProductStatus() == 1) {
-            dialogUpdateStatusBinding.fullStatusColor.setChecked(false);
-            dialogUpdateStatusBinding.partialStatusColor.setChecked(true);
-            dialogUpdateStatusBinding.notAvailableStatusColor.setChecked(false);
+        dialogUpdateStatusBinding.fullStatusColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (dialogUpdateStatusBinding.fullStatusColor.isChecked()) {
+                    dialogUpdateStatusBinding.fullStatusColor.setChecked(true);
+                    dialogUpdateStatusBinding.fullStatusColor.setButtonTintList(ColorStateList.valueOf(context.getColor(R.color.black)));
+                    dialogUpdateStatusBinding.partialStatusColor.setChecked(false);
+                    dialogUpdateStatusBinding.notAvailableStatusColor.setChecked(false);
+                }
+            }
+        });
+        dialogUpdateStatusBinding.partialStatusColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (dialogUpdateStatusBinding.partialStatusColor.isChecked()) {
+                    dialogUpdateStatusBinding.fullStatusColor.setChecked(false);
+                    dialogUpdateStatusBinding.partialStatusColor.setChecked(true);
+                    dialogUpdateStatusBinding.partialStatusColor.setButtonTintList(ColorStateList.valueOf(context.getColor(R.color.black)));
+                    dialogUpdateStatusBinding.notAvailableStatusColor.setChecked(false);
+                }
+            }
+        });
+        dialogUpdateStatusBinding.notAvailableStatusColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (dialogUpdateStatusBinding.notAvailableStatusColor.isChecked()) {
+                    dialogUpdateStatusBinding.fullStatusColor.setChecked(false);
+                    dialogUpdateStatusBinding.partialStatusColor.setChecked(false);
+                    dialogUpdateStatusBinding.notAvailableStatusColor.setChecked(true);
+                    dialogUpdateStatusBinding.notAvailableStatusColor.setButtonTintList(ColorStateList.valueOf(context.getColor(R.color.black)));
+                }
+            }
+        });
 
-        } else if (pickPackProductsData.getProductStatus() == 2) {
-            dialogUpdateStatusBinding.fullStatusColor.setChecked(false);
-            dialogUpdateStatusBinding.partialStatusColor.setChecked(false);
-            dialogUpdateStatusBinding.notAvailableStatusColor.setChecked(true);
-        }
     }
 
 

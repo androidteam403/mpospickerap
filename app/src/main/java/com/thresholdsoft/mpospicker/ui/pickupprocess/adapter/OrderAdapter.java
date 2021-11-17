@@ -13,23 +13,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.AdapterOrderBinding;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessMvpView;
+import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> {
     private Context context;
-    private List<RackAdapter.RackModel> rackModelList;
-    private RackRowAdapter rackRowAdapter;
-    private List<RackRowAdapter.RackRowModel> rackRowModelList;
-    private ProductListAdapter productListAdapter;
-    private List<ProductListAdapter.ProductListModel> productListModelList;
+    private RacksDataResponse fullfillmentList;
+    private FullfillmentProductListAdapter productListAdapter;
     private PickupProcessMvpView pickupProcessMvpView;
+    List<List<RackBoxModel.ProductData>> listOfList;
 
-    public OrderAdapter(Context context, List<RackAdapter.RackModel> rackModelList, PickupProcessMvpView pickupProcessMvpView) {
+    public OrderAdapter(Context context, RacksDataResponse fullfillmentList, PickupProcessMvpView pickupProcessMvpView, List<List<RackBoxModel.ProductData>> fullfillmentListOfListFiltered) {
         this.context = context;
-        this.rackModelList = rackModelList;
+        this.fullfillmentList = fullfillmentList;
         this.pickupProcessMvpView = pickupProcessMvpView;
+        this.listOfList = fullfillmentListOfListFiltered;
     }
 
     @NonNull
@@ -42,12 +42,11 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        RackAdapter.RackModel rackModel = rackModelList.get(position);
-        getProductModelModelList();
-        holder.orderBinding.fullfillmentID.setText(rackModel.getFullfillmentID());
-        holder.orderBinding.totalItems.setText(rackModel.getTotalItems());
-        holder.orderBinding.boxId.setText(rackModel.getBoxID());
-        switch (rackModel.getItemStatus()) {
+        RacksDataResponse.FullfillmentDetail fullFillModel = fullfillmentList.getFullfillmentDetails().get(position);
+        holder.orderBinding.fullfillmentID.setText(fullFillModel.getFullfillmentId());
+        holder.orderBinding.totalItems.setText(String.valueOf(fullfillmentList.getFullfillmentDetails().get(0).getProducts().size()));
+        holder.orderBinding.boxId.setText(fullFillModel.getBoxId());
+        switch (fullFillModel.getExpandStatus()) {
             case 0:
                 holder.orderBinding.orderChildLayout.setBackgroundColor(context.getResources().getColor(R.color.lite_grey));
                 holder.orderBinding.start.setVisibility(View.GONE);
@@ -97,26 +96,85 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
             default:
         }
 
+        List<RackBoxModel.ProductData> productDataList = new ArrayList<>();
 
-        productListAdapter = new ProductListAdapter(context, productListModelList, pickupProcessMvpView, false);
+
+        for (int k = 0; k < fullFillModel.getProducts().size(); k++) {
+            RackBoxModel.ProductData productData = new RackBoxModel.ProductData();
+            productData.setProductId(fullFillModel.getProducts().get(k).getProductId());
+            productData.setProductName(fullFillModel.getProducts().get(k).getProductName());
+            productData.setRackId(fullFillModel.getProducts().get(k).getRackId());
+            productData.setAvailableQuantity(fullFillModel.getProducts().get(k).getAvailableQuantity());
+            productData.setRequiredQuantity(fullFillModel.getProducts().get(k).getRequiredQuantity());
+            productData.setBatchId(fullFillModel.getProducts().get(k).getBatchId());
+            if (listOfList != null && listOfList.size() > 0) {
+                for (int i = 0; i < listOfList.size(); i++) {
+                    for (int l = 0; l < listOfList.get(i).size(); l++) {
+                        if (listOfList.get(i).get(l).getProductId().equalsIgnoreCase(fullFillModel.getProducts().get(k).getProductId())) {
+                            productData.setCapturedQuantity(listOfList.get(i).get(l).getCapturedQuantity());
+                            productData.setStatus(listOfList.get(i).get(l).getStatus());
+                        }
+                    }
+                }
+            } else {
+                if (pickupProcessMvpView.fullfilListOfList() != null && pickupProcessMvpView.fullfilListOfList().size() > 0) {
+                    for (int i = 0; i < pickupProcessMvpView.fullfilListOfList().size(); i++) {
+                        for (int l = 0; l < pickupProcessMvpView.fullfilListOfList().size(); l++) {
+                            if (pickupProcessMvpView.fullfilListOfList().get(i).get(l).getProductId().equalsIgnoreCase(fullFillModel.getProducts().get(k).getProductId())) {
+                                productData.setCapturedQuantity(pickupProcessMvpView.fullfilListOfList().get(i).get(l).getCapturedQuantity());
+                                productData.setStatus(pickupProcessMvpView.fullfilListOfList().get(i).get(l).getStatus());
+                            }
+                        }
+                    }
+                } else {
+                    productData.setCapturedQuantity(fullFillModel.getProducts().get(k).getCapturedQuantity());
+                    productData.setStatus(fullFillModel.getProducts().get(k).getStatus());
+                }
+            }
+            productDataList.add(productData);
+        }
+
+//        productListAdapter = new ProductListAdapter(context, productListModelList, pickupProcessMvpView, false);
+        productListAdapter = new FullfillmentProductListAdapter(context, productDataList, pickupProcessMvpView, false, listOfList);
         new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, true);
         holder.orderBinding.productListRecycler.setLayoutManager(new LinearLayoutManager(context));
         holder.orderBinding.productListRecycler.setAdapter(productListAdapter);
 
         holder.orderBinding.orderChildLayout.setOnClickListener(v -> {
-            if (rackModel.getItemStatus() == 1) {
-                rackModel.setItemStatus(2);
+            if (fullfillmentList.getFullfillmentDetails().get(position).getExpandStatus() == 1) {
+                fullfillmentList.getFullfillmentDetails().get(position).setExpandStatus(2);
                 notifyDataSetChanged();
-            } else if (rackModel.getItemStatus() == 2) {
-                rackModel.setItemStatus(1);
+            } else if (fullfillmentList.getFullfillmentDetails().get(position).getExpandStatus() == 2) {
+                fullfillmentList.getFullfillmentDetails().get(position).setExpandStatus(1);
                 notifyDataSetChanged();
+            } else if (fullfillmentList.getFullfillmentDetails().get(position).getExpandStatus() == 0) {
+                fullfillmentList.getFullfillmentDetails().get(position).setExpandStatus(2);
+                notifyDataSetChanged();
+            }
+        });
+
+        if (position == fullfillmentList.getFullfillmentDetails().size() - 1) {
+            holder.orderBinding.gotoNextRack.setVisibility(View.GONE);
+        }
+
+        holder.orderBinding.gotoNextRack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (fullfillmentList.getFullfillmentDetails().get(position).getExpandStatus() == 2) {
+                    fullfillmentList.getFullfillmentDetails().get(position).setExpandStatus(1);
+                    notifyItemChanged(position);
+                }
+                if (fullfillmentList.getFullfillmentDetails().get(position + 1).getExpandStatus() == 0) {
+                    fullfillmentList.getFullfillmentDetails().get(position + 1).setExpandStatus(2);
+                    notifyDataSetChanged();
+                }
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return rackModelList.size();
+        return fullfillmentList.getFullfillmentDetails().size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -128,41 +186,109 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         }
     }
 
-    private void getProductModelModelList() {
-        productListModelList = new ArrayList<>();
-        ProductListAdapter.ProductListModel productListModel = new ProductListAdapter.ProductListModel();
-        productListModel.setRackId("B1");
-        productListModel.setProductName("Ascoril D Syrup Sugar Free");
-        productListModel.setQty("1/1");
-        productListModel.setRack("G098-98-815");
-        productListModelList.add(productListModel);
+    public static class RackBoxModel {
+        private String rackBoxId;
+        private int productsCuont;
 
-        productListModel = new ProductListAdapter.ProductListModel();
-        productListModel.setRackId("B2");
-        productListModel.setProductName("Allegra 180mg Tablet");
-        productListModel.setQty("0/5");
-        productListModel.setRack("G098-98-815");
-        productListModelList.add(productListModel);
+        public int getProductsCuont() {
+            return productsCuont;
+        }
 
-        productListModel = new ProductListAdapter.ProductListModel();
-        productListModel.setRackId("B3");
-        productListModel.setProductName("Amoxyclav 625 Tablet");
-        productListModel.setQty("0/3");
-        productListModel.setRack("G098-98-815");
-        productListModelList.add(productListModel);
+        public void setProductsCuont(int productsCuont) {
+            this.productsCuont = productsCuont;
+        }
 
-        productListModel = new ProductListAdapter.ProductListModel();
-        productListModel.setRackId("B4");
-        productListModel.setProductName("Augmentin 625 Duo Tablet");
-        productListModel.setQty("0/10");
-        productListModel.setRack("G098-98-815");
-        productListModelList.add(productListModel);
+        public String getRackBoxId() {
+            return rackBoxId;
+        }
 
-        productListModel = new ProductListAdapter.ProductListModel();
-        productListModel.setRackId("B4");
-        productListModel.setProductName("Azithral 500 Tablet");
-        productListModel.setQty("0/10");
-        productListModel.setRack("G098-98-815");
-        productListModelList.add(productListModel);
+        public void setRackBoxId(String rackBoxId) {
+            this.rackBoxId = rackBoxId;
+        }
+
+        public static class ProductData {
+
+            private String productId;
+            private String productName;
+            private String rackId;
+            private String boxId;
+            private String availableQuantity;
+            private String requiredQuantity;
+            private String capturedQuantity;
+            private String batchId;
+            private String status;
+
+            public String getBoxId() {
+                return boxId;
+            }
+
+            public void setBoxId(String boxId) {
+                this.boxId = boxId;
+            }
+
+            public String getProductId() {
+                return productId;
+            }
+
+            public void setProductId(String productId) {
+                this.productId = productId;
+            }
+
+            public String getProductName() {
+                return productName;
+            }
+
+            public void setProductName(String productName) {
+                this.productName = productName;
+            }
+
+            public String getRackId() {
+                return rackId;
+            }
+
+            public void setRackId(String rackId) {
+                this.rackId = rackId;
+            }
+
+            public String getAvailableQuantity() {
+                return availableQuantity;
+            }
+
+            public void setAvailableQuantity(String availableQuantity) {
+                this.availableQuantity = availableQuantity;
+            }
+
+            public String getRequiredQuantity() {
+                return requiredQuantity;
+            }
+
+            public void setRequiredQuantity(String requiredQuantity) {
+                this.requiredQuantity = requiredQuantity;
+            }
+
+            public String getCapturedQuantity() {
+                return capturedQuantity;
+            }
+
+            public void setCapturedQuantity(String capturedQuantity) {
+                this.capturedQuantity = capturedQuantity;
+            }
+
+            public String getBatchId() {
+                return batchId;
+            }
+
+            public void setBatchId(String batchId) {
+                this.batchId = batchId;
+            }
+
+            public String getStatus() {
+                return status;
+            }
+
+            public void setStatus(String status) {
+                this.status = status;
+            }
+        }
     }
 }

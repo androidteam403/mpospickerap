@@ -4,6 +4,10 @@
     package="com.thresholdsoft.mpospicker">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name="com.thresholdsoft.mpospicker.root.ApplicatinApp"
@@ -29,32 +33,20 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".ui.readyforpickup.ReadyForPickUpActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.mpospackerflow.pickeduporders.PickedUpOrdersActivity">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
-        <activity android:name=".ui.mpospackerflow.pickupverificationprocess.PickUpVerificationActivity"/>
-        <activity android:name=".ui.pickupsummary.PickUpSummaryActivity">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-        </activity>
-        <activity
-            android:name=".ui.readyforpickup.ReadyForPickUpActivity"
-            android:screenOrientation="portrait" />
+        <activity android:name=".ui.mpospackerflow.pickeduporders.PickedUpOrdersActivity" />
+        <activity android:name=".ui.mpospackerflow.pickupverificationprocess.PickUpVerificationActivity" />
+        <activity android:name=".ui.pickupsummary.PickUpSummaryActivity" />
         <activity
             android:name=".ui.pickupprocess.PickupProcessActivity"
-            android:screenOrientation="portrait" />
+            android:exported="true"
+            android:screenOrientation="portrait">
+
+        </activity>
+
     </application>
 
 </manifest>

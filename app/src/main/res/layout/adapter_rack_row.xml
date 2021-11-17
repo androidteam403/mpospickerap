@@ -10,7 +10,7 @@
         android:paddingBottom="0.1dp">
 
         <TextView
-            android:id="@+id/rack_row_no"
+            android:id="@+id/rack_box_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -19,7 +19,7 @@
             android:textSize="@dimen/dimen10sp" />
 
         <TextView
-            android:id="@+id/rack_row_id"
+            android:id="@+id/rack_pro_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

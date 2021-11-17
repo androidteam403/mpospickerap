@@ -2,8 +2,12 @@ package com.thresholdsoft.mpospicker.ui.readyforpickup.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -11,6 +15,8 @@ import androidx.databinding.DataBindingUtil;
 
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.DialogScanQrCodeBinding;
+
+import static androidx.core.app.ActivityCompat.startActivityForResult;
 
 public class ScanQrCodeDialog {
 
@@ -39,6 +45,9 @@ public class ScanQrCodeDialog {
         dialogScanQrCodeBinding.dialogButtonOK.setOnClickListener(okListener);
     }
 
+    public void setCameraClickListener(View.OnClickListener okListener) {
+        dialogScanQrCodeBinding.cameraClick.setOnClickListener(okListener);
+    }
 
     public void setNegativeListener(View.OnClickListener okListener) {
         dialogScanQrCodeBinding.dialogButtonNO.setOnClickListener(okListener);
@@ -57,6 +66,14 @@ public class ScanQrCodeDialog {
         dialogScanQrCodeBinding.title.setText(title);
     }
 
+    public void setCameraImage(Bitmap image) {
+        dialogScanQrCodeBinding.capturesScanedImage.setImageBitmap(image);
+    }
+
+    public void visibilyHandlings(){
+        dialogScanQrCodeBinding.cameraClick.setVisibility(View.GONE);
+        dialogScanQrCodeBinding.capturesScanedImage.setVisibility(View.VISIBLE);
+    }
 
 //    public void setPositiveLabel(String positive) {
 //        alertDialogBoxBinding.btnYes.setText(positive);

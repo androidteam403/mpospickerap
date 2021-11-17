@@ -127,6 +127,7 @@
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_marginStart="@dimen/fifteen_dp">
 
                 <LinearLayout
@@ -140,9 +141,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/black"
-                        android:enabled="false"
                         android:fontFamily="@font/roboto_bold"
                         android:textAllCaps="true"
+                        android:checked="false"
                         android:textColor="@color/black" />
 
                     <TextView
@@ -180,7 +181,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/black"
-                        android:enabled="false"
+                        android:checked="false"
                         android:fontFamily="@font/roboto_bold"
                         android:textAllCaps="true"
                         android:textColor="@color/black" />
@@ -218,7 +219,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/black"
-                        android:enabled="false"
+                        android:checked="false"
                         android:fontFamily="@font/roboto_bold"
                         android:textAllCaps="true"
                         android:textColor="@color/black" />
@@ -245,7 +246,6 @@
                         android:padding="@dimen/five_dp"
                         android:src="@drawable/delete_white_icon" />
                 </LinearLayout>
-
             </RadioGroup>
 
             <View

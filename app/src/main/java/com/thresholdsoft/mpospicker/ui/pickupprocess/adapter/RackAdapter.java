@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -13,23 +14,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.AdapterRackBinding;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessMvpView;
+import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RackAdapter extends RecyclerView.Adapter<RackAdapter.ViewHolder> {
     private Context context;
-    private List<RackModel> rackModelList;
-    private RackRowAdapter rackRowAdapter;
-    private List<RackRowAdapter.RackRowModel> rackRowModelList;
-    private ProductListAdapter productListAdapter;
-    private List<ProductListAdapter.ProductListModel> productListModelList;
+    private List<RacksDataResponse.FullfillmentDetail.Product> rackDataFilteredList;
     private PickupProcessMvpView pickupProcessMvpView;
+    RacksDataResponse dataResponse;
+    List<List<RackBoxModel.ProductData>> listOfList;
 
-    public RackAdapter(Context context, List<RackModel> rackModelList, PickupProcessMvpView pickupProcessMvpView) {
+    public RackAdapter(Context context, List<RacksDataResponse.FullfillmentDetail.Product> rackDataFilteredList, RacksDataResponse dataResponse, PickupProcessMvpView pickupProcessMvpView, List<List<RackBoxModel.ProductData>> listOfList) {
         this.context = context;
-        this.rackModelList = rackModelList;
+        this.rackDataFilteredList = rackDataFilteredList;
         this.pickupProcessMvpView = pickupProcessMvpView;
+        this.dataResponse = dataResponse;
+        this.listOfList = listOfList;
     }
 
     @NonNull
@@ -42,11 +44,10 @@ public class RackAdapter extends RecyclerView.Adapter<RackAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull RackAdapter.ViewHolder holder, int position) {
-        RackModel rackModel = rackModelList.get(position);
+        RacksDataResponse.FullfillmentDetail.Product rackModel = rackDataFilteredList.get(position);
         holder.rackBinding.rackId.setText(rackModel.getRackId());
-        getRackRowModelList();
-        getProductModelModelList();
-        switch (rackModel.itemStatus) {
+
+        switch (rackModel.getExpandStatus()) {
             case 0:
                 holder.rackBinding.rackChildLayout.setBackgroundColor(context.getResources().getColor(R.color.lite_grey));
                 holder.rackBinding.start.setVisibility(View.GONE);
@@ -100,30 +101,107 @@ public class RackAdapter extends RecyclerView.Adapter<RackAdapter.ViewHolder> {
                 break;
             default:
         }
-        rackRowAdapter = new RackRowAdapter(context, rackRowModelList);
+
+        int flag = 0;
+        List<RackBoxModel> boxStringList = new ArrayList<>();
+        List<RackBoxModel.ProductData> productDataList = new ArrayList<>();
+        for (int j = 0; j < dataResponse.getFullfillmentDetails().size(); j++) {
+            for (int k = 0; k < dataResponse.getFullfillmentDetails().get(j).getProducts().size(); k++) {
+                if (rackModel.getRackId().equalsIgnoreCase(dataResponse.getFullfillmentDetails().get(j).getProducts().get(k).getRackId())) {
+                    RackBoxModel rackBoxModel = new RackBoxModel();
+                    rackBoxModel.setProductsCuont(flag + 1);
+                    rackBoxModel.setRackBoxId(dataResponse.getFullfillmentDetails().get(j).getBoxId());
+                    RackBoxModel.ProductData productData = new RackBoxModel.ProductData();
+                    productData.setProductId(dataResponse.getFullfillmentDetails().get(j).getProducts().get(k).getProductId());
+                    productData.setProductName(dataResponse.getFullfillmentDetails().get(j).getProducts().get(k).getProductName());
+                    productData.setRackId(dataResponse.getFullfillmentDetails().get(j).getProducts().get(k).getRackId());
+                    productData.setBoxId(dataResponse.getFullfillmentDetails().get(j).getBoxId());
+                    productData.setAvailableQuantity(dataResponse.getFullfillmentDetails().get(j).getProducts().get(k).getAvailableQuantity());
+                    productData.setRequiredQuantity(dataResponse.getFullfillmentDetails().get(j).getProducts().get(k).getRequiredQuantity());
+                    productData.setBatchId(dataResponse.getFullfillmentDetails().get(j).getProducts().get(k).getBatchId());
+                    if (listOfList != null && listOfList.size() > 0) {
+                        for (int i = 0; i < listOfList.size(); i++) {
+                            for (int l = 0; l < listOfList.get(i).size(); l++) {
+                                if (listOfList.get(i).get(l).getProductId().equalsIgnoreCase(dataResponse.getFullfillmentDetails().get(j).getProducts().get(k).getProductId())) {
+                                    productData.setCapturedQuantity(listOfList.get(i).get(l).getCapturedQuantity());
+                                    productData.setStatus(listOfList.get(i).get(l).getStatus());
+                                }
+                            }
+                        }
+                    } else {
+                        if (pickupProcessMvpView.productList() != null && pickupProcessMvpView.productList().size() > 0) {
+                            for (int i = 0; i < pickupProcessMvpView.productList().size(); i++) {
+                                for (int l = 0; l < pickupProcessMvpView.productList().size(); l++) {
+                                    if (pickupProcessMvpView.productList().get(i).get(l).getProductId().equalsIgnoreCase(dataResponse.getFullfillmentDetails().get(j).getProducts().get(k).getProductId())) {
+                                        productData.setCapturedQuantity(pickupProcessMvpView.productList().get(i).get(l).getCapturedQuantity());
+                                        productData.setStatus(pickupProcessMvpView.productList().get(i).get(l).getStatus());
+                                    }
+                                }
+                            }
+                        } else {
+                            productData.setCapturedQuantity(dataResponse.getFullfillmentDetails().get(j).getProducts().get(k).getCapturedQuantity());
+                            productData.setStatus(dataResponse.getFullfillmentDetails().get(j).getProducts().get(k).getStatus());
+                        }
+                    }
+                    productDataList.add(productData);
+
+                    boxStringList.add(rackBoxModel);
+                }
+            }
+        }
+
+        for (int i = 0; i < boxStringList.size(); i++) {
+            for (int j = 0; j < boxStringList.size(); j++) {
+                if (i != j && boxStringList.get(i).getRackBoxId().equals(boxStringList.get(j).getRackBoxId())) {
+                    boxStringList.get(i).setProductsCuont(boxStringList.get(i).getProductsCuont() + boxStringList.get(j).getProductsCuont());
+                    boxStringList.remove(j);
+                }
+            }
+        }
+
+        RackRowAdapter rackRowAdapter = new RackRowAdapter(context, boxStringList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, true);
         holder.rackBinding.rackRowRecycler.setLayoutManager(mLayoutManager);
         holder.rackBinding.rackRowRecycler.setAdapter(rackRowAdapter);
 
-        productListAdapter = new ProductListAdapter(context, productListModelList, pickupProcessMvpView, true);
+
+        ProductListAdapter productListAdapter = new ProductListAdapter(context, productDataList, pickupProcessMvpView, true, listOfList);
         new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, true);
         holder.rackBinding.productListRecycler.setLayoutManager(new LinearLayoutManager(context));
         holder.rackBinding.productListRecycler.setAdapter(productListAdapter);
 
         holder.rackBinding.rackChildLayout.setOnClickListener(v -> {
-            if (rackModel.getItemStatus() == 1) {
-                rackModel.setItemStatus(2);
+            if (rackDataFilteredList.get(position).getExpandStatus() == 1) {
+                rackDataFilteredList.get(position).setExpandStatus(2);
                 notifyDataSetChanged();
-            } else if (rackModel.getItemStatus() == 2) {
-                rackModel.setItemStatus(1);
+            } else if (rackDataFilteredList.get(position).getExpandStatus() == 2) {
+                rackDataFilteredList.get(position).setExpandStatus(1);
                 notifyDataSetChanged();
+            } else if (rackDataFilteredList.get(position).getExpandStatus() == 0) {
+                rackDataFilteredList.get(position).setExpandStatus(2);
+                notifyDataSetChanged();
+            }
+        });
+        if (position==rackDataFilteredList.size()-1){
+            holder.rackBinding.gotoNextRack.setVisibility(View.GONE);
+        }
+        holder.rackBinding.gotoNextRack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (rackDataFilteredList.get(position).getExpandStatus() == 2) {
+                    rackDataFilteredList.get(position).setExpandStatus(1);
+                    notifyItemChanged(position);
+                }  if (rackDataFilteredList.get(position+1).getExpandStatus() == 0) {
+                    rackDataFilteredList.get(position+1).setExpandStatus(2);
+                    notifyDataSetChanged();
+                }
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return rackModelList.size();
+        return rackDataFilteredList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -135,112 +213,109 @@ public class RackAdapter extends RecyclerView.Adapter<RackAdapter.ViewHolder> {
         }
     }
 
-    private void getProductModelModelList() {
-        productListModelList = new ArrayList<>();
-        ProductListAdapter.ProductListModel productListModel = new ProductListAdapter.ProductListModel();
-        productListModel.setRackId("B1");
-        productListModel.setProductName("Ascoril D Syrup Sugar Free");
-        productListModel.setQty("1/1");
-        productListModel.setRack("G098-98-815");
-        productListModelList.add(productListModel);
+    public static class RackBoxModel {
+        private String rackBoxId;
+        private int productsCuont;
 
-        productListModel = new ProductListAdapter.ProductListModel();
-        productListModel.setRackId("B2");
-        productListModel.setProductName("Allegra 180mg Tablet");
-        productListModel.setQty("0/5");
-        productListModel.setRack("G098-98-815");
-        productListModelList.add(productListModel);
-
-        productListModel = new ProductListAdapter.ProductListModel();
-        productListModel.setRackId("B3");
-        productListModel.setProductName("Amoxyclav 625 Tablet");
-        productListModel.setQty("0/3");
-        productListModel.setRack("G098-98-815");
-        productListModelList.add(productListModel);
-
-        productListModel = new ProductListAdapter.ProductListModel();
-        productListModel.setRackId("B4");
-        productListModel.setProductName("Augmentin 625 Duo Tablet");
-        productListModel.setQty("0/10");
-        productListModel.setRack("G098-98-815");
-        productListModelList.add(productListModel);
-
-        productListModel = new ProductListAdapter.ProductListModel();
-        productListModel.setRackId("B4");
-        productListModel.setProductName("Azithral 500 Tablet");
-        productListModel.setQty("0/10");
-        productListModel.setRack("G098-98-815");
-        productListModelList.add(productListModel);
-    }
-
-    private void getRackRowModelList() {
-        rackRowModelList = new ArrayList<>();
-        RackRowAdapter.RackRowModel rackRowModel = new RackRowAdapter.RackRowModel();
-        rackRowModel.setRackRowId("B1");
-        rackRowModel.setRackRowNo("1");
-        rackRowModelList.add(rackRowModel);
-
-        rackRowModel = new RackRowAdapter.RackRowModel();
-        rackRowModel.setRackRowId("B2");
-        rackRowModel.setRackRowNo("2");
-        rackRowModelList.add(rackRowModel);
-
-        rackRowModel = new RackRowAdapter.RackRowModel();
-        rackRowModel.setRackRowId("B3");
-        rackRowModel.setRackRowNo("3");
-        rackRowModelList.add(rackRowModel);
-
-        rackRowModel = new RackRowAdapter.RackRowModel();
-        rackRowModel.setRackRowId("B4");
-        rackRowModel.setRackRowNo("4");
-        rackRowModelList.add(rackRowModel);
-    }
-
-    public static class RackModel {
-        private String rackId;
-        private int itemStatus;
-        private String fullfillmentID;
-        private String totalItems;
-        private String boxID;
-
-        public String getRackId() {
-            return rackId;
+        public int getProductsCuont() {
+            return productsCuont;
         }
 
-        public void setRackId(String rackId) {
-            this.rackId = rackId;
+        public void setProductsCuont(int productsCuont) {
+            this.productsCuont = productsCuont;
         }
 
-        public int getItemStatus() {
-            return itemStatus;
+        public String getRackBoxId() {
+            return rackBoxId;
         }
 
-        public void setItemStatus(int itemStatus) {
-            this.itemStatus = itemStatus;
+        public void setRackBoxId(String rackBoxId) {
+            this.rackBoxId = rackBoxId;
         }
 
-        public String getFullfillmentID() {
-            return fullfillmentID;
-        }
+        public static class ProductData {
 
-        public void setFullfillmentID(String fullfillmentID) {
-            this.fullfillmentID = fullfillmentID;
-        }
+            private String productId;
+            private String productName;
+            private String rackId;
+            private String boxId;
+            private String availableQuantity;
+            private String requiredQuantity;
+            private String capturedQuantity;
+            private String batchId;
+            private String status;
 
-        public String getTotalItems() {
-            return totalItems;
-        }
+            public String getBoxId() {
+                return boxId;
+            }
 
-        public void setTotalItems(String totalItems) {
-            this.totalItems = totalItems;
-        }
+            public void setBoxId(String boxId) {
+                this.boxId = boxId;
+            }
 
-        public String getBoxID() {
-            return boxID;
-        }
+            public String getProductId() {
+                return productId;
+            }
 
-        public void setBoxID(String boxID) {
-            this.boxID = boxID;
+            public void setProductId(String productId) {
+                this.productId = productId;
+            }
+
+            public String getProductName() {
+                return productName;
+            }
+
+            public void setProductName(String productName) {
+                this.productName = productName;
+            }
+
+            public String getRackId() {
+                return rackId;
+            }
+
+            public void setRackId(String rackId) {
+                this.rackId = rackId;
+            }
+
+            public String getAvailableQuantity() {
+                return availableQuantity;
+            }
+
+            public void setAvailableQuantity(String availableQuantity) {
+                this.availableQuantity = availableQuantity;
+            }
+
+            public String getRequiredQuantity() {
+                return requiredQuantity;
+            }
+
+            public void setRequiredQuantity(String requiredQuantity) {
+                this.requiredQuantity = requiredQuantity;
+            }
+
+            public String getCapturedQuantity() {
+                return capturedQuantity;
+            }
+
+            public void setCapturedQuantity(String capturedQuantity) {
+                this.capturedQuantity = capturedQuantity;
+            }
+
+            public String getBatchId() {
+                return batchId;
+            }
+
+            public void setBatchId(String batchId) {
+                this.batchId = batchId;
+            }
+
+            public String getStatus() {
+                return status;
+            }
+
+            public void setStatus(String status) {
+                this.status = status;
+            }
         }
     }
 }

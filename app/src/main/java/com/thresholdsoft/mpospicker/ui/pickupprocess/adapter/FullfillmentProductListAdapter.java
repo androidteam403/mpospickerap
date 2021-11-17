@@ -18,14 +18,14 @@ import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessMvpView;
 
 import java.util.List;
 
-public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ViewHolder> {
+public class FullfillmentProductListAdapter extends RecyclerView.Adapter<FullfillmentProductListAdapter.ViewHolder> {
     private Context context;
-    private List<RackAdapter.RackBoxModel.ProductData> productListModelList;
+    private List<OrderAdapter.RackBoxModel.ProductData> productListModelList;
     private PickupProcessMvpView pickupProcessMvpView;
     private boolean isRackFlow;
-    List<List<RackAdapter.RackBoxModel.ProductData>> listOfList;
+    List<List<OrderAdapter.RackBoxModel.ProductData>> listOfList;
 
-    public ProductListAdapter(Context context, List<RackAdapter.RackBoxModel.ProductData> productListModelList, PickupProcessMvpView pickupProcessMvpView, boolean isRackFlow, List<List<RackAdapter.RackBoxModel.ProductData>> listOfList) {
+    public FullfillmentProductListAdapter(Context context, List<OrderAdapter.RackBoxModel.ProductData> productListModelList, PickupProcessMvpView pickupProcessMvpView, boolean isRackFlow, List<List<OrderAdapter.RackBoxModel.ProductData>> listOfList) {
         this.context = context;
         this.productListModelList = productListModelList;
         this.pickupProcessMvpView = pickupProcessMvpView;
@@ -35,15 +35,15 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FullfillmentProductListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         AdapterProductListBinding productListBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.adapter_product_list, parent, false);
-        return new ProductListAdapter.ViewHolder(productListBinding);
+        return new FullfillmentProductListAdapter.ViewHolder(productListBinding);
     }
 
 
     @Override
-    public void onBindViewHolder(@NonNull ProductListAdapter.ViewHolder holder, int position) {
-        RackAdapter.RackBoxModel.ProductData productListModel = productListModelList.get(position);
+    public void onBindViewHolder(@NonNull FullfillmentProductListAdapter.ViewHolder holder, int position) {
+        OrderAdapter.RackBoxModel.ProductData productListModel = productListModelList.get(position);
         if (isRackFlow)
             holder.productListBinding.rackIdLayout.setVisibility(View.GONE);
         else
@@ -116,7 +116,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
                     }
                     dialog.dismiss();
                     listOfList.add(productListModelList);
-                    pickupProcessMvpView.onRackStatusUpdate(listOfList);
+                    pickupProcessMvpView.onFullfillmentOrderStatusUpdate(listOfList);
                 });
                 dialog.show();
             }
@@ -132,7 +132,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     private boolean fullQty, partialQty, notAvailableQty;
 
-    private void radioButtonListener(DialogUpdateStatusBinding dialogUpdateStatusBinding, RackAdapter.RackBoxModel.ProductData productListQty, int position) {
+    private void radioButtonListener(DialogUpdateStatusBinding dialogUpdateStatusBinding, OrderAdapter.RackBoxModel.ProductData productListQty, int position) {
         dialogUpdateStatusBinding.availableProFull.setText(productListQty.getAvailableQuantity());
         dialogUpdateStatusBinding.requiredProFull.setText(productListQty.getRequiredQuantity());
 

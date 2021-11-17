@@ -2,9 +2,11 @@ package com.thresholdsoft.mpospicker.ui.readyforpickup;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -17,7 +19,6 @@ import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.ActivityReadyForPickupBinding;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessActivity;
-import com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersActivity;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.adapter.ReadyForPickUpAdapter;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.dialog.ScanQrCodeDialog;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.dialog.UnTagQrCodeDialog;
@@ -86,9 +87,12 @@ public class ReadyForPickUpActivity extends BaseActivity implements ReadyForPick
         activityReadyForPickupBinding.readyForPickupRecycleView.setAdapter(readyForPickUpAdapter);
     }
 
+    ScanQrCodeDialog scanQrCodeDialog;
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
+
     @Override
     public void onTagBoxClick(String fullfillmentId, int pos) {
-        ScanQrCodeDialog scanQrCodeDialog = new ScanQrCodeDialog(ReadyForPickUpActivity.this, fullfillmentId);
+        scanQrCodeDialog = new ScanQrCodeDialog(ReadyForPickUpActivity.this, fullfillmentId);
         scanQrCodeDialog.setPositiveListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,6 +113,15 @@ public class ReadyForPickUpActivity extends BaseActivity implements ReadyForPick
                 }
             }
         });
+        scanQrCodeDialog.setCameraClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                startActivityForResult(takePicture, 0);
+
+                startActivityForResult(new Intent(MediaStore.ACTION_IMAGE_CAPTURE), REQUEST_IMAGE_CAPTURE);
+            }
+        });
         scanQrCodeDialog.setNegativeListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,6 +130,27 @@ public class ReadyForPickUpActivity extends BaseActivity implements ReadyForPick
         });
         scanQrCodeDialog.show();
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_IMAGE_CAPTURE) {
+
+            switch (resultCode) {
+                case RESULT_OK:
+                    if (data != null) {
+                        Bitmap bitmap = data.getParcelableExtra("data");
+                        scanQrCodeDialog.visibilyHandlings();
+                        scanQrCodeDialog.setCameraImage(bitmap);
+                    }
+                    break;
+                case RESULT_CANCELED:
+                    break;
+            }
+        }
+    }
+
 
     @Override
     public void onDeleteClick(int pos, String fullfillmentId) {
@@ -156,12 +190,13 @@ public class ReadyForPickUpActivity extends BaseActivity implements ReadyForPick
         for (FullfillmentData fullfillmentData : fullfillmentDataList)
             if (!fullfillmentData.isTagBox())
                 isAlltagBox = false;
-        if (isAlltagBox) {
-            startActivity(PickupProcessActivity.getStartActivity(this));
-            overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
-        } else {
-            Toast.makeText(this, "Tag All boxes", Toast.LENGTH_SHORT).show();
-        }
+//        if (isAlltagBox) {
+        startActivity(PickupProcessActivity.getStartActivity(this));
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+//        }
+//        else {
+//            Toast.makeText(this, "Tag All boxes", Toast.LENGTH_SHORT).show();
+//        }
     }
 
     @Override
@@ -206,6 +241,7 @@ public class ReadyForPickUpActivity extends BaseActivity implements ReadyForPick
         public void setTagBox(boolean tagBox) {
             this.tagBox = tagBox;
         }
+
     }
 
     @Override

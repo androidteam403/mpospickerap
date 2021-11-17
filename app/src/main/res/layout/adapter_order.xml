@@ -200,7 +200,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen20dp" />
 
+
                 <LinearLayout
+                    android:id="@+id/goto_next_rack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/product_list_recycler"
@@ -211,15 +213,15 @@
                     android:backgroundTint="@color/yellow"
                     android:gravity="center"
                     android:paddingStart="@dimen/dimen10dp"
-                    android:paddingEnd="@dimen/dimen10dp">
+                    android:paddingEnd="@dimen/dimen5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="Go to next Rack"
+                        android:text="Go to next Order"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/dimen16sp" />
+                        android:textSize="@dimen/dimen14sp" />
 
                     <ImageView
                         android:layout_width="@dimen/dimen30dp"
@@ -227,8 +229,8 @@
                         android:contentDescription="@string/app_name"
                         android:padding="@dimen/dimen5dp"
                         android:src="@drawable/ic_next_rack" />
-
                 </LinearLayout>
+
             </RelativeLayout>
 
         </LinearLayout>

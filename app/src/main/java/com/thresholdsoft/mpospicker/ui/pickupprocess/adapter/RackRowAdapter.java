@@ -10,14 +10,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.AdapterRackRowBinding;
+import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 
 import java.util.List;
 
 public class RackRowAdapter extends RecyclerView.Adapter<RackRowAdapter.ViewHolder> {
     private Context context;
-    private List<RackRowModel> rackRowModelList;
+    private List<RackAdapter.RackBoxModel> rackRowModelList;
 
-    public RackRowAdapter(Context context, List<RackRowModel> rackRowModelList) {
+    public RackRowAdapter(Context context, List<RackAdapter.RackBoxModel> rackRowModelList) {
         this.context = context;
         this.rackRowModelList = rackRowModelList;
     }
@@ -32,9 +33,9 @@ public class RackRowAdapter extends RecyclerView.Adapter<RackRowAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull RackRowAdapter.ViewHolder holder, int position) {
-        RackRowModel rackRowModel = rackRowModelList.get(position);
-        holder.rackRowBinding.rackRowId.setText(rackRowModel.getRackRowNo());
-        holder.rackRowBinding.rackRowNo.setText(rackRowModel.getRackRowId());
+        RackAdapter.RackBoxModel rackRowModel = rackRowModelList.get(position);
+        holder.rackRowBinding.rackBoxId.setText(rackRowModel.getRackBoxId());
+        holder.rackRowBinding.rackProCount.setText(String.valueOf(rackRowModel.getProductsCuont()));
     }
 
     @Override
@@ -48,27 +49,6 @@ public class RackRowAdapter extends RecyclerView.Adapter<RackRowAdapter.ViewHold
         public ViewHolder(@NonNull AdapterRackRowBinding rackRowBinding) {
             super(rackRowBinding.getRoot());
             this.rackRowBinding = rackRowBinding;
-        }
-    }
-
-    public static class RackRowModel {
-        private String rackRowId;
-        private String rackRowNo;
-
-        public String getRackRowId() {
-            return rackRowId;
-        }
-
-        public void setRackRowId(String rackRowId) {
-            this.rackRowId = rackRowId;
-        }
-
-        public String getRackRowNo() {
-            return rackRowNo;
-        }
-
-        public void setRackRowNo(String rackRowNo) {
-            this.rackRowNo = rackRowNo;
         }
     }
 }

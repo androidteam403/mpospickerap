@@ -17,7 +17,7 @@ import com.thresholdsoft.mpospicker.databinding.ActivityPickUpSummaryBinding;
 import com.thresholdsoft.mpospicker.databinding.DialogFarwardtoPackerAlertBinding;
 import com.thresholdsoft.mpospicker.databinding.DialogFarwardtoPackerBinding;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
-import com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersActivity;
+import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickeduporders.PickedUpOrdersActivity;
 import com.thresholdsoft.mpospicker.ui.pickupsummary.adapter.SummaryFullfillmentAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupsummary.adapter.SummaryProductsAdapter;
 
@@ -244,7 +244,8 @@ public class PickUpSummaryActivity extends BaseActivity implements PickUpSummary
         dialog.setContentView(updateStatusBinding.getRoot());
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         updateStatusBinding.gotoOpenOrders.setOnClickListener(v -> {
-            startActivity(OpenOrdersActivity.getStartActivity(this));
+//            startActivity(OpenOrdersActivity.getStartActivity(this));
+            startActivity(PickedUpOrdersActivity.getStartActivity(this));
             overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
             dialog.dismiss();
         });

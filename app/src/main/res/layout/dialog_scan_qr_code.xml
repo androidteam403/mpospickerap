@@ -37,12 +37,24 @@
                 </RelativeLayout>
 
                 <ImageView
+                    android:id="@+id/camera_click"
                     android:layout_width="@dimen/one_hundred_eighty_dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/fifteen_dp"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/scan_qr_code" />
+
+                <ImageView
+                    android:id="@+id/captures_scaned_image"
+                    android:layout_width="200dp"
+                    android:layout_height="250dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/fifteen_dp"
+                    android:contentDescription="@string/app_name"
+                    android:fitsSystemWindows="true"
+                    android:scaleType="fitXY"
+                    android:visibility="gone" />
 
 
                 <LinearLayout

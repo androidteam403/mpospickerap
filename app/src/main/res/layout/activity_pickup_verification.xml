@@ -21,8 +21,9 @@
 
                 <ImageView
                     android:id="@+id/back_click"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/seven_dp"
+                    android:layout_width="@dimen/thirty_dp"
+                    android:layout_height="@dimen/thirty_dp"
                     android:layout_gravity="center_vertical"
                     android:onClick="@{()->callback.onBackClick()}"
                     android:contentDescription="@string/app_name"
@@ -32,7 +33,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="@dimen/five_dp"
+                    android:layout_marginStart="@dimen/seven_dp"
                     android:orientation="vertical">
 
                     <TextView
