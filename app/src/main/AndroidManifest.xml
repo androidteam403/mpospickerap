@@ -28,25 +28,28 @@
         <activity
             android:name=".ui.openorders.OpenOrdersActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.readyforpickup.ReadyForPickUpActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".ui.readyforpickup.ScannerActivity"/>
         <activity android:name=".ui.mpospackerflow.pickeduporders.PickedUpOrdersActivity" />
         <activity android:name=".ui.mpospackerflow.pickupverificationprocess.PickUpVerificationActivity" />
-        <activity android:name=".ui.pickupsummary.PickUpSummaryActivity" />
         <activity
             android:name=".ui.pickupprocess.PickupProcessActivity"
             android:exported="true"
             android:screenOrientation="portrait">
 
         </activity>
+        <activity android:name=".ui.DeciderScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.pickupsummary.PickUpSummmaryActivityNew"/>
     </application>
 
 </manifest>

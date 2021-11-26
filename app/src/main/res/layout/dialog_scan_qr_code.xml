@@ -38,12 +38,21 @@
 
                 <ImageView
                     android:id="@+id/camera_click"
-                    android:layout_width="@dimen/one_hundred_eighty_dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/fifteen_dp"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/scan_qr_code" />
+                    android:src="@drawable/ic_camera" />
+
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Click on camera to cature image" />
 
                 <ImageView
                     android:id="@+id/captures_scaned_image"
@@ -66,7 +75,8 @@
                     android:background="@drawable/okay_btn_bg"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:padding="@dimen/seven_dp">
+                    android:padding="@dimen/seven_dp"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"

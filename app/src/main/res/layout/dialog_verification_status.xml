@@ -65,7 +65,7 @@
                     android:layout_gravity="bottom"
                     android:fontFamily="@font/roboto_bold"
                     android:text="887766"
-                    android:id="@+id/id"
+                    android:id="@+id/fullfilment_id"
                     android:textColor="@color/black"
                     android:textSize="@dimen/dimen12sp" />
             </LinearLayout>

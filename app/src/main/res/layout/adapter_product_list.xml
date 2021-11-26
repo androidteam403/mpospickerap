@@ -23,14 +23,14 @@
 
                 <TextView
                     android:id="@+id/rack_row_id"
-                    android:layout_width="@dimen/dimen20dp"
-                    android:layout_height="@dimen/dimen20dp"
+                    android:layout_width="@dimen/dimen22dp"
+                    android:layout_height="@dimen/dimen22dp"
                     android:background="@drawable/ic_circle_bg"
                     android:backgroundTint="@color/yellow"
                     android:fontFamily="@font/roboto_medium"
                     android:gravity="center"
                     android:padding="@dimen/dimen5dp"
-                    android:text="B4"
+                    android:text=""
                     android:textColor="@color/black"
                     android:textSize="@dimen/dimen8sp" />
             </RelativeLayout>

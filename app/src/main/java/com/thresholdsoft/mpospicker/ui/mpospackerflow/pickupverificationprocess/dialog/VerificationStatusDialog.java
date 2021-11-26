@@ -23,7 +23,7 @@ public class VerificationStatusDialog {
     private boolean negativeExist = false;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
-    public VerificationStatusDialog(Context context, boolean reverification) {
+    public VerificationStatusDialog(Context context, boolean reverification, String fullfillmentId) {
         dialog = new Dialog(context);
         dialog = new Dialog(context, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
         verificationStatusBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_verification_status, null, false);
@@ -36,6 +36,7 @@ public class VerificationStatusDialog {
             verificationStatusBinding.statusImage.setBackgroundTintList(ColorStateList.valueOf(context.getColor(R.color.red)));
             verificationStatusBinding.statusImage.setImageResource(R.drawable.delete_white_icon);
         }
+        verificationStatusBinding.fullfilmentId.setText(fullfillmentId);
     }
 
 

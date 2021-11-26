@@ -122,7 +122,7 @@ public class ActivityModule {
 
     @Provides
     @PerActivity
-    PickUpSummaryMvpPresenter<PickUpSummaryMvpView> pickUpSummaryMvpPresenter(PickUpSummaryPresenter<PickUpSummaryMvpView> presenter) {
+    PickUpSummaryMvpPresenter<PickUpSummaryMvpView> pickUpSummary(PickUpSummaryPresenter<PickUpSummaryMvpView> presenter) {
         return presenter;
     }
 

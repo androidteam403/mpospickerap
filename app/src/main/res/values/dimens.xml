@@ -159,6 +159,7 @@
     <dimen name="dimen150dp">150sp</dimen>
     <dimen name="dimen100dp">100dp</dimen>
     <dimen name="dimen25dp">25dp</dimen>
+    <dimen name="dimen22dp">22dp</dimen>
     <dimen name="dimen80dp">80dp</dimen>
     <dimen name="dimen_11sp">11sp</dimen>
 

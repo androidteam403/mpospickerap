@@ -31,6 +31,9 @@
 
     <color name="very_light_grey">#f1f1f1</color>
 
+    <color name="very_very_light_grey">#FDFAFA</color>
+
+
     <color name="light_biscuit_color">#ffefcb</color>
     <color name="dark_bisccolor">#fbcc64</color>
     <color name="very_light_biscuit_color">#f1e3c8</color>
@@ -38,6 +41,11 @@
     <color name="transperent_black_color">#CC000000</color>
     <color name="dark_yellow">#f7941f</color>
     <color name="light_green">#00FF00</color>
+
+    <color name="very_light_green">#E1FBFB</color>
+
+    <color name="trans_red">#FBEAEA</color>
+
 
 </resources>
 

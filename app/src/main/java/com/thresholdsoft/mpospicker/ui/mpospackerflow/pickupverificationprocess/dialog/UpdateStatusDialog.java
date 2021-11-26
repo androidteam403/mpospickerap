@@ -14,7 +14,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.DialogCustomUpdateStatusBinding;
-import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickupverificationprocess.PickUpVerificationActivity;
+import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.RackAdapter;
 
 public class UpdateStatusDialog {
 
@@ -24,7 +24,7 @@ public class UpdateStatusDialog {
     private boolean negativeExist = false;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
-    public UpdateStatusDialog(Context context, PickUpVerificationActivity.PickPackProductsData pickPackProductsData) {
+    public UpdateStatusDialog(Context context, RackAdapter.RackBoxModel.ProductData pickPackProductsData) {
         dialog = new Dialog(context);
         dialog = new Dialog(context, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
         dialogUpdateStatusBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_custom_update_status, null, false);
@@ -33,7 +33,8 @@ public class UpdateStatusDialog {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.setCancelable(false);
         if (pickPackProductsData != null) {
-            dialogUpdateStatusBinding.title.setText(pickPackProductsData.getProduct());
+            dialogUpdateStatusBinding.title.setText(pickPackProductsData.getProductName());
+            dialogUpdateStatusBinding.qty.setText(pickPackProductsData.getCapturedQuantity());
         }
         dialogUpdateStatusBinding.fullStatusColor.setOnClickListener(new View.OnClickListener() {
             @Override

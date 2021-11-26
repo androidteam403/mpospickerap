@@ -12,21 +12,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.AdapterPickupVerificationBinding;
-import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickupverificationprocess.PickUpVerificationActivity;
 import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickupverificationprocess.PickUpVerificationMvpView;
+import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.RackAdapter;
 
 import java.util.List;
 
 public class PickUpVerificationAdapter extends RecyclerView.Adapter<PickUpVerificationAdapter.ViewHolder> {
 
     private Activity activity;
-    private List<PickUpVerificationActivity.PickPackProductsData> pickPackProductsDataList;
+    private List<RackAdapter.RackBoxModel.ProductData> productDataList;
     private PickUpVerificationMvpView pickUpVerificationMvpView;
 
 
-    public PickUpVerificationAdapter(Activity activity, List<PickUpVerificationActivity.PickPackProductsData> pickPackProductsDataList, PickUpVerificationMvpView pickUpVerificationMvpView) {
+    public PickUpVerificationAdapter(Activity activity, List<RackAdapter.RackBoxModel.ProductData> productDataList, PickUpVerificationMvpView pickUpVerificationMvpView) {
         this.activity = activity;
-        this.pickPackProductsDataList = pickPackProductsDataList;
+        this.productDataList = productDataList;
         this.pickUpVerificationMvpView = pickUpVerificationMvpView;
     }
 
@@ -41,21 +41,37 @@ public class PickUpVerificationAdapter extends RecyclerView.Adapter<PickUpVerifi
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull PickUpVerificationAdapter.ViewHolder holder, int position) {
-        PickUpVerificationActivity.PickPackProductsData pickPackProductsData = pickPackProductsDataList.get(position);
-        holder.adapterPickupVerificationBinding.products.setText(pickPackProductsData.getProduct());
-        holder.adapterPickupVerificationBinding.qty.setText(String.valueOf(pickPackProductsData.getQty()));
-        if (pickPackProductsData.getProductStatus() == 0) {
+        RackAdapter.RackBoxModel.ProductData productData = productDataList.get(position);
+        holder.adapterPickupVerificationBinding.productName.setText(productData.getProductName());
+        if (productData.getCapturedQuantity() != null && !productData.getCapturedQuantity().equalsIgnoreCase("")) {
+            holder.adapterPickupVerificationBinding.capturesQty.setText(productData.getCapturedQuantity().toString() + "/");
+        }
+
+        holder.adapterPickupVerificationBinding.availableQty.setText(productData.getAvailableQuantity());
+        if (productData.getStatus().equalsIgnoreCase("Full")) {
             holder.adapterPickupVerificationBinding.fullStatusColor.setVisibility(View.VISIBLE);
-        } else if (pickPackProductsData.getProductStatus() == 1) {
+        } else if (productData.getStatus().equalsIgnoreCase("Partial")) {
             holder.adapterPickupVerificationBinding.partialStatusColor.setVisibility(View.VISIBLE);
-        } else if (pickPackProductsData.getProductStatus() == 2) {
+        } else if (productData.getStatus().equalsIgnoreCase("NotAvailable")) {
             holder.adapterPickupVerificationBinding.notAvailableStatusColor.setVisibility(View.VISIBLE);
+        }
+        if (productData.getPackerStatus() != null) {
+            if (productData.getPackerStatus().equalsIgnoreCase("Full")) {
+                holder.adapterPickupVerificationBinding.pacerFullStatusColor.setVisibility(View.VISIBLE);
+                holder.adapterPickupVerificationBinding.packerStatus.setVisibility(View.GONE);
+            } else if (productData.getPackerStatus().equalsIgnoreCase("Partial")) {
+                holder.adapterPickupVerificationBinding.pacerPartialStatusColor.setVisibility(View.VISIBLE);
+                holder.adapterPickupVerificationBinding.packerStatus.setVisibility(View.GONE);
+            } else if (productData.getPackerStatus().equalsIgnoreCase("Not Available")) {
+                holder.adapterPickupVerificationBinding.pacerNotAvailableStatusColor.setVisibility(View.VISIBLE);
+                holder.adapterPickupVerificationBinding.packerStatus.setVisibility(View.GONE);
+            }
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (pickUpVerificationMvpView.recyclerItemClickableStatus()) {
-                    pickUpVerificationMvpView.onItemClick(position, pickPackProductsData);
+                    pickUpVerificationMvpView.onItemClick(position, productData);
                 }
             }
         });
@@ -63,7 +79,7 @@ public class PickUpVerificationAdapter extends RecyclerView.Adapter<PickUpVerifi
 
     @Override
     public int getItemCount() {
-        return pickPackProductsDataList.size();
+        return productDataList.size();
     }
 
     @Override

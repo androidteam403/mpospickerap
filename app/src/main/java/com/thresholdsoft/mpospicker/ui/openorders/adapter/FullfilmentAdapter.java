@@ -70,7 +70,7 @@ public class FullfilmentAdapter extends RecyclerView.Adapter<FullfilmentAdapter.
 
     public static class FullfilmentModel {
         private String fullfilmentId;
-        private int totalItems;
+        private String totalItems;
         private boolean isSelected;
 
         public String getFullfilmentId() {
@@ -81,11 +81,11 @@ public class FullfilmentAdapter extends RecyclerView.Adapter<FullfilmentAdapter.
             this.fullfilmentId = fullfilmentId;
         }
 
-        public int getTotalItems() {
+        public String getTotalItems() {
             return totalItems;
         }
 
-        public void setTotalItems(int totalItems) {
+        public void setTotalItems(String totalItems) {
             this.totalItems = totalItems;
         }
 

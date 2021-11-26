@@ -73,6 +73,8 @@ public class ScanQrCodeDialog {
     public void visibilyHandlings(){
         dialogScanQrCodeBinding.cameraClick.setVisibility(View.GONE);
         dialogScanQrCodeBinding.capturesScanedImage.setVisibility(View.VISIBLE);
+        dialogScanQrCodeBinding.dialogButtonOK.setVisibility(View.VISIBLE);
+        dialogScanQrCodeBinding.text.setVisibility(View.GONE);
     }
 
 //    public void setPositiveLabel(String positive) {

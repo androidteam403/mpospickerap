@@ -3,8 +3,8 @@
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/parent"
+        android:layout_height="wrap_content"
         android:background="@color/white">
 
         <View
@@ -13,122 +13,124 @@
             android:layout_marginTop="@dimen/three_dp"
             android:background="@color/iron" />
 
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/order_child_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/ten_dp"
-            android:layout_marginTop="@dimen/seven_dp"
-            android:layout_marginBottom="@dimen/seven_dp"
-            android:orientation="horizontal">
+            android:padding="@dimen/seven_dp"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_regular"
-                        android:text="Fullfillment ID : "
-                        android:textColor="@color/jumbo"
-                        android:textSize="@dimen/thirteen_sp" />
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/filment_id"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Fullfillment ID : "
+                            android:textColor="@color/text_color_grey"
+                            android:textSize="@dimen/dimen10sp" />
+
+                        <TextView
+                            android:id="@+id/fullfillmentID"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text=""
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/dimen10sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_bold"
-                        android:textColor="@color/black" />
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Total Items : "
+                            android:textColor="@color/text_color_grey"
+                            android:textSize="@dimen/dimen10sp" />
+
+                        <TextView
+                            android:id="@+id/total_items"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text=""
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/dimen10sp" />
+                    </LinearLayout>
+
+
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/status_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_regular"
-                        android:text="Toatal Items : "
-                        android:textColor="@color/aluminum"
-                        android:textSize="@dimen/ten_sp" />
-
-                    <TextView
-                        android:id="@+id/total_items"
+                        android:id="@+id/status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"
+                        android:text=""
+                        android:textAllCaps="true"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/ten_sp" />
+                        android:textSize="@dimen/dimen10sp" />
+
+                    <ImageView
+                        android:id="@+id/status_icon"
+                        android:layout_width="@dimen/dimen15dp"
+                        android:layout_height="@dimen/dimen15dp"
+                        android:layout_marginStart="@dimen/dimen5dp"
+                        android:layout_marginEnd="@dimen/dimen5dp"
+                        android:contentDescription="@string/app_name" />
                 </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/status_text"
+                    android:id="@+id/start"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="@dimen/five_dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/dimen5dp"
+                    android:background="@drawable/rounded_corners_bg"
+                    android:backgroundTint="@color/green"
                     android:fontFamily="@font/roboto_bold"
-                    android:gravity="center_vertical"
-                    android:text="Full"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/dimen12sp" />
-
-
-                <ImageView
-                    android:id="@+id/full_status_color"
-                    android:layout_width="@dimen/eighteen_dp"
-                    android:layout_height="@dimen/eighteen_dp"
-                    android:layout_marginEnd="@dimen/eight_dp"
-                    android:background="@drawable/ic_circular_shape"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:contentDescription="@string/app_name"
-                    android:padding="@dimen/five_dp"
-                    android:src="@drawable/tick_mark"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/dimen6dp"
+                    android:paddingTop="@dimen/dimen1dp"
+                    android:paddingEnd="@dimen/dimen6dp"
+                    android:paddingBottom="@dimen/dimen1dp"
+                    android:text="start"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dimen10sp"
                     android:visibility="gone" />
 
-                <ImageView
-                    android:id="@+id/partial_status_color"
-                    android:layout_width="@dimen/eighteen_dp"
-                    android:layout_height="@dimen/eighteen_dp"
-                    android:layout_marginEnd="@dimen/eight_dp"
-                    android:background="@drawable/ic_circular_partial"
-                    android:contentDescription="@string/app_name"
-                    android:padding="@dimen/five_dp"
-                    android:rotation="270"
-                    android:visibility="gone"/>
 
-                <ImageView
-                    android:id="@+id/not_available_status_color"
-                    android:layout_width="@dimen/eighteen_dp"
-                    android:layout_height="@dimen/eighteen_dp"
-                    android:layout_marginEnd="@dimen/eight_dp"
-                    android:background="@drawable/ic_circular_shape"
-                    android:backgroundTint="@color/red"
-                    android:contentDescription="@string/app_name"
-                    android:padding="@dimen/five_dp"
-                    android:visibility="gone"
-                    android:src="@drawable/delete_white_icon" />
+            </RelativeLayout>
 
-            </LinearLayout>
 
-        </RelativeLayout>
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"

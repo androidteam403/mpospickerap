@@ -28,4 +28,7 @@
     <string name="label_ready_for_pickup">Ready for pickup</string>
     <string name="label_pickup_process">pickup process</string>
     <string name="label_enter_batch_id">Enter Batch ID</string>
+
+    <string name="turn_off_flashlight" translatable="false">FlashLight On</string>
+    <string name="turn_on_flashlight" translatable="false">FlashLight Off</string>
 </resources>

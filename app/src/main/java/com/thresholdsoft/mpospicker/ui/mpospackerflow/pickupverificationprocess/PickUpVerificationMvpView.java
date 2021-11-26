@@ -1,9 +1,10 @@
 package com.thresholdsoft.mpospicker.ui.mpospackerflow.pickupverificationprocess;
 
 import com.thresholdsoft.mpospicker.ui.base.MvpView;
+import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.RackAdapter;
 
 public interface PickUpVerificationMvpView extends MvpView {
-    void onItemClick(int position, PickUpVerificationActivity.PickPackProductsData pickPackProductsData);
+    void onItemClick(int position, RackAdapter.RackBoxModel.ProductData pickPackProductsData);
 
     void onPartialWarningYesClick();
 
@@ -13,8 +14,5 @@ public interface PickUpVerificationMvpView extends MvpView {
 
     void onClickVerification();
 
-    void onBackClick();
-
     boolean recyclerItemClickableStatus();
-
 }

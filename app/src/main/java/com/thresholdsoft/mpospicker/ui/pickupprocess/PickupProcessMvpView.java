@@ -23,5 +23,8 @@ public interface PickupProcessMvpView extends MvpView {
 
     List<List<OrderAdapter.RackBoxModel.ProductData>> fullfilListOfList();
 
+    List<RackAdapter.RackBoxModel.ProductData> productsNextPosReturn(List<RackAdapter.RackBoxModel.ProductData> productsNextPosReturn);
+
+    List<RackAdapter.RackBoxModel.ProductData> productsNextPosReturn();
 
 }

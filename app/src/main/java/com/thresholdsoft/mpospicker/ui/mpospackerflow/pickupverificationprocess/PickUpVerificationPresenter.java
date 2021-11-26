@@ -36,8 +36,4 @@ public class PickUpVerificationPresenter<V extends PickUpVerificationMvpView> ex
         getMvpView().onClickVerification();
     }
 
-    @Override
-    public void onBackClick() {
-        getMvpView().onBackClick();
-    }
 }

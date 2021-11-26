@@ -52,6 +52,16 @@ public class RacksDataResponse implements Serializable {
 
         private int expandStatus = 0;
 
+        private boolean selectedBoxesData;
+
+        public boolean isSelectedBoxesData() {
+            return selectedBoxesData;
+        }
+
+        public void setSelectedBoxesData(boolean selectedBoxesData) {
+            this.selectedBoxesData = selectedBoxesData;
+        }
+
         public int getExpandStatus() {
             return expandStatus;
         }
@@ -100,7 +110,7 @@ public class RacksDataResponse implements Serializable {
             this.products = products;
         }
 
-        public class Product implements Serializable {
+        public static class Product implements Serializable {
 
             @SerializedName("ProductId")
             @Expose
@@ -131,6 +141,36 @@ public class RacksDataResponse implements Serializable {
             private int expandStatus = 0;
             private String capturedData;
             private String statusQty;
+
+            private boolean productStatusFillingUpdate;
+
+            private boolean finalStatusUpdate;
+
+            private String packerStatus;
+
+            public String getPackerStatus() {
+                return packerStatus;
+            }
+
+            public void setPackerStatus(String packerStatus) {
+                this.packerStatus = packerStatus;
+            }
+
+            public boolean isFinalStatusUpdate() {
+                return finalStatusUpdate;
+            }
+
+            public void setFinalStatusUpdate(boolean finalStatusUpdate) {
+                this.finalStatusUpdate = finalStatusUpdate;
+            }
+
+            public boolean isProductStatusFillingUpdate() {
+                return productStatusFillingUpdate;
+            }
+
+            public void setProductStatusFillingUpdate(boolean productStatusFillingUpdate) {
+                this.productStatusFillingUpdate = productStatusFillingUpdate;
+            }
 
             public String getStatusQty() {
                 return statusQty;

@@ -46,10 +46,11 @@
                     android:textColor="@color/black" />
 
                 <TextView
+                    android:id="@+id/full_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="3"
+                    android:text="0"
                     android:textColor="@color/black" />
             </LinearLayout>
 
@@ -76,10 +77,11 @@
                     android:textColor="@color/black" />
 
                 <TextView
+                    android:id="@+id/partial_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="1"
+                    android:text="0"
                     android:textColor="@color/black" />
             </LinearLayout>
 
@@ -106,10 +108,11 @@
                     android:textColor="@color/black" />
 
                 <TextView
+                    android:id="@+id/not_available_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="1"
+                    android:text="0"
                     android:textColor="@color/black" />
             </LinearLayout>
 

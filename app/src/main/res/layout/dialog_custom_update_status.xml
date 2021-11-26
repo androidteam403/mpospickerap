@@ -82,6 +82,7 @@
                         android:textSize="@dimen/dimen12sp" />
 
                     <TextView
+                        android:id="@+id/box_id"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"
@@ -127,10 +128,11 @@
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginStart="@dimen/fifteen_dp">
+                android:layout_marginStart="@dimen/fifteen_dp"
+                android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/full_status_color_lay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/ten_dp"
@@ -141,9 +143,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/black"
-                        android:fontFamily="@font/roboto_bold"
-                        android:textAllCaps="true"
                         android:checked="false"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="Full Verified"
+                        android:textAllCaps="true"
                         android:textColor="@color/black" />
 
                     <TextView
@@ -155,7 +158,8 @@
                         android:gravity="center_vertical"
                         android:text="Full Verified"
                         android:textAllCaps="true"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:visibility="gone" />
 
                     <ImageView
                         android:layout_width="@dimen/twenty_dp"
@@ -171,6 +175,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/partial_status_color_lay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/five_dp"
@@ -183,6 +188,7 @@
                         android:buttonTint="@color/black"
                         android:checked="false"
                         android:fontFamily="@font/roboto_bold"
+                        android:text="Partial Verified"
                         android:textAllCaps="true"
                         android:textColor="@color/black" />
 
@@ -195,7 +201,8 @@
                         android:gravity="center_vertical"
                         android:text="Partial Verified"
                         android:textAllCaps="true"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:visibility="gone" />
 
                     <ImageView
                         android:layout_width="@dimen/twenty_dp"
@@ -208,6 +215,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/not_available_status_color_lay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/five_dp"
@@ -221,6 +229,7 @@
                         android:buttonTint="@color/black"
                         android:checked="false"
                         android:fontFamily="@font/roboto_bold"
+                        android:text="Not available"
                         android:textAllCaps="true"
                         android:textColor="@color/black" />
 
@@ -233,7 +242,8 @@
                         android:gravity="center_vertical"
                         android:text="Not available"
                         android:textAllCaps="true"
-                        android:textColor="@color/black" />
+                        android:textColor="@color/black"
+                        android:visibility="gone" />
 
                     <ImageView
                         android:layout_width="@dimen/twenty_dp"

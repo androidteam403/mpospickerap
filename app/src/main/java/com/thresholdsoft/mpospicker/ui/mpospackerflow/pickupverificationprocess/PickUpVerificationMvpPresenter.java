@@ -10,6 +10,4 @@ public interface PickUpVerificationMvpPresenter<V extends PickUpVerificationMvpV
     void onClickReVerificatio();
 
     void onClickVerification();
-
-    void onBackClick();
 }

@@ -107,6 +107,7 @@
                         android:textSize="@dimen/dimen12sp" />
 
                     <TextView
+                        android:id="@+id/time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
@@ -132,12 +133,18 @@
                         android:textSize="@dimen/dimen12sp" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/timer"
+                        android:layout_width="@dimen/dimen60dp"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
                         android:text="0:35:33"
                         android:textColor="@color/black"
                         android:textSize="@dimen/dimen12sp" />
+
+                    <Chronometer android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/chrono"
+                        android:visibility="visible"/>
 
                 </LinearLayout>
 
@@ -159,6 +166,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/continue_btn"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen50dp"
             android:layout_alignParentBottom="true"
