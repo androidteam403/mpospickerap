@@ -3,10 +3,17 @@ package com.thresholdsoft.mpospicker.data.prefs;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.thresholdsoft.mpospicker.data.utils.LoggedInMode;
 import com.thresholdsoft.mpospicker.di.ApplicationContext;
 import com.thresholdsoft.mpospicker.di.PreferenceInfo;
 import com.thresholdsoft.mpospicker.root.AppConstant;
+import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.RackAdapter;
+import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
+
+import java.lang.reflect.Type;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -21,6 +28,8 @@ public class PreferencesManager implements PreferencesHelper {
     private static final String PREF_KEY_FIRST_TIME = "PREF_KEY_FIRST_TIME";
     private static final String PREF_KEY_USER_PROFILE_PIC_URL = "PREF_KEY_USER_PROFILE_PIC_URL";
     private static final String PREF_KEY_COACH_MARK = "PREF_KEY_COACH_MARK";
+    private static final String PREF_KEY_FULLFILLMENT_DETAILS = "PREF_KEY_FULLFILLMENT_DETAILS";
+    private static final String PREF_KEY_FULLFILLMENT_LIST_OF_LIST_DETAILS = "PREF_KEY_FULLFILLMENT_LIST_OF_LIST_DETAILS";
 
     private final SharedPreferences mPrefs;
     private Context mAppContext;
@@ -135,5 +144,33 @@ public class PreferencesManager implements PreferencesHelper {
     @Override
     public void logoutUser() {
         mPrefs.edit().clear().apply();
+    }
+
+    @Override
+    public void setFullFillmentList(List<RacksDataResponse.FullfillmentDetail> fullfillmentDetailList) {
+        mPrefs.edit().putString(PREF_KEY_FULLFILLMENT_DETAILS, new Gson().toJson(fullfillmentDetailList)).apply();
+    }
+
+    @Override
+    public List<RacksDataResponse.FullfillmentDetail> getFullFillmentList() {
+        Gson gson = new Gson();
+        String json = mPrefs.getString(PREF_KEY_FULLFILLMENT_DETAILS, "");
+        Type type = new TypeToken<List<RacksDataResponse.FullfillmentDetail>>() {
+        }.getType();
+        return gson.fromJson(json, type);
+    }
+
+    @Override
+    public void setfullFillListOfListFiltered(List<List<RackAdapter.RackBoxModel.ProductData>> fullFillListOfListFiltered) {
+        mPrefs.edit().putString(PREF_KEY_FULLFILLMENT_LIST_OF_LIST_DETAILS, new Gson().toJson(fullFillListOfListFiltered)).apply();
+    }
+
+    @Override
+    public List<List<RackAdapter.RackBoxModel.ProductData>> getfullFillListOfListFiltered() {
+        Gson gson = new Gson();
+        String json = mPrefs.getString(PREF_KEY_FULLFILLMENT_LIST_OF_LIST_DETAILS, "");
+        Type type = new TypeToken<List<List<RackAdapter.RackBoxModel.ProductData>>>() {
+        }.getType();
+        return gson.fromJson(json, type);
     }
 }

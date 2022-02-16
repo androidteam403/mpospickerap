@@ -9,8 +9,8 @@ import javax.inject.Inject;
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
- * Created on : Feb 11, 2019
- * Author     : AndroidWave
+ * Created on : Nov 02, 2021
+ * Author     : NAVEEN
  */
 public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
         implements MainMvpPresenter<V> {
