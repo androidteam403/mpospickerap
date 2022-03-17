@@ -16,6 +16,18 @@ import com.thresholdsoft.mpospicker.ui.main.MainMvpPresenter;
 import com.thresholdsoft.mpospicker.ui.main.MainMvpView;
 import com.thresholdsoft.mpospicker.ui.main.MainPresenter;
 import com.thresholdsoft.mpospicker.ui.main.RssAdapter;
+import com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersMvpPresenter;
+import com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersMvpView;
+import com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersPresenter;
+import com.thresholdsoft.mpospicker.ui.orderdetails.OrderDetailsMvpPresenter;
+import com.thresholdsoft.mpospicker.ui.orderdetails.OrderDetailsMvpView;
+import com.thresholdsoft.mpospicker.ui.orderdetails.OrderDetailsPresenter;
+import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessMvpPresenter;
+import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessMvpView;
+import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessPresenter;
+import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpMvpPresenter;
+import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpMvpView;
+import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpPresenter;
 import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickeduporders.PickedUpOrdersMvpPresenter;
 import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickeduporders.PickedUpOrdersMvpView;
 import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickeduporders.PickedUpOrdersPresenter;
@@ -104,6 +116,12 @@ public class ActivityModule {
     @Provides
     @PerActivity
     OpenOrdersMvpPresenter<OpenOrdersMvpView> provideOpenOrdersPresenter(OpenOrdersPresenter<OpenOrdersMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    @PerActivity
+    OrderDetailsMvpPresenter<OrderDetailsMvpView> OrderDetailsPresenter(OrderDetailsPresenter<OrderDetailsMvpView> presenter){
         return presenter;
     }
 

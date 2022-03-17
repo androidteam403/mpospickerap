@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -18,6 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.orderdetails.OrderDetailsActivity"></activity>
         <activity
             android:name="com.thresholdsoft.mpospicker.ui.main.MainActivity"
             android:label="@string/title_home" />
@@ -43,9 +45,7 @@
         <activity
             android:name=".ui.pickupprocess.PickupProcessActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity android:name=".ui.DeciderScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
