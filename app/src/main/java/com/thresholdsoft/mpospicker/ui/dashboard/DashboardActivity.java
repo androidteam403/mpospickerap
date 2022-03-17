@@ -289,6 +289,6 @@ public class DashboardActivity extends BaseActivity implements DashboardMvpView,
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+
     }
 }

@@ -17,6 +17,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:descendantFocusability="blocksDescendants"
                     android:orientation="vertical">
 
                     <RelativeLayout
@@ -117,6 +118,7 @@
                                         android:textSize="@dimen/dimen10sp" />
 
                                     <TextView
+                                        android:id="@+id/fullfilment_idnumber"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/roboto_medium"
@@ -139,6 +141,7 @@
                                         android:textSize="@dimen/dimen10sp" />
 
                                     <TextView
+                                        android:id="@+id/total_items"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/roboto_medium"
@@ -196,23 +199,9 @@
                                         android:layout_height="@dimen/twenty_dp"
                                         android:layout_marginStart="@dimen/five_dp"
                                         android:contentDescription="@string/app_name"
-                                        android:src="@drawable/ic_circular_partial" />
+                                        android:rotation="270"
+                                        android:src="@drawable/partialcirculargreeenorange" />
 
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginStart="@dimen/five_dp"
-                                        android:background="@drawable/rounded_corners_bg"
-                                        android:backgroundTint="@color/green"
-                                        android:fontFamily="@font/roboto_medium"
-                                        android:paddingStart="@dimen/seven_dp"
-                                        android:paddingTop="@dimen/three_dp"
-                                        android:paddingEnd="@dimen/seven_dp"
-                                        android:paddingBottom="@dimen/three_dp"
-                                        android:text="collecting"
-                                        android:textAllCaps="true"
-                                        android:textColor="@color/white"
-                                        android:textSize="@dimen/ten_sp" />
                                 </LinearLayout>
 
                                 <LinearLayout
@@ -442,13 +431,11 @@
                         </LinearLayout>
 
                         <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/selected_pickup_process_product_list"
+                            android:id="@+id/product_list_recycler"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:nestedScrollingEnabled="false"
-                            android:paddingStart="@dimen/five_dp"
-                            android:paddingEnd="@dimen/five_dp"
-                            android:paddingTop="@dimen/five_dp"/>
+                            android:padding="@dimen/five_dp" />
                     </LinearLayout>
 
                     <TextView
@@ -466,10 +453,10 @@
                         android:layout_marginStart="@dimen/five_dp"
                         android:layout_marginEnd="@dimen/five_dp"
                         android:layout_marginBottom="@dimen/fifty_dp"
-                        android:padding="@dimen/five_dp"
                         android:background="@drawable/dashboard_edit_bg"
                         android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:padding="@dimen/five_dp">
 
                         <ImageView
                             android:layout_width="@dimen/fifteen_dp"
@@ -502,23 +489,12 @@
                 </LinearLayout>
             </androidx.core.widget.NestedScrollView>
         </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/forty_five_dp"
-            android:layout_alignParentBottom="true"
-            android:fontFamily="@font/roboto_bold"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:background="@color/light_grey"
-            android:textColor="@color/text_color_grey"
-            android:text="go to next order" />
     </RelativeLayout>
 
     <data>
 
         <variable
             name="callback"
-            type="com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.SelectedOrderPickupProcessMvpPresenter" />
+            type="com.thresholdsoft.mpospicker.ui.pickupsummarydetails.PickUpSummaryDetailsMvpPresenter" />
     </data>
 </layout>

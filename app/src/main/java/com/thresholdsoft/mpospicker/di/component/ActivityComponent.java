@@ -12,6 +12,7 @@ import com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersActivity;
 import com.thresholdsoft.mpospicker.ui.orderdetails.OrderDetailsActivity;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessActivity;
 import com.thresholdsoft.mpospicker.ui.pickupsummary.PickUpSummmaryActivityNew;
+import com.thresholdsoft.mpospicker.ui.pickupsummarydetails.PickupSummaryDetailsActivity;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpActivity;
 import com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.SelectedOrderPickupProcessActivity;
 
@@ -47,4 +48,6 @@ public interface ActivityComponent {
     void inject(SelectedOrderPickupProcessActivity selectedOrderPickupProcessActivity);
 
     void inject(OrderDetailsActivity orderDetailsActivity);
+
+    void inject(PickupSummaryDetailsActivity pickupSummaryDetailsActivity);
 }

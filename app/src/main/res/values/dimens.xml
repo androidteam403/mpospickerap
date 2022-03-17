@@ -166,6 +166,7 @@
     <dimen name="dimen13sp">13sp</dimen>
     <dimen name="eight_sp">9sp</dimen>
     <dimen name="dimen_9_sp">9sp</dimen>
+    <dimen name="dimen15sp">15sp</dimen>
 
 
 </resources>

@@ -3,7 +3,6 @@ package com.thresholdsoft.mpospicker.ui.pickupsummary;
 import com.thresholdsoft.mpospicker.ui.base.MvpView;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.OrderAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.RackAdapter;
-import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 
 import java.util.List;
 
@@ -19,5 +18,6 @@ public interface PickUpSummaryMvpView extends MvpView {
     String partialCount(String partialCount);
 
     String notAvailable(String notAvailableCount);
+
     void onClickItem(int pos);
 }

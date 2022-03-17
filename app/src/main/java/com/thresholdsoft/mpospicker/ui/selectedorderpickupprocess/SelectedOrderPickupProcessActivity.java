@@ -42,12 +42,13 @@ public class SelectedOrderPickupProcessActivity extends BaseActivity implements 
 
     @Override
     protected void setUp() {
+        selectedOrderPickupProcessBinding.setCallback(mPresenter);
         mPresenter.onRackApiCall();
     }
 
     @Override
     public void onClickBack() {
-
+        onBackPressed();
     }
 
     @Override

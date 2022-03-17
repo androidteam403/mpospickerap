@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".ui.orderdetails.OrderDetailsActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:context=".ui.orderdetails.OrderDetailsActivity">
+
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/dimen45dp"
             android:background="@color/white">
 
             <RelativeLayout
@@ -37,6 +35,8 @@
                         android:id="@+id/menu_icon"
                         android:layout_width="@dimen/thirty_dp"
                         android:layout_height="@dimen/thirty_dp"
+                        android:contentDescription="@string/app_name"
+                        android:onClick="@{()-> callback.onClickBackIcon()}"
                         android:src="@drawable/left_forward_white_arrow" />
 
                     <LinearLayout
@@ -59,212 +59,197 @@
                             android:id="@+id/header_fullfillmentId"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/fullfillment_id"
                             android:fontFamily="@font/roboto_regular"
+                            android:text="@string/fullfillment_id"
                             android:textColor="@color/white"
                             android:textSize="12sp" />
                     </LinearLayout>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignParentEnd="true"
                     android:gravity="center_vertical">
+
                     <ImageView
                         android:layout_width="@dimen/dimen30dp"
                         android:layout_height="@dimen/dimen30dp"
-                        android:src="@drawable/delete_white_icon"/>
+                        android:src="@drawable/delete_white_icon" />
                 </LinearLayout>
             </RelativeLayout>
 
             <LinearLayout
-                android:layout_below="@id/header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_margin="8dp">
+                android:layout_below="@id/header"
+                android:layout_margin="8dp"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:weightSum="1"
-
-                    android:background="@drawable/ic_rect_stroke_bisc_color_light_yellow">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="6dp"
-                        android:layout_weight="0.5"
-                        android:layout_marginStart="6dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/customer_type"
-                            android:textSize="@dimen/dimen_9_sp"
-                            android:fontFamily="@font/roboto_medium"
-                            android:textColor="@color/jumbo"/>
-
-                        <TextView
-                            android:id="@+id/priority"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/normal_priority"
-                            android:fontFamily="@font/roboto_bold"
-                            android:textSize="@dimen/dimen10sp"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/order_date"
-                            android:textSize="@dimen/dimen_9_sp"
-                            android:fontFamily="@font/roboto_medium"
-                            android:layout_marginTop="3dp"
-                            android:textColor="@color/jumbo"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/roboto_bold"
-                            android:textSize="@dimen/dimen10sp"
-                            android:text="@string/_19_feb_2022_10_35_44"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/shipping_method"
-                            android:textSize="@dimen/dimen_9_sp"
-                            android:fontFamily="@font/roboto_medium"
-                            android:layout_marginTop="3dp"
-                            android:textColor="@color/jumbo"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/home_delivery"
-                            android:fontFamily="@font/roboto_bold"
-                            android:textSize="@dimen/dimen10sp"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/payment_source"
-                            android:textSize="@dimen/dimen_9_sp"
-                            android:fontFamily="@font/roboto_medium"
-                            android:layout_marginTop="3dp"
-                            android:textColor="@color/jumbo"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/online"
-                            android:fontFamily="@font/roboto_bold"
-                            android:textSize="@dimen/dimen10sp"
-                            android:textColor="@color/black"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
+                    android:background="@drawable/square_stroke_yellow_bg"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/ten_dp"
+                    android:weightSum="1">
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="0.5"
-                        android:padding="6dp"
-                        android:layout_marginStart="10dp">
+                        android:layout_weight=".5"
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/order_source"
-                            android:textSize="@dimen/dimen_9_sp"
-                            android:fontFamily="@font/roboto_medium"
-                            android:textColor="@color/jumbo"/>
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="Customer type"
+                            android:textColor="@color/text_color_grey"
+                            android:textSize="@dimen/dimen10sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/apollo247"
-                            android:fontFamily="@font/roboto_bold"
-                            android:textSize="@dimen/dimen10sp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="Normal Priority"
                             android:textColor="@color/black"
-                            android:textStyle="bold" />
+                            android:textSize="@dimen/twelve_sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/delivery_date"
-                            android:textSize="@dimen/dimen_9_sp"
-                            android:fontFamily="@font/roboto_medium"
-                            android:layout_marginTop="3dp"
-                            android:textColor="@color/jumbo"/>
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="Order date"
+                            android:textColor="@color/text_color_grey"
+                            android:textSize="@dimen/dimen10sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/_19_feb_2022_02_30_00"
-                            android:fontFamily="@font/roboto_bold"
-                            android:textSize="@dimen/dimen10sp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="19 Feb, 2020-10:10:44"
                             android:textColor="@color/black"
-                            android:textStyle="bold" />
+                            android:textSize="@dimen/twelve_sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/stock_status"
-                            android:textSize="@dimen/dimen_9_sp"
-                            android:fontFamily="@font/roboto_medium"
-                            android:layout_marginTop="3dp"
-                            android:textColor="@color/jumbo"/>
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="Shipping method Type"
+                            android:textColor="@color/text_color_grey"
+                            android:textSize="@dimen/dimen10sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/available"
-                            android:fontFamily="@font/roboto_bold"
-                            android:textSize="@dimen/dimen10sp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="Home delivery"
                             android:textColor="@color/black"
-                            android:textStyle="bold" />
+                            android:textSize="@dimen/twelve_sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/order_type"
-                            android:textSize="@dimen/dimen_9_sp"
-                            android:fontFamily="@font/roboto_medium"
-                            android:layout_marginTop="3dp"
-                            android:textColor="@color/jumbo"/>
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="Payment source"
+                            android:textColor="@color/text_color_grey"
+                            android:textSize="@dimen/dimen10sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/cart"
-                            android:fontFamily="@font/roboto_bold"
-                            android:textSize="@dimen/dimen10sp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="Online"
                             android:textColor="@color/black"
-                            android:textStyle="bold" />
+                            android:textSize="@dimen/twelve_sp" />
 
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".5"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="Order source"
+                            android:textColor="@color/text_color_grey"
+                            android:textSize="@dimen/dimen10sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="Apollo247"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/twelve_sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="Delivery date"
+                            android:textColor="@color/text_color_grey"
+                            android:textSize="@dimen/dimen10sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="19 Feb, 2020-02:30:00"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/twelve_sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="Stock status"
+                            android:textColor="@color/text_color_grey"
+                            android:textSize="@dimen/dimen10sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="Available"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/twelve_sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="Order type"
+                            android:textColor="@color/text_color_grey"
+                            android:textSize="@dimen/dimen10sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="Cart"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/twelve_sp" />
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/total_items_5"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="@dimen/five_dp"
+                    android:layout_marginEnd="@dimen/five_dp"
                     android:fontFamily="@font/roboto_medium"
-                    android:textSize="@dimen/dimen10sp"
+                    android:text="@string/total_items_5"
                     android:textColor="@color/black"
-                    android:layout_gravity="end"/>
-
-
+                    android:textSize="@dimen/dimen10sp" />
 
 
                 <LinearLayout
@@ -276,36 +261,31 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_marginStart="@dimen/six_dp"
+                        android:layout_marginTop="@dimen/five_dp"
+                        android:layout_marginEnd="@dimen/six_dp"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
 
                         <TextView
-                            android:layout_marginStart="@dimen/dimen12sp"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight=".85"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="@string/products"
-                            android:layout_marginTop="8dp"
                             android:textColor="@color/base"
-                            android:textStyle="bold"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/ten_sp" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
+
+                        <TextView
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:gravity="end"
-                            android:layout_marginTop="@dimen/_8dp"
-                            >
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/qty1"
-                                android:layout_marginEnd="@dimen/dimen7dp"
-                                android:gravity="end"
-                                android:layout_gravity="end"
-                                android:textColor="@color/base"
-                                android:textStyle="bold"
-                                android:textSize="10sp" />
-                        </LinearLayout>
+                            android:layout_weight=".15"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center"
+                            android:text="@string/qty1"
+                            android:textColor="@color/base"
+                            android:textSize="@dimen/dimen10sp" />
 
 
                     </LinearLayout>
@@ -313,7 +293,8 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/order_details_recycler"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/five_dp" />
 
                 </LinearLayout>
 
@@ -323,24 +304,23 @@
 
 
         <Button
-            android:layout_alignParentBottom="true"
             android:id="@+id/select"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dimen45dp"
+            android:layout_alignParentBottom="true"
             android:background="@drawable/btn_signin_ripple_effect"
             android:fontFamily="@font/roboto_bold"
             android:gravity="center"
-           android:onClick="@{()-> callback.onSelectContinue()}"
+            android:onClick="@{()-> callback.onSelectContinue()}"
             android:padding="@dimen/seven_dp"
             android:text="@string/select"
             android:textAllCaps="true"
-            android:textColor="@color/black"
-            />
+            android:textColor="@color/black" />
+
     </RelativeLayout>
 
-</RelativeLayout>
-
     <data>
+
         <variable
             name="callback"
             type="com.thresholdsoft.mpospicker.ui.orderdetails.OrderDetailsMvpPresenter" />
