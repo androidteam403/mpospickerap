@@ -220,6 +220,7 @@
             android:id="@+id/continue_orders"
             android:layout_width="match_parent"
             android:layout_height="@dimen/fifty_dp"
+            android:visibility="gone"
             android:layout_alignParentBottom="true"
             android:weightSum="1">
 
@@ -247,7 +248,6 @@
                 android:onClick="@{()-> callback.onClickContinue()}"
                 android:text="@string/label_continue"
                 android:textAllCaps="true"
-                android:visibility="gone"
                 android:textColor="@color/text_color_grey"
                 android:textSize="@dimen/dimen18sp" />
         </LinearLayout>

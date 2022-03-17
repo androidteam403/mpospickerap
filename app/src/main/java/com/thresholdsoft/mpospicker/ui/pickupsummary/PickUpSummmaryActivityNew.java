@@ -13,13 +13,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.ActivityPickUpSummaryBinding;
 import com.thresholdsoft.mpospicker.databinding.DialogFarwardtoPackerAlertBinding;
 import com.thresholdsoft.mpospicker.databinding.DialogFarwardtoPackerBinding;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
+import com.thresholdsoft.mpospicker.ui.dashboard.DashboardActivity;
 import com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersActivity;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.OrderAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.RackAdapter;
@@ -27,8 +26,6 @@ import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 import com.thresholdsoft.mpospicker.ui.pickupsummary.adapter.SummaryFullfillmentAdapter;
 
 import java.io.Serializable;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -44,12 +41,12 @@ public class PickUpSummmaryActivityNew extends BaseActivity implements PickUpSum
     List<List<OrderAdapter.RackBoxModel.ProductData>> fullfillmentListOfListFiltered;
     String time, stopWatch;
 
-    public static Intent getStartActivity(Context context, List<RacksDataResponse.FullfillmentDetail> racksDataResponse, String myJson, String fullFillJson, String time, String stopWatch) {
+    public static Intent getStartActivity(Context context, List<RacksDataResponse.FullfillmentDetail> racksDataResponse, String time, String stopWatch) {
 
         Intent intent = new Intent(context, PickUpSummmaryActivityNew.class);
         intent.putExtra("rackDataResponse", (Serializable) racksDataResponse);
-        intent.putExtra("rackListOfListFiltered", myJson);
-        intent.putExtra("fullListOfListFiltered", fullFillJson);
+//        intent.putExtra("rackListOfListFiltered", myJson);
+//        intent.putExtra("fullListOfListFiltered", fullFillJson);
         intent.putExtra("time", time);
         intent.putExtra("stopWatch", stopWatch);
         return intent;
@@ -71,23 +68,23 @@ public class PickUpSummmaryActivityNew extends BaseActivity implements PickUpSum
         if (getIntent() != null) {
             racksDataResponse = (List<RacksDataResponse.FullfillmentDetail>) getIntent().getSerializableExtra("rackDataResponse");
 
-            Gson gson = new Gson();
-            String json = getIntent().getStringExtra("rackListOfListFiltered");
-            Type type = new TypeToken<List<List<RackAdapter.RackBoxModel.ProductData>>>() {
-            }.getType();
-            if (rackListOfListFiltered != null) {
-                rackListOfListFiltered.clear();
-            }
-            rackListOfListFiltered = gson.fromJson(json, type);
-
-            Gson gson1 = new Gson();
-            String json1 = getIntent().getStringExtra("fullListOfListFiltered");
-            Type type1 = new TypeToken<List<List<OrderAdapter.RackBoxModel.ProductData>>>() {
-            }.getType();
-            if (fullfillmentListOfListFiltered != null) {
-                fullfillmentListOfListFiltered.clear();
-            }
-            fullfillmentListOfListFiltered = gson1.fromJson(json1, type1);
+//            Gson gson = new Gson();
+//            String json = getIntent().getStringExtra("rackListOfListFiltered");
+//            Type type = new TypeToken<List<List<RackAdapter.RackBoxModel.ProductData>>>() {
+//            }.getType();
+//            if (rackListOfListFiltered != null) {
+//                rackListOfListFiltered.clear();
+//            }
+//            rackListOfListFiltered = gson.fromJson(json, type);
+//
+//            Gson gson1 = new Gson();
+//            String json1 = getIntent().getStringExtra("fullListOfListFiltered");
+//            Type type1 = new TypeToken<List<List<OrderAdapter.RackBoxModel.ProductData>>>() {
+//            }.getType();
+//            if (fullfillmentListOfListFiltered != null) {
+//                fullfillmentListOfListFiltered.clear();
+//            }
+//            fullfillmentListOfListFiltered = gson1.fromJson(json1, type1);
 
             time = (String) getIntent().getStringExtra("time");
             stopWatch = (String) getIntent().getStringExtra("stopWatch");
@@ -101,8 +98,8 @@ public class PickUpSummmaryActivityNew extends BaseActivity implements PickUpSum
             forwardtoPacker();
         });
 
-        if (rackListOfListFiltered != null)
-            summaryFullfillmentAdapter = new SummaryFullfillmentAdapter(PickUpSummmaryActivityNew.this, racksDataResponse, PickUpSummmaryActivityNew.this, rackListOfListFiltered, false);
+//        if (rackListOfListFiltered != null)
+        summaryFullfillmentAdapter = new SummaryFullfillmentAdapter(PickUpSummmaryActivityNew.this, racksDataResponse, PickUpSummmaryActivityNew.this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(PickUpSummmaryActivityNew.this);
         activityPickUpSummaryBinding.rackRecycler.setLayoutManager(mLayoutManager);
         activityPickUpSummaryBinding.rackRecycler.setAdapter(summaryFullfillmentAdapter);
@@ -188,7 +185,7 @@ public class PickUpSummmaryActivityNew extends BaseActivity implements PickUpSum
         updateStatusBinding.gotoOpenOrders.setOnClickListener(v -> {
             mPresenter.setFullfillmentData(racksDataResponse);
             mPresenter.setListOfListFullfillmentData(rackListOfListFiltered);
-            startActivity(OpenOrdersActivity.getStartActivity(this));
+            startActivity(DashboardActivity.getStartActivity(this));
             overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
             dialog.dismiss();
         });

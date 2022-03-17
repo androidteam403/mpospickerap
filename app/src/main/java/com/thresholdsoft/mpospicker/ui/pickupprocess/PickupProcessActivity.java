@@ -260,44 +260,48 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
 
     @Override
     public void onClickContinue() {
-        int statusCount = 0;
-        int overallProductCount = 0;
-        if (rackListOfList != null && rackListOfList.size() > 0) {
+        startActivity(PickUpSummmaryActivityNew.getStartActivity(this, racksDataResponse, pickupProcessBinding.time.getText().toString(), pickupProcessBinding.timer.getText().toString()));
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
 
-            for (int i = 0; i < racksDataResponse.size(); i++) {
-                for (int j = 0; j < racksDataResponse.get(i).getProducts().size(); j++) {
-                    for (int k = 0; k < rackListOfList.size(); k++) {
-                        for (int l = 0; l < rackListOfList.get(k).size(); l++) {
-                            if (racksDataResponse.get(i).getProducts().get(j).getProductId().equalsIgnoreCase(rackListOfList.get(k).get(l).getProductId())) {
-                                racksDataResponse.get(i).getProducts().get(j).setFinalStatusUpdate(rackListOfList.get(k).get(l).isFinalStatusUpdate());
-                            }
-                        }
-                    }
-                }
-            }
-            if (rackListOfList != null && rackListOfList.size() > 0) {
-                for (int i = 0; i < racksDataResponse.size(); i++) {
-                    for (int j = 0; j < racksDataResponse.get(i).getProducts().size(); j++) {
-                        overallProductCount = overallProductCount + 1;
-                        if (racksDataResponse.get(i).getProducts().get(j).isFinalStatusUpdate()) {
-                            statusCount = statusCount + 1;
-                        }
-                    }
-                }
-                if (statusCount == overallProductCount) {
-                    stopWatch.stop();
-                    Gson gson = new Gson();
-                    String myJson = gson.toJson(rackListOfListFiltered);
-                    String myFullFillJson = gson.toJson(fullfillmentListOfListFiltered);
-                    startActivity(PickUpSummmaryActivityNew.getStartActivity(this, racksDataResponse, myJson, myFullFillJson, pickupProcessBinding.time.getText().toString(), pickupProcessBinding.timer.getText().toString()));
-                    overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
-                } else {
-                    Toast.makeText(this, "Collect Every Product Required Quantity", Toast.LENGTH_SHORT).show();
-                }
-            }
-        } else {
-            Toast.makeText(this, "Collect Every Product Required Quantity", Toast.LENGTH_SHORT).show();
-        }
+
+//        int statusCount = 0;
+//        int overallProductCount = 0;
+//        if (rackListOfList != null && rackListOfList.size() > 0) {
+//
+//            for (int i = 0; i < racksDataResponse.size(); i++) {
+//                for (int j = 0; j < racksDataResponse.get(i).getProducts().size(); j++) {
+//                    for (int k = 0; k < rackListOfList.size(); k++) {
+//                        for (int l = 0; l < rackListOfList.get(k).size(); l++) {
+//                            if (racksDataResponse.get(i).getProducts().get(j).getProductId().equalsIgnoreCase(rackListOfList.get(k).get(l).getProductId())) {
+//                                racksDataResponse.get(i).getProducts().get(j).setFinalStatusUpdate(rackListOfList.get(k).get(l).isFinalStatusUpdate());
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//            if (rackListOfList != null && rackListOfList.size() > 0) {
+//                for (int i = 0; i < racksDataResponse.size(); i++) {
+//                    for (int j = 0; j < racksDataResponse.get(i).getProducts().size(); j++) {
+//                        overallProductCount = overallProductCount + 1;
+//                        if (racksDataResponse.get(i).getProducts().get(j).isFinalStatusUpdate()) {
+//                            statusCount = statusCount + 1;
+//                        }
+//                    }
+//                }
+//                if (statusCount == overallProductCount) {
+//                    stopWatch.stop();
+//                    Gson gson = new Gson();
+//                    String myJson = gson.toJson(rackListOfListFiltered);
+//                    String myFullFillJson = gson.toJson(fullfillmentListOfListFiltered);
+//                    startActivity(PickUpSummmaryActivityNew.getStartActivity(this, racksDataResponse, myJson, myFullFillJson, pickupProcessBinding.time.getText().toString(), pickupProcessBinding.timer.getText().toString()));
+//                    overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+//                } else {
+//                    Toast.makeText(this, "Collect Every Product Required Quantity", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        } else {
+//            Toast.makeText(this, "Collect Every Product Required Quantity", Toast.LENGTH_SHORT).show();
+//        }
 
     }
 

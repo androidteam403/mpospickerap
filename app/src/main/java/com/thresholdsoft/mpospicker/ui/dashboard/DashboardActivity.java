@@ -286,4 +286,9 @@ public class DashboardActivity extends BaseActivity implements DashboardMvpView,
         dashboardBinding.monthly.setTextColor(getResources().getColor(R.color.text_color_grey));
         dashboardBinding.yearly.setTextColor(getResources().getColor(R.color.text_color_grey));
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

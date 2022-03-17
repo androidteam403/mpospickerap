@@ -29,12 +29,10 @@ public class SummaryFullfillmentAdapter extends RecyclerView.Adapter<SummaryFull
     private boolean firstAccessCheck;
     int full = 0, par = 0, not = 0;
 
-    public SummaryFullfillmentAdapter(Context context, List<RacksDataResponse.FullfillmentDetail> fullfillmentList, PickUpSummaryMvpView pickupProcessMvpView, List<List<RackAdapter.RackBoxModel.ProductData>> fullfillmentListOfListFiltered, boolean acessCheck) {
+    public SummaryFullfillmentAdapter(Context context, List<RacksDataResponse.FullfillmentDetail> fullfillmentList, PickUpSummaryMvpView pickupProcessMvpView) {
         this.context = context;
         this.fullfillmentList = fullfillmentList;
         this.pickupProcessMvpView = pickupProcessMvpView;
-        this.listOfList = fullfillmentListOfListFiltered;
-        this.firstAccessCheck = acessCheck;
     }
 
     @NonNull
@@ -49,7 +47,7 @@ public class SummaryFullfillmentAdapter extends RecyclerView.Adapter<SummaryFull
     public void onBindViewHolder(@NonNull SummaryFullfillmentAdapter.ViewHolder holder, int position) {
         RacksDataResponse.FullfillmentDetail fullFillModel = fullfillmentList.get(position);
         holder.orderBinding.fullfillmentID.setText(fullFillModel.getFullfillmentId());
-        holder.orderBinding.totalItems.setText(String.valueOf(fullfillmentList.get(0).getProducts().size()));
+        holder.orderBinding.totalItems.setText(String.valueOf(fullFillModel.getProducts().size()));
         holder.orderBinding.boxId.setText(fullFillModel.getBoxId());
         switch (fullFillModel.getExpandStatus()) {
             case 0:
