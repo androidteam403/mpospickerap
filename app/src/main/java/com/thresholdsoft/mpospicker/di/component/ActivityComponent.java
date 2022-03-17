@@ -8,6 +8,7 @@ import com.thresholdsoft.mpospicker.ui.main.MainActivity;
 import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickeduporders.PickedUpOrdersActivity;
 import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickupverificationprocess.PickUpVerificationActivity;
 import com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersActivity;
+import com.thresholdsoft.mpospicker.ui.orderdetails.OrderDetailsActivity;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessActivity;
 import com.thresholdsoft.mpospicker.ui.pickupsummary.PickUpSummmaryActivityNew;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpActivity;
@@ -38,4 +39,6 @@ public interface ActivityComponent {
     void inject(PickUpVerificationActivity pickUpVerificationActivity);
 
     void inject(PickUpSummmaryActivityNew pickUpSummmaryActivityNew);
+
+    void inject(OrderDetailsActivity orderDetailsActivity);
 }

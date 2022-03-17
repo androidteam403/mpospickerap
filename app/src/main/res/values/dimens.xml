@@ -162,6 +162,7 @@
     <dimen name="dimen22dp">22dp</dimen>
     <dimen name="dimen80dp">80dp</dimen>
     <dimen name="dimen_11sp">11sp</dimen>
+    <dimen name="dimen_9_sp">9sp</dimen>
 
 
 </resources>

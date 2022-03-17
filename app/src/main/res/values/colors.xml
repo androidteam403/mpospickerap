@@ -17,6 +17,7 @@
     <color name="white">#FFFFFF</color>
     <color name="continue_unselect_color">#d2d2d2</color>
     <color name="continue_select_color">#fdb813</color>
+    <color name="light_yellow_color">#fff6e4</color>
 
     <color name="yellow">#fdb813</color>
     <color name="red">#ff0101</color>
