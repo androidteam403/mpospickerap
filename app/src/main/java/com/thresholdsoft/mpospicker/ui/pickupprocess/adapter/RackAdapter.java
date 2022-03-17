@@ -50,8 +50,11 @@ public class RackAdapter extends RecyclerView.Adapter<RackAdapter.ViewHolder> {
         holder.rackBinding.rackId.setText(rackModel.getRackId());
         switch (rackModel.getExpandStatus()) {
             case 0:
-                holder.rackBinding.rackChildLayout.setBackgroundColor(context.getResources().getColor(R.color.lite_grey));
-                holder.rackBinding.start.setVisibility(View.GONE);
+                holder.rackBinding.rackChildLayout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_bg));
+
+//                holder.rackBinding.rackChildLayout.setBackgroundColor(context.getResources().getColor(R.color.lite_grey));
+                holder.rackBinding.start.setVisibility(View.VISIBLE);
+//                holder.rackBinding.start.setVisibility(View.GONE);
                 holder.rackBinding.statusLayout.setVisibility(View.GONE);
                 holder.rackBinding.rackChild2Layout.setVisibility(View.GONE);
                 holder.rackBinding.rackChild2Layout.setBackground(null);

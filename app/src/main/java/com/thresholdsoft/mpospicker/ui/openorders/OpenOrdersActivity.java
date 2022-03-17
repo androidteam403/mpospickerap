@@ -150,9 +150,9 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        startActivity(DeciderScreen.getStartActivity(OpenOrdersActivity.this));
-        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
-    }
+//    @Override
+//    public void onBackPressed() {
+//        startActivity(DeciderScreen.getStartActivity(OpenOrdersActivity.this));
+//        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+//    }
 }

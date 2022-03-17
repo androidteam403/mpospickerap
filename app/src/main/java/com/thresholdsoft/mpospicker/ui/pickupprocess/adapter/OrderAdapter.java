@@ -50,7 +50,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         holder.orderBinding.boxId.setText(fullFillModel.getBoxId());
         switch (fullFillModel.getExpandStatus()) {
             case 0:
-                holder.orderBinding.orderChildLayout.setBackgroundColor(context.getResources().getColor(R.color.lite_grey));
+                holder.orderBinding.orderChildLayout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_bg));
+//                holder.orderBinding.orderChildLayout.setBackgroundColor(context.getResources().getColor(R.color.lite_grey));
                 holder.orderBinding.start.setVisibility(View.GONE);
                 holder.orderBinding.statusLayout.setVisibility(View.GONE);
                 holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
@@ -61,7 +62,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 holder.orderBinding.start.setVisibility(View.GONE);
                 holder.orderBinding.status.setText("In progress");
                 holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.in_progress));
-                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
+//                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
                 holder.orderBinding.rackChild2Layout.setVisibility(View.VISIBLE);
                 holder.orderBinding.rackChild2Layout.setBackground(context.getResources().getDrawable(R.drawable.yellow_stroke_bg));
                 break;
@@ -70,7 +71,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 holder.orderBinding.start.setVisibility(View.GONE);
                 holder.orderBinding.status.setText("In progress");
                 holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.in_progress));
-                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
+//                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
                 holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
                 holder.orderBinding.rackChild2Layout.setBackground(context.getResources().getDrawable(R.drawable.yellow_stroke_bg));
                 break;
@@ -79,7 +80,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 holder.orderBinding.start.setVisibility(View.GONE);
                 holder.orderBinding.status.setText("Partial");
                 holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_partial));
-                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
+//                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
                 holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
                 holder.orderBinding.rackChild2Layout.setBackground(null);
                 break;
@@ -89,7 +90,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 holder.orderBinding.start.setVisibility(View.GONE);
                 holder.orderBinding.status.setText("Partial");
                 holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_partial));
-                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
+//                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
                 holder.orderBinding.rackChild2Layout.setVisibility(View.VISIBLE);
                 holder.orderBinding.rackChild2Layout.setBackground(null);
                 break;
@@ -98,7 +99,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 holder.orderBinding.start.setVisibility(View.GONE);
                 holder.orderBinding.status.setText("Not Available");
                 holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_not_available));
-                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
+//                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
                 holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
                 holder.orderBinding.rackChild2Layout.setBackground(null);
                 break;
@@ -107,7 +108,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 holder.orderBinding.start.setVisibility(View.GONE);
                 holder.orderBinding.status.setText("Not Available");
                 holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_not_available));
-                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
+//                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
                 holder.orderBinding.rackChild2Layout.setVisibility(View.VISIBLE);
                 holder.orderBinding.rackChild2Layout.setBackground(null);
                 break;
@@ -116,7 +117,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 holder.orderBinding.start.setVisibility(View.GONE);
                 holder.orderBinding.status.setText("Full");
                 holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_circle_tick));
-                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
+//                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
                 holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
                 holder.orderBinding.rackChild2Layout.setBackground(null);
                 break;
@@ -125,7 +126,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 holder.orderBinding.start.setVisibility(View.GONE);
                 holder.orderBinding.status.setText("Full");
                 holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_circle_tick));
-                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
+//                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
                 holder.orderBinding.rackChild2Layout.setVisibility(View.VISIBLE);
                 holder.orderBinding.rackChild2Layout.setBackground(null);
                 break;
@@ -134,7 +135,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 holder.orderBinding.start.setVisibility(View.GONE);
                 holder.orderBinding.status.setText("Full");
                 holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_circle_tick));
-                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
+//                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
                 holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
                 holder.orderBinding.rackChild2Layout.setBackground(null);
                 break;
@@ -188,44 +189,55 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         if (!firstAccessCheck)
             firstTimeMultipleStatusCheck(productDataList, position, holder.orderBinding);
 
-        productListAdapter = new FullfillmentProductListAdapter(context, productDataList, pickupProcessMvpView, false, listOfList,fullFillModel.getFullfillmentId());
+        productListAdapter = new FullfillmentProductListAdapter(context, productDataList, pickupProcessMvpView, false, listOfList, fullFillModel.getFullfillmentId());
         new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, true);
         holder.orderBinding.productListRecycler.setLayoutManager(new LinearLayoutManager(context));
         holder.orderBinding.productListRecycler.setAdapter(productListAdapter);
-
+        holder.orderBinding.rightArrow.setOnClickListener(view -> {
+            if (pickupProcessMvpView != null) {
+                pickupProcessMvpView.onClickRightArrow(fullFillModel);
+            }
+        });
         holder.orderBinding.orderChildLayout.setOnClickListener(v -> {
-
             firstAccessCheck = true;
-
 //            completedViewCheck(productDataList,position,holder.orderBinding);
+
             if (fullfillmentList.get(position).getExpandStatus() == 0) {
                 fullfillmentList.get(position).setExpandStatus(1);
                 notifyDataSetChanged();
-            } else if (fullfillmentList.get(position).getExpandStatus() == 2) {
-                fullfillmentList.get(position).setExpandStatus(1);
-                notifyDataSetChanged();
             } else if (fullfillmentList.get(position).getExpandStatus() == 1) {
-                multipleStatusCheck(productDataList, position);
-            } else if (fullfillmentList.get(position).getExpandStatus() == 3) {
-                fullfillmentList.get(position).setExpandStatus(4);
+                fullfillmentList.get(position).setExpandStatus(0);
                 notifyDataSetChanged();
-            } else if (fullfillmentList.get(position).getExpandStatus() == 4) {
-                multipleStatusCheck(productDataList, position);
-            } else if (fullfillmentList.get(position).getExpandStatus() == 5) {
-                fullfillmentList.get(position).setExpandStatus(6);
-                notifyDataSetChanged();
-            } else if (fullfillmentList.get(position).getExpandStatus() == 6) {
-                multipleStatusCheck(productDataList, position);
-            } else if (fullfillmentList.get(position).getExpandStatus() == 7) {
-                fullfillmentList.get(position).setExpandStatus(8);
-                notifyDataSetChanged();
-            } else if (fullfillmentList.get(position).getExpandStatus() == 8) {
-//                rackDataFilteredList.get(position).setExpandStatus(9);
-//                notifyDataSetChanged();
-                multipleStatusCheck(productDataList, position);
-            } else if (fullfillmentList.get(position).getExpandStatus() == 9) {
-//                multipleStatusCheck(productDataList, position);
             }
+
+//            if (fullfillmentList.get(position).getExpandStatus() == 0) {
+//                fullfillmentList.get(position).setExpandStatus(1);
+//                notifyDataSetChanged();
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 2) {
+//                fullfillmentList.get(position).setExpandStatus(1);
+//                notifyDataSetChanged();
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 1) {
+//                multipleStatusCheck(productDataList, position);
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 3) {
+//                fullfillmentList.get(position).setExpandStatus(4);
+//                notifyDataSetChanged();
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 4) {
+//                multipleStatusCheck(productDataList, position);
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 5) {
+//                fullfillmentList.get(position).setExpandStatus(6);
+//                notifyDataSetChanged();
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 6) {
+//                multipleStatusCheck(productDataList, position);
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 7) {
+//                fullfillmentList.get(position).setExpandStatus(8);
+//                notifyDataSetChanged();
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 8) {
+////                rackDataFilteredList.get(position).setExpandStatus(9);
+////                notifyDataSetChanged();
+//                multipleStatusCheck(productDataList, position);
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 9) {
+////                multipleStatusCheck(productDataList, position);
+//            }
         });
 
 

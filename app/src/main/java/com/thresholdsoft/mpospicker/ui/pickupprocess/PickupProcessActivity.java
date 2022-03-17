@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.view.View;
 import android.widget.Chronometer;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.OrderAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.RackAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 import com.thresholdsoft.mpospicker.ui.pickupsummary.PickUpSummmaryActivityNew;
+import com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.SelectedOrderPickupProcessActivity;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -140,6 +142,8 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
     private void rackOrderCheckedListener() {
         pickupProcessBinding.rackOrderToggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
+                pickupProcessBinding.continueOrders.setVisibility(View.GONE);
+                pickupProcessBinding.farwarToPackerBtn.setVisibility(View.VISIBLE);
                 if (rackListOfListFiltered != null)
                     rackAdapter = new RackAdapter(PickupProcessActivity.this, rackIdList, racksDataResponse, PickupProcessActivity.this, rackListOfListFiltered, false);
                 else
@@ -158,6 +162,8 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
 //                pickupProcessBinding.rackRecycler.setAdapter(orderAdapter);
 //                Toast.makeText(PickupProcessActivity.this, "false", Toast.LENGTH_SHORT).show();
 
+                pickupProcessBinding.farwarToPackerBtn.setVisibility(View.GONE);
+                pickupProcessBinding.continueOrders.setVisibility(View.VISIBLE);
 
                 if (rackListOfListFiltered != null)
                     orderAdapter = new OrderAdapter(PickupProcessActivity.this, racksDataResponse, PickupProcessActivity.this, rackListOfListFiltered, false);
@@ -241,6 +247,11 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
         return productsNextPosReturn;
     }
 
+    @Override
+    public void onClickRightArrow(RacksDataResponse.FullfillmentDetail fullfillmentDetail) {
+        startActivity(SelectedOrderPickupProcessActivity.getStartIntent(this, fullfillmentDetail));
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+    }
 
     @Override
     public void onClickBack() {

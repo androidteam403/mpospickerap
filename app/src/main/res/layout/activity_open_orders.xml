@@ -66,6 +66,12 @@
                     android:layout_alignParentEnd="true"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="@dimen/dimen40dp"
+                        android:layout_height="@dimen/dimen40dp"
+                        android:backgroundTint="@color/white"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/ic_filter_white"/>
 
                     <ImageView
                         android:id="@+id/picker_img"
@@ -73,6 +79,7 @@
                         android:layout_height="@dimen/dimen40dp"
                         android:background="@drawable/ic_circle_bg"
                         android:backgroundTint="@color/white"
+                        android:visibility="gone"
                         android:contentDescription="@string/app_name"
                         android:padding="@dimen/dimen1dp" />
 
@@ -80,6 +87,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:contentDescription="@string/app_name"
+                        android:visibility="gone"
                         android:src="@drawable/ic_dropdown" />
                 </LinearLayout>
             </RelativeLayout>

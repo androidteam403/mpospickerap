@@ -31,4 +31,27 @@
 
     <string name="turn_off_flashlight" translatable="false">FlashLight On</string>
     <string name="turn_on_flashlight" translatable="false">FlashLight Off</string>
+    <string name="label_no">No</string>
+    <string name="label_yes">Yes</string>
+    <string name="label_printer_disconnected_do_you_want_to_nre_connect_the_printer">Printer Disconnected! Do you want to \n Re-Connect the Printer</string>
+    <string name="label_printer_devices">Printer devices</string>
+    <string name="label_dashboard">dashboard</string>
+    <string name="label_welcome">Welcome</string>
+    <string name="label_from">From</string>
+    <string name="label_dd_mm_yyy">DD/MM/YYY</string>
+    <string name="label_to">To</string>
+    <string name="label_time_taken">Time Taken</string>
+    <string name="label_45_44_45">45:44:45</string>
+    <string name="label_today">Today</string>
+    <string name="label_weekly">Weekly</string>
+    <string name="label_monthly">Monthly</string>
+    <string name="label_yearly">Yearly</string>
+    <string name="label_full">Full</string>
+    <string name="label_partial">Partial</string>
+    <string name="label_not_available">Not Available</string>
+    <string name="label_36">36</string>
+    <string name="label_connect">Connect</string>
+    <string name="label_select_alternate_printer_from_the_list">Select alternate printer from the list</string>
+    <string name="label_total">Total</string>
+    <string name="label_orders">Orders</string>
 </resources>

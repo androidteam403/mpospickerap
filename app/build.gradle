@@ -5,7 +5,6 @@ android {
     dataBinding {
         enabled = true
     }
-    compileSdkVersion 29
     defaultConfig {
         applicationId 'com.thresholdsoft.picker'
         minSdkVersion 21
@@ -78,4 +77,7 @@ dependencies {
     //Add QR Library Here
     implementation 'com.journeyapps:zxing-android-embedded:3.5.0'
 
+    // BarChart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.1'
+    implementation 'com.github.hadiidbouk:ChartProgressBar-Android:2.0.6'
 }

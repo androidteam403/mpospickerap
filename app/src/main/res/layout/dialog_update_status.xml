@@ -2,16 +2,17 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#BF000000"
+        android:orientation="vertical"
+        android:gravity="center"
         android:padding="@dimen/dimen10dp">
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="290dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/thirty_dp"
             android:gravity="center_vertical">
 
             <TextView
@@ -483,7 +484,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen10dp"
-                    android:layout_marginBottom="@dimen/dimen10dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -516,6 +516,37 @@
                         android:contentDescription="@string/app_name"
                         android:src="@drawable/ic_not_available" />
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen10dp"
+                    android:layout_marginBottom="@dimen/dimen10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/skip_radio_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/black"
+                        android:checked="false"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="skip"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen5dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="skip"
+                        android:textAllCaps="true"
+                        android:visibility="gone"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dimen16sp" />
+
+                </LinearLayout>
 
                 <!--                </RadioGroup>-->
             </LinearLayout>
@@ -535,5 +566,5 @@
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/dimen18sp" />
-    </RelativeLayout>
+    </LinearLayout>
 </layout>
