@@ -25,10 +25,10 @@ import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.OrderAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.RackAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 import com.thresholdsoft.mpospicker.ui.pickupsummary.adapter.SummaryFullfillmentAdapter;
+import com.thresholdsoft.mpospicker.ui.pickupsummarydetails.NewPickUpSummaryActivity;
 
 import java.io.Serializable;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -40,7 +40,9 @@ public class PickUpSummmaryActivityNew extends BaseActivity implements PickUpSum
 
     private SummaryFullfillmentAdapter summaryFullfillmentAdapter;
     private List<RacksDataResponse.FullfillmentDetail> racksDataResponse;
+
     List<List<RackAdapter.RackBoxModel.ProductData>> rackListOfListFiltered;
+
     List<List<OrderAdapter.RackBoxModel.ProductData>> fullfillmentListOfListFiltered;
     String time, stopWatch;
 
@@ -49,6 +51,7 @@ public class PickUpSummmaryActivityNew extends BaseActivity implements PickUpSum
         Intent intent = new Intent(context, PickUpSummmaryActivityNew.class);
         intent.putExtra("rackDataResponse", (Serializable) racksDataResponse);
         intent.putExtra("rackListOfListFiltered", myJson);
+
         intent.putExtra("fullListOfListFiltered", fullFillJson);
         intent.putExtra("time", time);
         intent.putExtra("stopWatch", stopWatch);
@@ -70,7 +73,6 @@ public class PickUpSummmaryActivityNew extends BaseActivity implements PickUpSum
 
         if (getIntent() != null) {
             racksDataResponse = (List<RacksDataResponse.FullfillmentDetail>) getIntent().getSerializableExtra("rackDataResponse");
-
             Gson gson = new Gson();
             String json = getIntent().getStringExtra("rackListOfListFiltered");
             Type type = new TypeToken<List<List<RackAdapter.RackBoxModel.ProductData>>>() {
@@ -146,6 +148,16 @@ public class PickUpSummmaryActivityNew extends BaseActivity implements PickUpSum
         this.notCount = notAvailableCount;
         return notAvailableCount;
     }
+
+    @Override
+    public void onClickItem(int pos) {
+//        racksDataResponse.get(pos);
+        Intent intent = new Intent(this, NewPickUpSummaryActivity.class);
+        intent.putExtra("rackDataResponse", racksDataResponse.get(pos));
+
+        startActivity(intent);
+    }
+
 
     @Override
     public void forwardtoPacker() {
