@@ -1,8 +1,10 @@
 package com.thresholdsoft.mpospicker.ui.readyforpickup;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
@@ -12,14 +14,16 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.ActivityReadyForPickupBinding;
+import com.thresholdsoft.mpospicker.databinding.DialogPrinterDevicesBinding;
+import com.thresholdsoft.mpospicker.databinding.DialogTakePrintBinding;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessActivity;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
+import com.thresholdsoft.mpospicker.ui.readyforpickup.adapter.PrinterDeviceListAdapter;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.adapter.ReadyForPickUpAdapter;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.dialog.ScanQrCodeDialog;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.dialog.UnTagQrCodeDialog;
@@ -39,6 +43,7 @@ public class ReadyForPickUpActivity extends BaseActivity implements ReadyForPick
     private ReadyForPickUpAdapter readyForPickUpAdapter;
     List<FullfillmentData> fullfillmentDataList;
     private List<RacksDataResponse.FullfillmentDetail> racksDataResponse;
+    private String[] printerDeviceList = {"MLP 360", "SPP-L310_050007", "SQP-L210_054037"};
 
     public static Intent getStartActivity(Context context, List<RacksDataResponse.FullfillmentDetail> racksDataResponse) {
         Intent intent = new Intent(context, ReadyForPickUpActivity.class);
@@ -62,9 +67,6 @@ public class ReadyForPickUpActivity extends BaseActivity implements ReadyForPick
         if (getIntent() != null) {
             racksDataResponse = (List<RacksDataResponse.FullfillmentDetail>) getIntent().getSerializableExtra("rackDataResponse");
         }
-
-        Glide.with(this).load("https://apis.v35.dev.zeroco.de/zc-v3.1-fs-svc/2.0/apollo_rider/get/41B8F83052E720DA0FC28401C9BFAA90396DCB4FD14F508D641DBC42F5808C634160E6E9BDFF4D97E46A107F1185330BE9BE56FEC6E2C512EC7E08CAAA498D8FA633B599A9A34C9C97BCF338231C7AA91F16F94D257D61803FBC97DE5FEEACF62933C5F49DFFBE9EBADD5C68A6A9245EE277F7369BEBB4A75B56F81CDA296FE0F45824C81F0E7A9C29BA1E691D49C48BCB3E2586250A732BC0C95D8C9A1E1154C38FC1DFED04C09C36722BD70B9D0E10952C6B12C3EABEF551397B781F83118196C4F5899C1A7EBB728DE8B78537C55B735B4BEAE021E0391CB1ACE72296B00A8869B3AA7F4BF1674AC2BF9952BF39A67ABCA6DC6BF69C69CCC9C5766F79B2F9").circleCrop().into(activityReadyForPickupBinding.pickerImg);
-
         if (racksDataResponse != null && racksDataResponse.size() > 0) {
             fullfillmentDataList = new ArrayList<>();
 
@@ -230,10 +232,9 @@ public class ReadyForPickUpActivity extends BaseActivity implements ReadyForPick
             if (!fullfillmentData.isTagBox())
                 isAlltagBox = false;
         if (isAlltagBox) {
-        startActivity(PickupProcessActivity.getStartActivity(this,racksDataResponse));
-        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
-        }
-        else {
+            startActivity(PickupProcessActivity.getStartActivity(this, racksDataResponse));
+            overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+        } else {
             Toast.makeText(this, "Tag All boxes", Toast.LENGTH_SHORT).show();
         }
     }
@@ -241,6 +242,39 @@ public class ReadyForPickUpActivity extends BaseActivity implements ReadyForPick
     @Override
     public void onClickBack() {
         onBackPressed();
+    }
+
+    @Override
+    public void onClickTakePrint() {
+        Dialog takePrintDialog = new Dialog(this);
+        DialogTakePrintBinding takePrintBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.dialog_take_print, null, false);
+        takePrintDialog.setContentView(takePrintBinding.getRoot());
+        takePrintDialog.setCancelable(false);
+        takePrintBinding.no.setOnClickListener(view -> {
+            takePrintDialog.dismiss();
+        });
+        takePrintBinding.yes.setOnClickListener(view -> {
+            takePrintDialog.dismiss();
+            Dialog printerDeviceListDialog = new Dialog(this);
+            DialogPrinterDevicesBinding printerDevicesBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.dialog_printer_devices, null, false);
+            printerDeviceListDialog.setContentView(printerDevicesBinding.getRoot());
+            printerDeviceListDialog.setCancelable(false);
+            PrinterDeviceListAdapter printerDeviceListAdapter = new PrinterDeviceListAdapter(ReadyForPickUpActivity.this, printerDeviceList);
+            RecyclerView.LayoutManager mLayoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+            printerDevicesBinding.printerDevicesList.setLayoutManager(mLayoutManager1);
+            printerDevicesBinding.printerDevicesList.setItemAnimator(new DefaultItemAnimator());
+            printerDevicesBinding.printerDevicesList.setAdapter(printerDeviceListAdapter);
+
+            printerDevicesBinding.printerDevicesListDialogClose.setOnClickListener(view1 -> printerDeviceListDialog.dismiss());
+            printerDeviceListDialog.show();
+        });
+        takePrintDialog.show();
+    }
+
+    @Override
+    public void onClickStartPickingWithoutQrCode() {
+        startActivity(PickupProcessActivity.getStartActivity(this, racksDataResponse));
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
     }
 
     public class FullfillmentData {

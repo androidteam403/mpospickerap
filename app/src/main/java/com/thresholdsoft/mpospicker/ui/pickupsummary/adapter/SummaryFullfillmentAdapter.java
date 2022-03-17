@@ -29,12 +29,10 @@ public class SummaryFullfillmentAdapter extends RecyclerView.Adapter<SummaryFull
     private boolean firstAccessCheck;
     int full = 0, par = 0, not = 0;
 
-    public SummaryFullfillmentAdapter(Context context, List<RacksDataResponse.FullfillmentDetail> fullfillmentList, PickUpSummaryMvpView pickupProcessMvpView, List<List<RackAdapter.RackBoxModel.ProductData>> fullfillmentListOfListFiltered, boolean acessCheck) {
+    public SummaryFullfillmentAdapter(Context context, List<RacksDataResponse.FullfillmentDetail> fullfillmentList, PickUpSummaryMvpView pickupProcessMvpView) {
         this.context = context;
         this.fullfillmentList = fullfillmentList;
         this.pickupProcessMvpView = pickupProcessMvpView;
-        this.listOfList = fullfillmentListOfListFiltered;
-        this.firstAccessCheck = acessCheck;
     }
 
     @NonNull
@@ -49,7 +47,7 @@ public class SummaryFullfillmentAdapter extends RecyclerView.Adapter<SummaryFull
     public void onBindViewHolder(@NonNull SummaryFullfillmentAdapter.ViewHolder holder, int position) {
         RacksDataResponse.FullfillmentDetail fullFillModel = fullfillmentList.get(position);
         holder.orderBinding.fullfillmentID.setText(fullFillModel.getFullfillmentId());
-        holder.orderBinding.totalItems.setText(String.valueOf(fullfillmentList.get(0).getProducts().size()));
+        holder.orderBinding.totalItems.setText(String.valueOf(fullFillModel.getProducts().size()));
         holder.orderBinding.boxId.setText(fullFillModel.getBoxId());
         switch (fullFillModel.getExpandStatus()) {
             case 0:
@@ -195,39 +193,51 @@ public class SummaryFullfillmentAdapter extends RecyclerView.Adapter<SummaryFull
 //        holder.orderBinding.productListRecycler.setLayoutManager(new LinearLayoutManager(context));
 //        holder.orderBinding.productListRecycler.setAdapter(productListAdapter);
 
+       holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+          public void onClick(View view) {
+                if (pickupProcessMvpView != null){
+                    pickupProcessMvpView.onClickItem(position);
+                }
+//                fullFillModel.getProducts();
+           }
+        });
+
         holder.orderBinding.orderChildLayout.setOnClickListener(v -> {
-
-            firstAccessCheck = true;
-
-//            completedViewCheck(productDataList,position,holder.orderBinding);
-            if (fullfillmentList.get(position).getExpandStatus() == 0) {
-                fullfillmentList.get(position).setExpandStatus(1);
-                notifyDataSetChanged();
-            } else if (fullfillmentList.get(position).getExpandStatus() == 2) {
-                fullfillmentList.get(position).setExpandStatus(1);
-                notifyDataSetChanged();
-            } else if (fullfillmentList.get(position).getExpandStatus() == 1) {
-                multipleStatusCheck(productDataList, position);
-            } else if (fullfillmentList.get(position).getExpandStatus() == 3) {
-                fullfillmentList.get(position).setExpandStatus(4);
-                notifyDataSetChanged();
-            } else if (fullfillmentList.get(position).getExpandStatus() == 4) {
-                multipleStatusCheck(productDataList, position);
-            } else if (fullfillmentList.get(position).getExpandStatus() == 5) {
-                fullfillmentList.get(position).setExpandStatus(6);
-                notifyDataSetChanged();
-            } else if (fullfillmentList.get(position).getExpandStatus() == 6) {
-                multipleStatusCheck(productDataList, position);
-            } else if (fullfillmentList.get(position).getExpandStatus() == 7) {
-                fullfillmentList.get(position).setExpandStatus(8);
-                notifyDataSetChanged();
-            } else if (fullfillmentList.get(position).getExpandStatus() == 8) {
-//                rackDataFilteredList.get(position).setExpandStatus(9);
-//                notifyDataSetChanged();
-                multipleStatusCheck(productDataList, position);
-            } else if (fullfillmentList.get(position).getExpandStatus() == 9) {
-//                multipleStatusCheck(productDataList, position);
+            if (pickupProcessMvpView != null){
+                pickupProcessMvpView.onClickItem(position);
             }
+//            firstAccessCheck = true;
+//
+////            completedViewCheck(productDataList,position,holder.orderBinding);
+//            if (fullfillmentList.get(position).getExpandStatus() == 0) {
+//                fullfillmentList.get(position).setExpandStatus(1);
+//                notifyDataSetChanged();
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 2) {
+//                fullfillmentList.get(position).setExpandStatus(1);
+//                notifyDataSetChanged();
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 1) {
+//                multipleStatusCheck(productDataList, position);
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 3) {
+//                fullfillmentList.get(position).setExpandStatus(4);
+//                notifyDataSetChanged();
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 4) {
+//                multipleStatusCheck(productDataList, position);
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 5) {
+//                fullfillmentList.get(position).setExpandStatus(6);
+//                notifyDataSetChanged();
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 6) {
+//                multipleStatusCheck(productDataList, position);
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 7) {
+//                fullfillmentList.get(position).setExpandStatus(8);
+//                notifyDataSetChanged();
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 8) {
+////                rackDataFilteredList.get(position).setExpandStatus(9);
+////                notifyDataSetChanged();
+//                multipleStatusCheck(productDataList, position);
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 9) {
+////                multipleStatusCheck(productDataList, position);
+//            }
         });
 
         if (position == fullfillmentList.size() - 1) {

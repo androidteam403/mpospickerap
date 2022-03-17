@@ -18,4 +18,6 @@ public interface PickUpSummaryMvpView extends MvpView {
     String partialCount(String partialCount);
 
     String notAvailable(String notAvailableCount);
+
+    void onClickItem(int pos);
 }

@@ -91,7 +91,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/black_right_arroww" />
+            android:src="@drawable/black_right_arroww"
+            android:contentDescription="@string/app_name" />
     </RelativeLayout>
 
 </layout>

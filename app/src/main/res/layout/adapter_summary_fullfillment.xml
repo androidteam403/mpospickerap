@@ -5,8 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dimen4dp"
-        android:background="@drawable/square_stroke_bg"
-        >
+        android:background="@drawable/square_stroke_bg">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,27 +19,26 @@
                 android:padding="@dimen/dimen5dp">
 
                 <ImageView
-                    android:layout_centerVertical="true"
                     android:id="@+id/status_icon"
-                    android:layout_width="@dimen/dimen15dp"
-                    android:layout_height="@dimen/dimen15dp"
+                    android:layout_width="@dimen/dimen25dp"
+                    android:layout_height="@dimen/dimen25dp"
+                    android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/dimen5dp"
-                    android:layout_marginEnd="@dimen/dimen5dp"
+                    android:src="@drawable/ic_circle_tick"
                     android:contentDescription="@string/app_name" />
-
 
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/status_icon"
+                    android:layout_toEndOf="@id/status_icon"
+                    android:layout_marginStart="@dimen/ten_dp"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
-
 
 
                         <TextView
@@ -262,18 +260,18 @@
 
     </RelativeLayout>
 
-<!--    <data>-->
+    <!--    <data>-->
 
-<!--        <variable-->
-<!--            name="isContinueSelect"-->
-<!--            type="Boolean" />-->
+    <!--        <variable-->
+    <!--            name="isContinueSelect"-->
+    <!--            type="Boolean" />-->
 
-<!--        <variable-->
-<!--            name="view"-->
-<!--            type="android.view.View" />-->
+    <!--        <variable-->
+    <!--            name="view"-->
+    <!--            type="android.view.View" />-->
 
-<!--        <variable-->
-<!--            name="callback"-->
-<!--            type="com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersMvpPresenter" />-->
-<!--    </data>-->
+    <!--        <variable-->
+    <!--            name="callback"-->
+    <!--            type="com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersMvpPresenter" />-->
+    <!--    </data>-->
 </layout>

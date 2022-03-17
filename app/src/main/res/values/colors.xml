@@ -46,6 +46,7 @@
     <color name="very_light_green">#E1FBFB</color>
 
     <color name="trans_red">#FBEAEA</color>
+    <color name="partial_color">#ffc12f</color>
 
 
 </resources>

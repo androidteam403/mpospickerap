@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.view.View;
 import android.widget.Chronometer;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.OrderAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.RackAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 import com.thresholdsoft.mpospicker.ui.pickupsummary.PickUpSummmaryActivityNew;
+import com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.SelectedOrderPickupProcessActivity;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -41,7 +43,7 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
     private List<List<OrderAdapter.RackBoxModel.ProductData>> fullListOfList = new ArrayList<>();
 
     List<RacksDataResponse.FullfillmentDetail> racksDataResponse;
-    private List<RacksDataResponse.FullfillmentDetail.Product> rackIdList = new ArrayList<>();
+    private static List<RacksDataResponse.FullfillmentDetail.Product> rackIdList = new ArrayList<>();
     private ArrayList<String> boxStringList = new ArrayList<>();
 
     long startTime;
@@ -140,6 +142,8 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
     private void rackOrderCheckedListener() {
         pickupProcessBinding.rackOrderToggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
+                pickupProcessBinding.continueOrders.setVisibility(View.GONE);
+                pickupProcessBinding.farwarToPackerBtn.setVisibility(View.VISIBLE);
                 if (rackListOfListFiltered != null)
                     rackAdapter = new RackAdapter(PickupProcessActivity.this, rackIdList, racksDataResponse, PickupProcessActivity.this, rackListOfListFiltered, false);
                 else
@@ -158,6 +162,8 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
 //                pickupProcessBinding.rackRecycler.setAdapter(orderAdapter);
 //                Toast.makeText(PickupProcessActivity.this, "false", Toast.LENGTH_SHORT).show();
 
+                pickupProcessBinding.farwarToPackerBtn.setVisibility(View.GONE);
+                pickupProcessBinding.continueOrders.setVisibility(View.VISIBLE);
 
                 if (rackListOfListFiltered != null)
                     orderAdapter = new OrderAdapter(PickupProcessActivity.this, racksDataResponse, PickupProcessActivity.this, rackListOfListFiltered, false);
@@ -241,6 +247,11 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
         return productsNextPosReturn;
     }
 
+    @Override
+    public void onClickRightArrow(RacksDataResponse.FullfillmentDetail fullfillmentDetail) {
+        startActivity(SelectedOrderPickupProcessActivity.getStartIntent(this, fullfillmentDetail));
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+    }
 
     @Override
     public void onClickBack() {
@@ -249,44 +260,48 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
 
     @Override
     public void onClickContinue() {
-        int statusCount = 0;
-        int overallProductCount = 0;
-        if (rackListOfList != null && rackListOfList.size() > 0) {
+        startActivity(PickUpSummmaryActivityNew.getStartActivity(this, racksDataResponse, pickupProcessBinding.time.getText().toString(), pickupProcessBinding.timer.getText().toString()));
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
 
-            for (int i = 0; i < racksDataResponse.size(); i++) {
-                for (int j = 0; j < racksDataResponse.get(i).getProducts().size(); j++) {
-                    for (int k = 0; k < rackListOfList.size(); k++) {
-                        for (int l = 0; l < rackListOfList.get(k).size(); l++) {
-                            if (racksDataResponse.get(i).getProducts().get(j).getProductId().equalsIgnoreCase(rackListOfList.get(k).get(l).getProductId())) {
-                                racksDataResponse.get(i).getProducts().get(j).setFinalStatusUpdate(rackListOfList.get(k).get(l).isFinalStatusUpdate());
-                            }
-                        }
-                    }
-                }
-            }
-            if (rackListOfList != null && rackListOfList.size() > 0) {
-                for (int i = 0; i < racksDataResponse.size(); i++) {
-                    for (int j = 0; j < racksDataResponse.get(i).getProducts().size(); j++) {
-                        overallProductCount = overallProductCount + 1;
-                        if (racksDataResponse.get(i).getProducts().get(j).isFinalStatusUpdate()) {
-                            statusCount = statusCount + 1;
-                        }
-                    }
-                }
-                if (statusCount == overallProductCount) {
-                    stopWatch.stop();
-                    Gson gson = new Gson();
-                    String myJson = gson.toJson(rackListOfListFiltered);
-                    String myFullFillJson = gson.toJson(fullfillmentListOfListFiltered);
-                    startActivity(PickUpSummmaryActivityNew.getStartActivity(this, racksDataResponse, myJson, myFullFillJson, pickupProcessBinding.time.getText().toString(), pickupProcessBinding.timer.getText().toString()));
-                    overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
-                } else {
-                    Toast.makeText(this, "Collect Every Product Required Quantity", Toast.LENGTH_SHORT).show();
-                }
-            }
-        } else {
-            Toast.makeText(this, "Collect Every Product Required Quantity", Toast.LENGTH_SHORT).show();
-        }
+
+//        int statusCount = 0;
+//        int overallProductCount = 0;
+//        if (rackListOfList != null && rackListOfList.size() > 0) {
+//
+//            for (int i = 0; i < racksDataResponse.size(); i++) {
+//                for (int j = 0; j < racksDataResponse.get(i).getProducts().size(); j++) {
+//                    for (int k = 0; k < rackListOfList.size(); k++) {
+//                        for (int l = 0; l < rackListOfList.get(k).size(); l++) {
+//                            if (racksDataResponse.get(i).getProducts().get(j).getProductId().equalsIgnoreCase(rackListOfList.get(k).get(l).getProductId())) {
+//                                racksDataResponse.get(i).getProducts().get(j).setFinalStatusUpdate(rackListOfList.get(k).get(l).isFinalStatusUpdate());
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//            if (rackListOfList != null && rackListOfList.size() > 0) {
+//                for (int i = 0; i < racksDataResponse.size(); i++) {
+//                    for (int j = 0; j < racksDataResponse.get(i).getProducts().size(); j++) {
+//                        overallProductCount = overallProductCount + 1;
+//                        if (racksDataResponse.get(i).getProducts().get(j).isFinalStatusUpdate()) {
+//                            statusCount = statusCount + 1;
+//                        }
+//                    }
+//                }
+//                if (statusCount == overallProductCount) {
+//                    stopWatch.stop();
+//                    Gson gson = new Gson();
+//                    String myJson = gson.toJson(rackListOfListFiltered);
+//                    String myFullFillJson = gson.toJson(fullfillmentListOfListFiltered);
+//                    startActivity(PickUpSummmaryActivityNew.getStartActivity(this, racksDataResponse, myJson, myFullFillJson, pickupProcessBinding.time.getText().toString(), pickupProcessBinding.timer.getText().toString()));
+//                    overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+//                } else {
+//                    Toast.makeText(this, "Collect Every Product Required Quantity", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        } else {
+//            Toast.makeText(this, "Collect Every Product Required Quantity", Toast.LENGTH_SHORT).show();
+//        }
 
     }
 
