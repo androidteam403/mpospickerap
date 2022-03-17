@@ -60,8 +60,7 @@ public class OrderDetailsActivity extends BaseActivity implements OrderDetailsMv
 
 
             activityOrderDetailssBinding.headerFullfillmentId.setText("Fullfillment ID: " + racksDataResponse.getFullfillmentId());
-
-            orderDetailsAdapter = new OrderDetailsAdapter( racksDataResponse.getProducts(), this);
+            orderDetailsAdapter = new OrderDetailsAdapter(racksDataResponse.getProducts(), this);
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
             activityOrderDetailssBinding.orderDetailsRecycler.setLayoutManager(mLayoutManager);
             activityOrderDetailssBinding.orderDetailsRecycler.setAdapter(orderDetailsAdapter);

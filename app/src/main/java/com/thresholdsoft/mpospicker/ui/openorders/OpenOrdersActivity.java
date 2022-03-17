@@ -127,8 +127,8 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
                 openOrdersBinding.setIsContinueSelect(false);
             }
             openOrdersBinding.selectedItemCount.setText(selectedItemCount + "/5");
-        }
-    }
+     }
+   }
 
     @Override
     protected void onResume() {
@@ -182,24 +182,48 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
 
 
 
-    int gotId;
 
+    boolean isAnyoneSelect = false;
+    int selectedItemCount=0;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 999 && resultCode == RESULT_OK) {
-            RacksDataResponse.FullfillmentDetail fullfillmentIdNew = (RacksDataResponse.FullfillmentDetail) data.getSerializableExtra("FullfillmentID");
-              boolean isSelect = (Boolean) data.getSerializableExtra("isSelect");
+
+
+             RacksDataResponse.FullfillmentDetail fullfillmentIdNew = (RacksDataResponse.FullfillmentDetail) data.getSerializableExtra("FullfillmentID");
+             boolean isSelect = (Boolean) data.getSerializableExtra("isSelect");
                 if(fullfillmentIdNew != null) {
                     for (int i = 0; i < fullfilmentModelList.size(); i++) {
                         if (fullfillmentIdNew.getFullfillmentId().equals(fullfilmentModelList.get(i).getFullfilmentId())) {
                             fullfilmentModelList.get(i).setSelected(isSelect);
+                            if (selectedItemCount>fullfilmentModelList.size()){
+                              selectedItemCount=fullfilmentModelList.size();
+                            }else if(!fullfilmentModelList.get(i).isSelected()){
+                                selectedItemCount++;
+                            }
+                            isAnyoneSelect = true;
                             fullfilmentAdapter.notifyDataSetChanged();
                             break;
                         }
                     }
+                    if (fullfilmentAdapter != null)
+                        fullfilmentAdapter.notifyDataSetChanged();
+                    if (isAnyoneSelect) {
+                        openOrdersBinding.selectedFullfillment.setText("Selected fullfillment " + selectedItemCount + "/5.");
+                        openOrdersBinding.continueBtn.setBackgroundColor(getResources().getColor(R.color.continue_select_color));
+                        openOrdersBinding.setIsContinueSelect(true);
+                    } else {
+                        openOrdersBinding.selectedFullfillment.setText("Select fullfilment to start pichup process.");
+                        openOrdersBinding.continueBtn.setBackgroundColor(getResources().getColor(R.color.continue_unselect_color));
+                        openOrdersBinding.setIsContinueSelect(false);
+                    }
+                    openOrdersBinding.selectedItemCount.setText(selectedItemCount + "/5");
                 }
+
         }
+
+
     }
 }
 
