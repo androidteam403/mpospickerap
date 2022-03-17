@@ -193,39 +193,51 @@ public class SummaryFullfillmentAdapter extends RecyclerView.Adapter<SummaryFull
 //        holder.orderBinding.productListRecycler.setLayoutManager(new LinearLayoutManager(context));
 //        holder.orderBinding.productListRecycler.setAdapter(productListAdapter);
 
+       holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+          public void onClick(View view) {
+                if (pickupProcessMvpView != null){
+                    pickupProcessMvpView.onClickItem(position);
+                }
+//                fullFillModel.getProducts();
+           }
+        });
+
         holder.orderBinding.orderChildLayout.setOnClickListener(v -> {
-
-            firstAccessCheck = true;
-
-//            completedViewCheck(productDataList,position,holder.orderBinding);
-            if (fullfillmentList.get(position).getExpandStatus() == 0) {
-                fullfillmentList.get(position).setExpandStatus(1);
-                notifyDataSetChanged();
-            } else if (fullfillmentList.get(position).getExpandStatus() == 2) {
-                fullfillmentList.get(position).setExpandStatus(1);
-                notifyDataSetChanged();
-            } else if (fullfillmentList.get(position).getExpandStatus() == 1) {
-                multipleStatusCheck(productDataList, position);
-            } else if (fullfillmentList.get(position).getExpandStatus() == 3) {
-                fullfillmentList.get(position).setExpandStatus(4);
-                notifyDataSetChanged();
-            } else if (fullfillmentList.get(position).getExpandStatus() == 4) {
-                multipleStatusCheck(productDataList, position);
-            } else if (fullfillmentList.get(position).getExpandStatus() == 5) {
-                fullfillmentList.get(position).setExpandStatus(6);
-                notifyDataSetChanged();
-            } else if (fullfillmentList.get(position).getExpandStatus() == 6) {
-                multipleStatusCheck(productDataList, position);
-            } else if (fullfillmentList.get(position).getExpandStatus() == 7) {
-                fullfillmentList.get(position).setExpandStatus(8);
-                notifyDataSetChanged();
-            } else if (fullfillmentList.get(position).getExpandStatus() == 8) {
-//                rackDataFilteredList.get(position).setExpandStatus(9);
-//                notifyDataSetChanged();
-                multipleStatusCheck(productDataList, position);
-            } else if (fullfillmentList.get(position).getExpandStatus() == 9) {
-//                multipleStatusCheck(productDataList, position);
+            if (pickupProcessMvpView != null){
+                pickupProcessMvpView.onClickItem(position);
             }
+//            firstAccessCheck = true;
+//
+////            completedViewCheck(productDataList,position,holder.orderBinding);
+//            if (fullfillmentList.get(position).getExpandStatus() == 0) {
+//                fullfillmentList.get(position).setExpandStatus(1);
+//                notifyDataSetChanged();
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 2) {
+//                fullfillmentList.get(position).setExpandStatus(1);
+//                notifyDataSetChanged();
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 1) {
+//                multipleStatusCheck(productDataList, position);
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 3) {
+//                fullfillmentList.get(position).setExpandStatus(4);
+//                notifyDataSetChanged();
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 4) {
+//                multipleStatusCheck(productDataList, position);
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 5) {
+//                fullfillmentList.get(position).setExpandStatus(6);
+//                notifyDataSetChanged();
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 6) {
+//                multipleStatusCheck(productDataList, position);
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 7) {
+//                fullfillmentList.get(position).setExpandStatus(8);
+//                notifyDataSetChanged();
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 8) {
+////                rackDataFilteredList.get(position).setExpandStatus(9);
+////                notifyDataSetChanged();
+//                multipleStatusCheck(productDataList, position);
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 9) {
+////                multipleStatusCheck(productDataList, position);
+//            }
         });
 
         if (position == fullfillmentList.size() - 1) {

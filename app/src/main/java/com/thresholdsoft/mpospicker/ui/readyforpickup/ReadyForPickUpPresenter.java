@@ -18,6 +18,7 @@ public class ReadyForPickUpPresenter<V extends ReadyForPickUpMvpView> extends Ba
 
     @Override
     public void onClickStartPickup() {
+
         getMvpView().onClickStartPickup();
     }
 

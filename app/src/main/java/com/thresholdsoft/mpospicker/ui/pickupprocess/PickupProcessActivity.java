@@ -43,7 +43,7 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
     private List<List<OrderAdapter.RackBoxModel.ProductData>> fullListOfList = new ArrayList<>();
 
     List<RacksDataResponse.FullfillmentDetail> racksDataResponse;
-    private List<RacksDataResponse.FullfillmentDetail.Product> rackIdList = new ArrayList<>();
+    private static List<RacksDataResponse.FullfillmentDetail.Product> rackIdList = new ArrayList<>();
     private ArrayList<String> boxStringList = new ArrayList<>();
 
     long startTime;
