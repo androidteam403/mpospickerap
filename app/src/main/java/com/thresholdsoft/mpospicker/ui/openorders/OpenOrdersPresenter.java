@@ -9,8 +9,6 @@ import com.thresholdsoft.mpospicker.ui.base.BasePresenter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 import com.thresholdsoft.mpospicker.utils.rx.SchedulerProvider;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
@@ -28,6 +26,8 @@ public class OpenOrdersPresenter<V extends OpenOrdersMvpView> extends BasePresen
     public void onClickContinue() {
         getMvpView().onClickContinue();
     }
+
+
 
     @Override
     public void onRackApiCall() {

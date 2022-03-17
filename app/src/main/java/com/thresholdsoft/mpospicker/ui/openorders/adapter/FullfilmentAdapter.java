@@ -3,6 +3,7 @@ package com.thresholdsoft.mpospicker.ui.openorders.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.AdapterFullfilmentBinding;
 import com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersMvpView;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class FullfilmentAdapter extends RecyclerView.Adapter<FullfilmentAdapter.ViewHolder> {
@@ -42,15 +44,25 @@ public class FullfilmentAdapter extends RecyclerView.Adapter<FullfilmentAdapter.
         holder.fullfilmentBinding.items.setText(context.getResources().getString(R.string.label_space) + fullfilmentModel.getTotalItems());
         if (fullfilmentModel.isSelected) {
             holder.fullfilmentBinding.fullfillmentSelectIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_circle_tick));
-            holder.fullfilmentBinding.fullfillmentParentLayout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_yellow_bg));
+//            holder.fullfilmentBinding.fullfillmentParentLayout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_yellow_bg));
         } else {
             holder.fullfilmentBinding.fullfillmentSelectIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_circle_stroke));
-            holder.fullfilmentBinding.fullfillmentParentLayout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_bg));
+//            holder.fullfilmentBinding.fullfillmentParentLayout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_bg));
 
         }
         holder.itemView.setOnClickListener(v -> {
             if (mvpView != null)
                 mvpView.onFullfillmentItemClick(position);
+
+        });
+
+
+        holder.fullfilmentBinding.rightArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mvpView!=null)
+                    mvpView.onRightArrowClickedContinue(position);
+            }
         });
     }
 
@@ -68,7 +80,7 @@ public class FullfilmentAdapter extends RecyclerView.Adapter<FullfilmentAdapter.
         }
     }
 
-    public static class FullfilmentModel {
+    public static class FullfilmentModel implements Serializable {
         private String fullfilmentId;
         private String totalItems;
         private boolean isSelected;

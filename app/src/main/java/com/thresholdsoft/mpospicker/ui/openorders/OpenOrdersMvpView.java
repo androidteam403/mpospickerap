@@ -5,7 +5,7 @@ import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 
 public interface OpenOrdersMvpView extends MvpView {
     void onFullfillmentItemClick(int pos);
+    void onRightArrowClickedContinue(int pos);
     void onClickContinue();
-
     void onSuccessRackApi(RacksDataResponse body);
 }

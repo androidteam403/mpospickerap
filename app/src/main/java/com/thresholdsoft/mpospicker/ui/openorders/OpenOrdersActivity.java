@@ -18,10 +18,13 @@ import com.thresholdsoft.mpospicker.ui.DeciderScreen;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
 import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickeduporders.PickedUpOrdersActivity;
 import com.thresholdsoft.mpospicker.ui.openorders.adapter.FullfilmentAdapter;
+import com.thresholdsoft.mpospicker.ui.orderdetails.OrderDetailsActivity;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpActivity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -34,6 +37,7 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
     private FullfilmentAdapter fullfilmentAdapter;
     private boolean isContinueEnable;
 
+
     public static Intent getStartActivity(Context context) {
         return new Intent(context, OpenOrdersActivity.class);
     }
@@ -45,6 +49,8 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
         getActivityComponent().inject(this);
         mPresenter.onAttach(OpenOrdersActivity.this);
         setUp();
+
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -79,9 +85,15 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
         }
     }
 
+    int pos;
+
     @SuppressLint("SetTextI18n")
     @Override
     public void onFullfillmentItemClick(int pos) {
+        this.pos = pos;
+
+//
+////
         if (fullfilmentModelList != null && fullfilmentModelList.size() > 0) {
             int selectedCount = 0;
             for (FullfilmentAdapter.FullfilmentModel fullfilmentModel : fullfilmentModelList) {
@@ -133,7 +145,7 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
             for (int i = 0; i < fullfilmentModelList.size(); i++) {
                 if (fullfilmentModelList.get(i).isSelected()) {
                     racksDataResponse.getFullfillmentDetails().get(i).setSelectedBoxesData(fullfilmentModelList.get(i).isSelected());
-                }else {
+                } else {
                     racksDataResponse.getFullfillmentDetails().get(i).setSelectedBoxesData(fullfilmentModelList.get(i).isSelected());
                 }
             }
@@ -143,6 +155,7 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
                     selectedRacksDataResponse.add(racksDataResponse.getFullfillmentDetails().get(i));
                 }
             }
+
             startActivity(ReadyForPickUpActivity.getStartActivity(this, selectedRacksDataResponse));
             overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
         } else {
@@ -151,8 +164,42 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
     }
 
     @Override
+    public void onRightArrowClickedContinue(int position) {
+        if (racksDataResponse.getFullfillmentDetails() != null && racksDataResponse.getFullfillmentDetails().size() > 0 && racksDataResponse.getFullfillmentDetails().size() > pos) {
+//
+            Intent i = new Intent(OpenOrdersActivity.this, OrderDetailsActivity.class);
+            i.putExtra("fullfillmentDetails", racksDataResponse.getFullfillmentDetails().get(position));
+            startActivityForResult(i, 999);
+            overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+        }
+    }
+
+    @Override
     public void onBackPressed() {
         startActivity(DeciderScreen.getStartActivity(OpenOrdersActivity.this));
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
+
+
+
+    int gotId;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 999 && resultCode == RESULT_OK) {
+            RacksDataResponse.FullfillmentDetail fullfillmentIdNew = (RacksDataResponse.FullfillmentDetail) data.getSerializableExtra("FullfillmentID");
+              boolean isSelect = (Boolean) data.getSerializableExtra("isSelect");
+                if(fullfillmentIdNew != null) {
+                    for (int i = 0; i < fullfilmentModelList.size(); i++) {
+                        if (fullfillmentIdNew.getFullfillmentId().equals(fullfilmentModelList.get(i).getFullfilmentId())) {
+                            fullfilmentModelList.get(i).setSelected(isSelect);
+                            fullfilmentAdapter.notifyDataSetChanged();
+                            break;
+                        }
+                    }
+                }
+        }
+    }
 }
+

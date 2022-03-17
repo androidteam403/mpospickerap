@@ -16,6 +16,9 @@ import com.thresholdsoft.mpospicker.ui.main.RssAdapter;
 import com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersMvpPresenter;
 import com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersMvpView;
 import com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersPresenter;
+import com.thresholdsoft.mpospicker.ui.orderdetails.OrderDetailsMvpPresenter;
+import com.thresholdsoft.mpospicker.ui.orderdetails.OrderDetailsMvpView;
+import com.thresholdsoft.mpospicker.ui.orderdetails.OrderDetailsPresenter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessMvpPresenter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessMvpView;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessPresenter;
@@ -98,6 +101,12 @@ public class ActivityModule {
     @Provides
     @PerActivity
     OpenOrdersMvpPresenter<OpenOrdersMvpView> provideOpenOrdersPresenter(OpenOrdersPresenter<OpenOrdersMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    @PerActivity
+    OrderDetailsMvpPresenter<OrderDetailsMvpView> OrderDetailsPresenter(OrderDetailsPresenter<OrderDetailsMvpView> presenter){
         return presenter;
     }
 

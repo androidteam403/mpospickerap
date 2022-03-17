@@ -53,93 +53,93 @@ public class SummaryFullfillmentAdapter extends RecyclerView.Adapter<SummaryFull
         holder.orderBinding.boxId.setText(fullFillModel.getBoxId());
         switch (fullFillModel.getExpandStatus()) {
             case 0:
-                holder.orderBinding.orderChildLayout.setBackgroundColor(context.getResources().getColor(R.color.lite_grey));
-                holder.orderBinding.start.setVisibility(View.GONE);
-                holder.orderBinding.statusLayout.setVisibility(View.GONE);
-                holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
-                holder.orderBinding.rackChild2Layout.setBackground(null);
+//                holder.orderBinding.orderChildLayout.setBackgroundColor(context.getResources().getColor(R.color.lite_grey));
+//                holder.orderBinding.start.setVisibility(View.GONE);
+//                holder.orderBinding.statusLayout.setVisibility(View.GONE);
+//                holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
+//                holder.orderBinding.rackChild2Layout.setBackground(null);
                 break;
             case 1:
-                holder.orderBinding.orderChildLayout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_yellow_bg));
-                holder.orderBinding.start.setVisibility(View.GONE);
-                holder.orderBinding.status.setText("In progress");
-                holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.in_progress));
-                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
-                holder.orderBinding.rackChild2Layout.setVisibility(View.VISIBLE);
-                holder.orderBinding.rackChild2Layout.setBackground(context.getResources().getDrawable(R.drawable.yellow_stroke_bg));
+//                holder.orderBinding.orderChildLayout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_yellow_bg));
+//                holder.orderBinding.start.setVisibility(View.GONE);
+//                holder.orderBinding.status.setText("In progress");
+//                holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.in_progress));
+//                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
+//                holder.orderBinding.rackChild2Layout.setVisibility(View.VISIBLE);
+//                holder.orderBinding.rackChild2Layout.setBackground(context.getResources().getDrawable(R.drawable.yellow_stroke_bg));
                 break;
             case 2:
-                holder.orderBinding.orderChildLayout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_yellow_bg));
-                holder.orderBinding.start.setVisibility(View.GONE);
-                holder.orderBinding.status.setText("In progress");
-                holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.in_progress));
-                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
-                holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
-                holder.orderBinding.rackChild2Layout.setBackground(context.getResources().getDrawable(R.drawable.yellow_stroke_bg));
+//                holder.orderBinding.orderChildLayout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_yellow_bg));
+//                holder.orderBinding.start.setVisibility(View.GONE);
+//                holder.orderBinding.status.setText("In progress");
+//                holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.in_progress));
+//                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
+//                holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
+//                holder.orderBinding.rackChild2Layout.setBackground(context.getResources().getDrawable(R.drawable.yellow_stroke_bg));
                 break;
             case 3:
-                holder.orderBinding.orderChildLayout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_bg));
-                holder.orderBinding.start.setVisibility(View.GONE);
-                holder.orderBinding.status.setText("Partial");
-                holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_partial));
-                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
-                holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
-                holder.orderBinding.rackChild2Layout.setBackground(null);
+//                holder.orderBinding.orderChildLayout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_bg));
+//                holder.orderBinding.start.setVisibility(View.GONE);
+//                holder.orderBinding.status.setText("Partial");
+//                holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_partial));
+//                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
+//                holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
+//                holder.orderBinding.rackChild2Layout.setBackground(null);
                 break;
 
             case 4:
-                holder.orderBinding.orderChildLayout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_bg));
-                holder.orderBinding.start.setVisibility(View.GONE);
-                holder.orderBinding.status.setText("Partial");
-                holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_partial));
-                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
-                holder.orderBinding.rackChild2Layout.setVisibility(View.VISIBLE);
-                holder.orderBinding.rackChild2Layout.setBackground(null);
+//                holder.orderBinding.orderChildLayout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_bg));
+//                holder.orderBinding.start.setVisibility(View.GONE);
+//                holder.orderBinding.status.setText("Partial");
+//                holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_partial));
+//                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
+//                holder.orderBinding.rackChild2Layout.setVisibility(View.VISIBLE);
+//                holder.orderBinding.rackChild2Layout.setBackground(null);
                 break;
             case 5:
-                holder.orderBinding.orderChildLayout.setBackgroundColor(context.getResources().getColor(R.color.trans_red));
-                holder.orderBinding.start.setVisibility(View.GONE);
-                holder.orderBinding.status.setText("Not Available");
-                holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_not_available));
-                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
-                holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
-                holder.orderBinding.rackChild2Layout.setBackground(null);
+//                holder.orderBinding.orderChildLayout.setBackgroundColor(context.getResources().getColor(R.color.trans_red));
+//                holder.orderBinding.start.setVisibility(View.GONE);
+//                holder.orderBinding.status.setText("Not Available");
+//                holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_not_available));
+//                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
+//                holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
+//                holder.orderBinding.rackChild2Layout.setBackground(null);
                 break;
             case 6:
-                holder.orderBinding.orderChildLayout.setBackgroundColor(context.getResources().getColor(R.color.trans_red));
-                holder.orderBinding.start.setVisibility(View.GONE);
-                holder.orderBinding.status.setText("Not Available");
-                holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_not_available));
-                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
-                holder.orderBinding.rackChild2Layout.setVisibility(View.VISIBLE);
-                holder.orderBinding.rackChild2Layout.setBackground(null);
+//                holder.orderBinding.orderChildLayout.setBackgroundColor(context.getResources().getColor(R.color.trans_red));
+//                holder.orderBinding.start.setVisibility(View.GONE);
+//                holder.orderBinding.status.setText("Not Available");
+//                holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_not_available));
+//                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
+//                holder.orderBinding.rackChild2Layout.setVisibility(View.VISIBLE);
+//                holder.orderBinding.rackChild2Layout.setBackground(null);
                 break;
             case 7:
-                holder.orderBinding.orderChildLayout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_green));
-                holder.orderBinding.start.setVisibility(View.GONE);
-                holder.orderBinding.status.setText("Full");
-                holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_circle_tick));
-                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
-                holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
-                holder.orderBinding.rackChild2Layout.setBackground(null);
+//                holder.orderBinding.orderChildLayout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_green));
+//                holder.orderBinding.start.setVisibility(View.GONE);
+//               holder.orderBinding.status.setText("Full");
+//                holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_circle_tick));
+//                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
+//                holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
+//                holder.orderBinding.rackChild2Layout.setBackground(null);
                 break;
             case 8:
-                holder.orderBinding.orderChildLayout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_green));
-                holder.orderBinding.start.setVisibility(View.GONE);
-                holder.orderBinding.status.setText("Full");
-                holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_circle_tick));
-                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
-                holder.orderBinding.rackChild2Layout.setVisibility(View.VISIBLE);
-                holder.orderBinding.rackChild2Layout.setBackground(null);
+//                holder.orderBinding.orderChildLayout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_green));
+//                holder.orderBinding.start.setVisibility(View.GONE);
+//                holder.orderBinding.status.setText("Full");
+//                holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_circle_tick));
+//                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
+//                holder.orderBinding.rackChild2Layout.setVisibility(View.VISIBLE);
+//                holder.orderBinding.rackChild2Layout.setBackground(null);
                 break;
             case 9:
-                holder.orderBinding.orderChildLayout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_green));
-                holder.orderBinding.start.setVisibility(View.GONE);
-                holder.orderBinding.status.setText("Full");
-                holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_circle_tick));
-                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
-                holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
-                holder.orderBinding.rackChild2Layout.setBackground(null);
+//                holder.orderBinding.orderChildLayout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_green));
+//                holder.orderBinding.start.setVisibility(View.GONE);
+//                holder.orderBinding.status.setText("Full");
+//                holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_circle_tick));
+//                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
+//                holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
+//                holder.orderBinding.rackChild2Layout.setBackground(null);
                 break;
             default:
         }
@@ -192,8 +192,8 @@ public class SummaryFullfillmentAdapter extends RecyclerView.Adapter<SummaryFull
 
         productListAdapter = new SummaryProductsAdapter(context, productDataList, pickupProcessMvpView, false, listOfList);
         new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, true);
-        holder.orderBinding.productListRecycler.setLayoutManager(new LinearLayoutManager(context));
-        holder.orderBinding.productListRecycler.setAdapter(productListAdapter);
+//        holder.orderBinding.productListRecycler.setLayoutManager(new LinearLayoutManager(context));
+//        holder.orderBinding.productListRecycler.setAdapter(productListAdapter);
 
        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -243,20 +243,20 @@ public class SummaryFullfillmentAdapter extends RecyclerView.Adapter<SummaryFull
         });
 
         if (position == fullfillmentList.size() - 1) {
-            holder.orderBinding.gotoNextRack.setVisibility(View.GONE);
+//            holder.orderBinding.gotoNextRack.setVisibility(View.GONE);
         }
-        if (!firstAccessCheck) {
-            if (holder.orderBinding.status.getText().toString().equalsIgnoreCase("Full")) {
-                full = full + 1;
-                pickupProcessMvpView.fullCount(String.valueOf(full));
-            } else if (holder.orderBinding.status.getText().toString().equalsIgnoreCase("Partial")) {
-                par = par + 1;
-                pickupProcessMvpView.partialCount(String.valueOf(par));
-            } else if (holder.orderBinding.status.getText().toString().equalsIgnoreCase("Not Available")) {
-                not = not + 1;
-                pickupProcessMvpView.notAvailable(String.valueOf(not));
-            }
-        }
+//        if (!firstAccessCheck) {
+//            if (holder.orderBinding.status.getText().toString().equalsIgnoreCase("Full")) {
+//                full = full + 1;
+//                pickupProcessMvpView.fullCount(String.valueOf(full));
+//            } else if (holder.orderBinding.status.getText().toString().equalsIgnoreCase("Partial")) {
+//                par = par + 1;
+//                pickupProcessMvpView.partialCount(String.valueOf(par));
+//            } else if (holder.orderBinding.status.getText().toString().equalsIgnoreCase("Not Available")) {
+//                not = not + 1;
+//                pickupProcessMvpView.notAvailable(String.valueOf(not));
+//            }
+//        }
     }
 
     private void multipleStatusCheck(List<RackAdapter.RackBoxModel.ProductData> productDataList, int position) {
@@ -377,31 +377,31 @@ public class SummaryFullfillmentAdapter extends RecyclerView.Adapter<SummaryFull
 
         if (partial) {
             fullfillmentList.get(position).setExpandStatus(3);
-            rackBinding.rackChild2Layout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_bg));
-            rackBinding.start.setVisibility(View.GONE);
-            rackBinding.status.setText("Partial");
+//            rackBinding.rackChild2Layout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_bg));
+//            rackBinding.start.setVisibility(View.GONE);
+//            rackBinding.status.setText("Partial");
             rackBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_partial));
-            rackBinding.statusLayout.setVisibility(View.VISIBLE);
-            rackBinding.rackChild2Layout.setVisibility(View.GONE);
-            rackBinding.rackChild2Layout.setBackground(null);
+//            rackBinding.statusLayout.setVisibility(View.VISIBLE);
+//            rackBinding.rackChild2Layout.setVisibility(View.GONE);
+//            rackBinding.rackChild2Layout.setBackground(null);
         } else if (notAvailable) {
             fullfillmentList.get(position).setExpandStatus(5);
-            rackBinding.rackChild2Layout.setBackgroundColor(context.getResources().getColor(R.color.trans_red));
-            rackBinding.start.setVisibility(View.GONE);
-            rackBinding.status.setText("Not Available");
+//            rackBinding.rackChild2Layout.setBackgroundColor(context.getResources().getColor(R.color.trans_red));
+//            rackBinding.start.setVisibility(View.GONE);
+//            rackBinding.status.setText("Not Available");
             rackBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_not_available));
-            rackBinding.statusLayout.setVisibility(View.VISIBLE);
-            rackBinding.rackChild2Layout.setVisibility(View.GONE);
-            rackBinding.rackChild2Layout.setBackground(null);
+//            rackBinding.statusLayout.setVisibility(View.VISIBLE);
+//            rackBinding.rackChild2Layout.setVisibility(View.GONE);
+//            rackBinding.rackChild2Layout.setBackground(null);
         } else if (full) {
             fullfillmentList.get(position).setExpandStatus(7);
-            rackBinding.rackChild2Layout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_green));
-            rackBinding.start.setVisibility(View.GONE);
-            rackBinding.status.setText("Full");
+//            rackBinding.rackChild2Layout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_green));
+//            rackBinding.start.setVisibility(View.GONE);
+//            rackBinding.status.setText("Full");
             rackBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_circle_tick));
-            rackBinding.statusLayout.setVisibility(View.VISIBLE);
-            rackBinding.rackChild2Layout.setVisibility(View.GONE);
-            rackBinding.rackChild2Layout.setBackground(null);
+//            rackBinding.statusLayout.setVisibility(View.VISIBLE);
+//            rackBinding.rackChild2Layout.setVisibility(View.GONE);
+//            rackBinding.rackChild2Layout.setBackground(null);
 //        } else {
 //            if (rackDataFilteredList.get(position).getExpandStatus() == 9) {
 //                rackDataFilteredList.get(position).setExpandStatus(8);
