@@ -1,11 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
+    dataBinding {
+        enabled = true
+    }
     defaultConfig {
         applicationId 'com.thresholdsoft.picker'
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -63,4 +66,18 @@ dependencies {
     implementation 'androidx.room:room-runtime:2.2.5'
     annotationProcessor 'androidx.room:room-compiler:2.2.5'
 
+
+    //circular_image_view
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+
+//    implementation 'com.google.zxing:core:3.2.1'
+//    implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
+
+    //Add QR Library Here
+    implementation 'com.journeyapps:zxing-android-embedded:3.5.0'
+
+    // BarChart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.1'
+    implementation 'com.github.hadiidbouk:ChartProgressBar-Android:2.0.6'
 }
