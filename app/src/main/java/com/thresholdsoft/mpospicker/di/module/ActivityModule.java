@@ -6,9 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.thresholdsoft.mpospicker.di.ActivityContext;
 import com.thresholdsoft.mpospicker.di.PerActivity;
-import com.thresholdsoft.mpospicker.ui.dashboard.DashboardMvpPresenter;
-import com.thresholdsoft.mpospicker.ui.dashboard.DashboardMvpView;
-import com.thresholdsoft.mpospicker.ui.dashboard.DashboardPresenter;
+
 import com.thresholdsoft.mpospicker.ui.login.LoginMvpPresenter;
 import com.thresholdsoft.mpospicker.ui.login.LoginMvpView;
 import com.thresholdsoft.mpospicker.ui.login.LoginPresenter;
@@ -28,6 +26,9 @@ import com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersPresenter;
 import com.thresholdsoft.mpospicker.ui.orderdetails.OrderDetailsMvpPresenter;
 import com.thresholdsoft.mpospicker.ui.orderdetails.OrderDetailsMvpView;
 import com.thresholdsoft.mpospicker.ui.orderdetails.OrderDetailsPresenter;
+import com.thresholdsoft.mpospicker.ui.pickerhome.ui.dashboard.DashboardMvpPresenter;
+import com.thresholdsoft.mpospicker.ui.pickerhome.ui.dashboard.DashboardMvpView;
+import com.thresholdsoft.mpospicker.ui.pickerhome.ui.dashboard.DashboardPresenter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessMvpPresenter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessMvpView;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessPresenter;

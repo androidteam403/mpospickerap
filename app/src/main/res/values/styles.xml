@@ -49,6 +49,10 @@
         <item name="android:windowExitAnimation">@anim/anim_frag_fade_out</item>
     </style>
 
+    <style name="Theme.NavigationDrawerNew.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.NavigationDrawerNew.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
     <!--    <style name="radio">-->
     <!--        <item name="android:layout_width">match_parent</item>-->
     <!--        <item name="android:layout_height">wrap_content</item>-->

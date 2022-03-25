@@ -167,6 +167,8 @@
     <dimen name="eight_sp">9sp</dimen>
     <dimen name="dimen_9_sp">9sp</dimen>
     <dimen name="dimen15sp">15sp</dimen>
+    <dimen name="dimen110dp">110dp</dimen>
+    <dimen name="thrity_nine_dp">39dp</dimen>
 
 
 </resources>

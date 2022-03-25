@@ -48,9 +48,13 @@ public class ReadyForPickUpAdapter extends RecyclerView.Adapter<ReadyForPickUpAd
         if (fullfillmentData.isTagBox()) {
             holder.adapterReadyForPickupBinding.tickMark.setVisibility(View.VISIBLE);
             holder.adapterReadyForPickupBinding.scanDelete.setVisibility(View.VISIBLE);
+            holder.adapterReadyForPickupBinding.takePrint1.setVisibility(View.VISIBLE);
+
         }else {
             holder.adapterReadyForPickupBinding.tickMark.setVisibility(View.GONE);
             holder.adapterReadyForPickupBinding.scanDelete.setVisibility(View.GONE);
+            holder.adapterReadyForPickupBinding.takePrint1.setVisibility(View.GONE);
+
         }
         holder.adapterReadyForPickupBinding.scanDelete.setOnClickListener(new View.OnClickListener() {
             @Override

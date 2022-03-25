@@ -11,8 +11,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.DeciderScreenBinding;
-import com.thresholdsoft.mpospicker.ui.dashboard.DashboardActivity;
-import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickeduporders.PickedUpOrdersActivity;
+import com.thresholdsoft.mpospicker.ui.loginScreenActivity.DeciderScreen2;
 
 public class DeciderScreen extends AppCompatActivity {
     DeciderScreenBinding deciderScreenBinding;
@@ -29,19 +28,13 @@ public class DeciderScreen extends AppCompatActivity {
     }
 
     private void callBacks() {
-        deciderScreenBinding.pickerFlow.setOnClickListener(new View.OnClickListener() {
+        deciderScreenBinding.continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(DashboardActivity.getStartActivity(DeciderScreen.this));
-                overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+            public void onClick(View view) {
+                Intent i = new Intent(DeciderScreen.this, DeciderScreen2.class);
+                startActivity(i);
             }
         });
-        deciderScreenBinding.packerFlow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(PickedUpOrdersActivity.getStartActivity(DeciderScreen.this));
-                overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
-            }
-        });
+
     }
 }

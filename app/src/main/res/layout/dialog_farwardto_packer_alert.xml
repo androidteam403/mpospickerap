@@ -13,6 +13,13 @@
             android:layout_centerInParent="true"
             android:padding="@dimen/dimen10dp">
 
+            <ImageView
+                android:id="@+id/cancel_icon"
+                android:layout_width="@dimen/dimen25dp"
+                android:layout_height="@dimen/dimen25dp"
+                android:src="@drawable/newcrossblackicon"
+                android:layout_gravity="end"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -110,6 +117,8 @@
                     android:text="Not Available: "
                     android:textColor="@color/black" />
 
+
+
                 <TextView
                     android:id="@+id/not_available_count"
                     android:layout_width="wrap_content"
@@ -119,6 +128,23 @@
                     android:textColor="@color/black" />
 
 
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/dimen55dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Notified to Admin."
+                    android:textSize="@dimen/dimen13sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="@color/red" />
             </LinearLayout>
 
             <LinearLayout
