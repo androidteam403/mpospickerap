@@ -4,6 +4,13 @@
     <string name="some_error">Something went wrong</string>
     <string name="title_activity_login">Sign in</string>
     <!-- Strings related to login -->
+
+
+    <string name="names">
+        <item>Partially Filled</item>
+        <item> Fully Filled</item>
+        <item>Not Available</item>
+    </string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in or register</string>

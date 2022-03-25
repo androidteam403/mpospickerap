@@ -41,6 +41,9 @@ public class SelectedPickupProcessProductsAdapter extends RecyclerView.Adapter<S
                 mvpView.onClickStausIcon();
             }
         });
+
+
+
     }
 
     @Override

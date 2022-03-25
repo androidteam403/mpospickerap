@@ -13,4 +13,6 @@ public interface OpenOrdersMvpView extends MvpView {
     void onSuccessRackApi(RacksDataResponse body);
 
     void onClickFilterIcon();
+
+    void onClickStausIcon(int fullFillmentPos, int pos);
 }

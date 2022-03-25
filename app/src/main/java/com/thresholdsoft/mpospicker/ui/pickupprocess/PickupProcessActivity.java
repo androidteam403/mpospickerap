@@ -1,11 +1,18 @@
 package com.thresholdsoft.mpospicker.ui.pickupprocess;
 
+
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Chronometer;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -14,15 +21,20 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.ActivityPickupProcessBinding;
+import com.thresholdsoft.mpospicker.databinding.AdapterOrderBinding;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
+import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.FullfillmentProductListAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.OrderAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.RackAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 import com.thresholdsoft.mpospicker.ui.pickupsummary.PickUpSummmaryActivityNew;
 import com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.SelectedOrderPickupProcessActivity;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -39,6 +51,9 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
     private ActivityPickupProcessBinding pickupProcessBinding;
     private OrderAdapter orderAdapter;
     private RackAdapter rackAdapter;
+   public AdapterOrderBinding orderBinding;
+
+    public String[] items;
     private List<List<RackAdapter.RackBoxModel.ProductData>> rackListOfList = new ArrayList<>();
     private List<List<OrderAdapter.RackBoxModel.ProductData>> fullListOfList = new ArrayList<>();
 
@@ -65,6 +80,7 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
         setUp();
     }
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void setUp() {
         pickupProcessBinding.setCallback(mPresenter);
@@ -86,6 +102,13 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
 
 //        rackIdList.get(0).setExpandStatus(1);
 //        racksDataResponse.getFullfillmentDetails().get(0).setExpandStatus(1);
+
+
+
+//            ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(PickupProcessActivity.this, android.R.layout.simple_spinner_item, items);
+//            pickupProcessBinding.autoincomplete.setAdapter(myAdapter);
+
+
 
             rackAdapter = new RackAdapter(this, rackIdList, racksDataResponse, this, rackListOfList, false);
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
@@ -141,8 +164,11 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
 
     private void rackOrderCheckedListener() {
         pickupProcessBinding.rackOrderToggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
+
             if (isChecked) {
+
                 pickupProcessBinding.continueOrders.setVisibility(View.GONE);
+
                 pickupProcessBinding.farwarToPackerBtn.setVisibility(View.VISIBLE);
                 if (rackListOfListFiltered != null)
                     rackAdapter = new RackAdapter(PickupProcessActivity.this, rackIdList, racksDataResponse, PickupProcessActivity.this, rackListOfListFiltered, false);
@@ -153,6 +179,8 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
                 pickupProcessBinding.rackRecycler.setAdapter(rackAdapter);
                 Toast.makeText(PickupProcessActivity.this, "true", Toast.LENGTH_SHORT).show();
             } else {
+
+
 //                if (fullfillmentListOfListFiltered != null)
 //                    orderAdapter = new OrderAdapter(PickupProcessActivity.this, racksDataResponse, PickupProcessActivity.this, fullfillmentListOfListFiltered);
 //                else
@@ -165,6 +193,7 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
                 pickupProcessBinding.farwarToPackerBtn.setVisibility(View.GONE);
                 pickupProcessBinding.continueOrders.setVisibility(View.VISIBLE);
 
+
                 if (rackListOfListFiltered != null)
                     orderAdapter = new OrderAdapter(PickupProcessActivity.this, racksDataResponse, PickupProcessActivity.this, rackListOfListFiltered, false);
                 else
@@ -175,6 +204,7 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
                 Toast.makeText(PickupProcessActivity.this, "false", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     List<List<RackAdapter.RackBoxModel.ProductData>> rackListOfListFiltered;
@@ -304,6 +334,76 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
 //        }
 
     }
+
+    @Override
+    public void onClickDropDown(Spinner spinner) {
+        String[] items = new String[]{"Partially Filled", "Fully Filled", "Not Available"};
+        ArrayAdapter<String> genderSpinnerPojo = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items) {
+            @NotNull
+            public View getView(int position, View convertView, @NotNull ViewGroup parent) {
+                View v = super.getView(position, convertView, parent);
+//                    Typeface externalFont = Typeface.createFromAsset(getContext().getAssets(), "font/roboto_regular.ttf");
+//                    ((TextView) v).setTypeface(externalFont);
+                return v;
+            }
+
+            public View getDropDownView(int position, View convertView, @NotNull ViewGroup parent) {
+                View v = super.getDropDownView(position, convertView, parent);
+//                    Typeface externalFont = Typeface.createFromAsset(getContext().getAssets(), "font/roboto_regular.ttf");
+//                    ((TextView) v).setTypeface(externalFont);
+                return v;
+            }
+        };
+        genderSpinnerPojo.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spinner.setAdapter(genderSpinnerPojo);
+        spinner.setSelection(0);
+//if (spinner.equals("Partially Filled")){
+//    orderBinding.prioritys.setVisibility(View.VISIBLE);
+//    orderBinding.partiallyFilled.setVisibility(View.VISIBLE);
+//    orderBinding.fullPrority.setVisibility(View.GONE);
+//}
+//else  if (spinner.equals("Fully Filled")){
+//    orderBinding.prioritys.setVisibility(View.VISIBLE);
+//    orderBinding.fullPrority.setVisibility(View.VISIBLE);
+//    orderBinding.notAvailable.setVisibility(View.GONE);
+//    orderBinding.partiallyFilled.setVisibility(View.GONE);
+//
+//}else if (spinner.equals("Not Available")){
+//    orderBinding.prioritys.setVisibility(View.VISIBLE);
+//    orderBinding.fullPrority.setVisibility(View.GONE);
+//    orderBinding.notAvailable.setVisibility(View.VISIBLE);
+//    orderBinding.partiallyFilled.setVisibility(View.GONE);
+//
+//}
+
+
+
+    }
+
+//    String[] items=new String[]{
+//                "Partially Filled","Fully Filled","Not Available"
+//        };
+//        ArrayAdapter<String> genderSpinnerPojo = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items) {
+//            @NotNull
+//            public View getView(int position, View convertView, @NotNull ViewGroup parent) {
+//                View v = super.getView(position, convertView, parent);
+////                    Typeface externalFont = Typeface.createFromAsset(getContext().getAssets(), "font/roboto_regular.ttf");
+////                    ((TextView) v).setTypeface(externalFont);
+//                return v;
+//            }
+//
+//            public View getDropDownView(int position, View convertView, @NotNull ViewGroup parent) {
+//                View v = super.getDropDownView(position, convertView, parent);
+////                    Typeface externalFont = Typeface.createFromAsset(getContext().getAssets(), "font/roboto_regular.ttf");
+////                    ((TextView) v).setTypeface(externalFont);
+//                return v;
+//            }
+//        };
+//        genderSpinnerPojo.setDropDownViewResource(android.R.layout.simple_spinner_item);
+//        spinner.setAdapter(genderSpinnerPojo);
+//        spinner.setSelection(0);
+//
+//
 
     @Override
     public void onBackPressed() {

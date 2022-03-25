@@ -44,6 +44,9 @@ public class RacksDataResponse implements Serializable {
         private String status;
         @SerializedName("BoxId")
         @Expose
+
+
+
         private String boxId;
         @SerializedName("Products")
         @Expose
@@ -136,6 +139,16 @@ public class RacksDataResponse implements Serializable {
             @SerializedName("Status")
             @Expose
             private String status;
+
+            public String getItemStatus() {
+                return itemStatus;
+            }
+
+            public void setItemStatus(String itemStatus) {
+                this.itemStatus = itemStatus;
+            }
+
+            private String itemStatus = "";
             private final static long serialVersionUID = 6317138212188310262L;
 
             private int expandStatus = 0;

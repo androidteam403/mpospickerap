@@ -1,10 +1,13 @@
 package com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -21,6 +24,8 @@ import com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.adapter.Select
 import javax.inject.Inject;
 
 public class SelectedOrderPickupProcessActivity extends BaseActivity implements SelectedOrderPickupProcessMvpView {
+
+    String[] names={"Partially Filled","Fully Filled","Not Available"};
     private ActivitySelectedOrderPickupProcessBinding selectedOrderPickupProcessBinding;
     @Inject
     SelectedOrderPickupProcessMvpPresenter<SelectedOrderPickupProcessMvpView> mPresenter;
@@ -31,6 +36,9 @@ public class SelectedOrderPickupProcessActivity extends BaseActivity implements 
         return intent;
     }
 
+
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +46,18 @@ public class SelectedOrderPickupProcessActivity extends BaseActivity implements 
         getActivityComponent().inject(this);
         mPresenter.onAttach(SelectedOrderPickupProcessActivity.this);
         setUp();
+
+//        ArrayAdapter<String>  adapter=new ArrayAdapter<String>(SelectedOrderPickupProcessActivity.this, R.layout.itemlist,names);
+//                adapter.setDropDownViewResource(R.layout.itemlist);
+//        selectedOrderPickupProcessBinding.spinner.setAdapter(adapter);
+//
+//        selectedOrderPickupProcessBinding.spinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                String value=adapterView.getItemAtPosition(i).toString();
+//                Toast.makeText(SelectedOrderPickupProcessActivity.this,value,Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     @Override

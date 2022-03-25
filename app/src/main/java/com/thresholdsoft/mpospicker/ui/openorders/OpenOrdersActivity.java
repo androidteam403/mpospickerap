@@ -1,11 +1,11 @@
 package com.thresholdsoft.mpospicker.ui.openorders;
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -16,12 +16,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.ActivityOpenOrdersBinding;
 import com.thresholdsoft.mpospicker.databinding.DialogFilterBinding;
+import com.thresholdsoft.mpospicker.databinding.DialogUpdateStatusBinding;
 import com.thresholdsoft.mpospicker.ui.DeciderScreen;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
+
 import com.thresholdsoft.mpospicker.ui.openorders.adapter.FullfilmentAdapter;
 import com.thresholdsoft.mpospicker.ui.orderdetails.OrderDetailsActivity;
+import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.OrderAdapter;
+import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.RackAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpActivity;
+import com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.SelectedOrderPickupProcessActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,12 +39,17 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
     private ActivityOpenOrdersBinding openOrdersBinding;
     private List<FullfilmentAdapter.FullfilmentModel> fullfilmentModelList;
     private FullfilmentAdapter fullfilmentAdapter;
+    public List<RackAdapter.RackBoxModel.ProductData> productDataList;
+
     private boolean isContinueEnable;
+
 
 
     public static Intent getStartActivity(Context context) {
         return new Intent(context, OpenOrdersActivity.class);
     }
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,6 +58,9 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
         getActivityComponent().inject(this);
         mPresenter.onAttach(OpenOrdersActivity.this);
         setUp();
+        if (getIntent() != null) {
+            productDataList = (List<RackAdapter.RackBoxModel.ProductData>) getIntent().getSerializableExtra("productDataList");
+        }
 
 
     }
@@ -56,6 +69,8 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
     protected void setUp() {
         openOrdersBinding.setCallback(mPresenter);
         mPresenter.onRackApiCall();
+
+
     }
 
     private RacksDataResponse racksDataResponse;
@@ -74,7 +89,7 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
             }
 
             openOrdersBinding.headerOrdersCount.setText("Total " + fullfilmentModelList.size() + " orders");
-            fullfilmentAdapter = new FullfilmentAdapter(this, fullfilmentModelList, this);
+            fullfilmentAdapter = new FullfilmentAdapter(this, fullfilmentModelList, this, productDataList, racksDataResponse);
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
             openOrdersBinding.fullfilmentRecycler.setLayoutManager(mLayoutManager);
             openOrdersBinding.fullfilmentRecycler.setAdapter(fullfilmentAdapter);
@@ -90,6 +105,20 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
         dialogFilterBinding.filterCloseIcon.setOnClickListener(view -> filterDialog.dismiss());
         filterDialog.show();
     }
+
+    @Override
+    public void onClickStausIcon(int fullFillmentPos, int pos) {
+        Dialog statusUpdateDialog = new Dialog(this, R.style.fadeinandoutcustomDialog);
+        DialogUpdateStatusBinding dialogUpdateStatusBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.dialog_update_status, null, false);
+        statusUpdateDialog.setContentView(dialogUpdateStatusBinding.getRoot());
+        statusUpdateDialog.setCancelable(false);
+        dialogUpdateStatusBinding.dismissDialog.setOnClickListener(view -> statusUpdateDialog.dismiss());
+
+        racksDataResponse.getFullfillmentDetails().get(0).getProducts().get(0).getItemStatus();
+
+        statusUpdateDialog.show();
+    }
+
 
     int pos;
 
@@ -169,10 +198,21 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
     @Override
     public void onRightArrowClickedContinue(int position) {
         if (racksDataResponse.getFullfillmentDetails() != null && racksDataResponse.getFullfillmentDetails().size() > 0 && racksDataResponse.getFullfillmentDetails().size() > pos) {
-            Intent i = new Intent(OpenOrdersActivity.this, OrderDetailsActivity.class);
-            i.putExtra("fullfillmentDetails", racksDataResponse.getFullfillmentDetails().get(position));
-            startActivityForResult(i, 999);
-            overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+
+
+            //            Intent i = new Intent(OpenOrdersActivity.this, OrderDetailsActivity.class);
+//            i.putExtra("fullfillmentDetails", racksDataResponse.getFullfillmentDetails().get(position));
+//            startActivityForResult(i, 999);
+//            overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+
+//            openOrdersBinding.layoutFulfilment.setVisibility(View.VISIBLE);
+//            FulfimentDetailsAdapter fulfimentDetailsAdapter=new FulfimentDetailsAdapter(productDataList,this);
+//            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+//            openOrdersBinding.rackRecycler.setLayoutManager(mLayoutManager);
+//            openOrdersBinding.rackRecycler.setAdapter(fulfimentDetailsAdapter);
+
+
+
         }
     }
 
@@ -210,4 +250,3 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
 //        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
 //    }
 }
-

@@ -1,5 +1,7 @@
 package com.thresholdsoft.mpospicker.ui.pickupprocess;
 
+import android.widget.Spinner;
+
 import com.thresholdsoft.mpospicker.ui.base.MvpView;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.OrderAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.RackAdapter;
@@ -12,6 +14,7 @@ public interface PickupProcessMvpView extends MvpView {
     void onClickBack();
 
     void onClickContinue();
+    void onClickDropDown(Spinner spinner);
 
     void onSuccessRackApi(RacksDataResponse racksDataResponse);
 

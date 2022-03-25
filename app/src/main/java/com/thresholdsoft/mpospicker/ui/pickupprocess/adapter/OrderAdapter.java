@@ -1,9 +1,11 @@
 package com.thresholdsoft.mpospicker.ui.pickupprocess.adapter;
 
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -15,6 +17,8 @@ import com.thresholdsoft.mpospicker.databinding.AdapterOrderBinding;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessMvpView;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +27,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     private List<RacksDataResponse.FullfillmentDetail> fullfillmentList;
     private FullfillmentProductListAdapter productListAdapter;
     private PickupProcessMvpView pickupProcessMvpView;
+
     List<List<RackAdapter.RackBoxModel.ProductData>> listOfList;
     private boolean firstAccessCheck;
 
@@ -47,6 +52,31 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         RacksDataResponse.FullfillmentDetail fullFillModel = fullfillmentList.get(position);
         holder.orderBinding.fullfillmentID.setText(fullFillModel.getFullfillmentId());
         holder.orderBinding.totalItems.setText(String.valueOf(fullfillmentList.get(0).getProducts().size()));
+
+        pickupProcessMvpView.onClickDropDown(holder.orderBinding.spinner);
+        if (holder.orderBinding.spinner.equals("Partially Filled")){
+            holder.orderBinding.prioritys.setVisibility(View.VISIBLE);
+            holder.orderBinding.partiallyFilled.setVisibility(View.VISIBLE);
+            holder.orderBinding.fullPrority.setVisibility(View.GONE);
+            holder.orderBinding.notAvailable.setVisibility(View.GONE);
+        }else  if (holder.orderBinding.spinner.equals("Fully Filled")){
+            holder.orderBinding.prioritys.setVisibility(View.VISIBLE);
+            holder.orderBinding.fullPrority.setVisibility(View.VISIBLE);
+            holder.orderBinding.notAvailable.setVisibility(View.GONE);
+            holder.orderBinding.partiallyFilled.setVisibility(View.GONE);
+
+        }else if (holder.orderBinding.spinner.equals("Not Available")){
+            holder.orderBinding.prioritys.setVisibility(View.VISIBLE);
+            holder.orderBinding.fullPrority.setVisibility(View.GONE);
+            holder.orderBinding.notAvailable.setVisibility(View.VISIBLE);
+            holder.orderBinding.partiallyFilled.setVisibility(View.GONE);
+
+        }
+
+
+
+
+
         holder.orderBinding.boxId.setText(fullFillModel.getBoxId());
         switch (fullFillModel.getExpandStatus()) {
             case 0:
@@ -189,10 +219,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         if (!firstAccessCheck)
             firstTimeMultipleStatusCheck(productDataList, position, holder.orderBinding);
 
-        productListAdapter = new FullfillmentProductListAdapter(context, productDataList, pickupProcessMvpView, false, listOfList, fullFillModel.getFullfillmentId());
+        NewSelectedOrderAdapter productListAdapter=new NewSelectedOrderAdapter(context, productDataList, pickupProcessMvpView, false, listOfList, fullFillModel.getFullfillmentId());
         new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, true);
         holder.orderBinding.productListRecycler.setLayoutManager(new LinearLayoutManager(context));
         holder.orderBinding.productListRecycler.setAdapter(productListAdapter);
+
+
         holder.orderBinding.rightArrow.setOnClickListener(view -> {
             if (pickupProcessMvpView != null) {
                 pickupProcessMvpView.onClickRightArrow(fullFillModel);
@@ -204,11 +236,43 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
 
             if (fullfillmentList.get(position).getExpandStatus() == 0) {
                 fullfillmentList.get(position).setExpandStatus(1);
+                holder.orderBinding.prioritys.setVisibility(View.VISIBLE);
+                holder.orderBinding.presentStatus.setVisibility(View.VISIBLE);
+
                 notifyDataSetChanged();
             } else if (fullfillmentList.get(position).getExpandStatus() == 1) {
                 fullfillmentList.get(position).setExpandStatus(0);
+                holder.orderBinding.prioritys.setVisibility(View.GONE);
+                holder.orderBinding.presentStatus.setVisibility(View.GONE
+
+
+                );
+
                 notifyDataSetChanged();
             }
+
+
+            //
+//        productListAdapter = new FullfillmentProductListAdapter(context, productDataList, pickupProcessMvpView, false, listOfList, fullFillModel.getFullfillmentId());
+//        new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, true);
+//        holder.orderBinding.productListRecycler.setLayoutManager(new LinearLayoutManager(context));
+//        holder.orderBinding.productListRecycler.setAdapter(productListAdapter);
+//        holder.orderBinding.rightArrow.setOnClickListener(view -> {
+//            if (pickupProcessMvpView != null) {
+//                pickupProcessMvpView.onClickRightArrow(fullFillModel);
+//            }
+//        });
+//        holder.orderBinding.orderChildLayout.setOnClickListener(v -> {
+//            firstAccessCheck = true;
+////            completedViewCheck(productDataList,position,holder.orderBinding);
+//
+//            if (fullfillmentList.get(position).getExpandStatus() == 0) {
+//                fullfillmentList.get(position).setExpandStatus(1);
+//                notifyDataSetChanged();
+//            } else if (fullfillmentList.get(position).getExpandStatus() == 1) {
+//                fullfillmentList.get(position).setExpandStatus(0);
+//                notifyDataSetChanged();
+//            }
 
 //            if (fullfillmentList.get(position).getExpandStatus() == 0) {
 //                fullfillmentList.get(position).setExpandStatus(1);
