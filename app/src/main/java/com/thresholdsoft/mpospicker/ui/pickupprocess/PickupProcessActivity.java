@@ -91,6 +91,8 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
             pickupProcessBinding.rackRecycler.setLayoutManager(mLayoutManager);
             pickupProcessBinding.rackRecycler.setAdapter(rackAdapter);
+
+            pickupProcessBinding.selectedFullfillment.setText("Selected Fullfillment: " +racksDataResponse.size()+"/5");
         }
 //        mPresenter.onRackApiCall();
         rackOrderCheckedListener();

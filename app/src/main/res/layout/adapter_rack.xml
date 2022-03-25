@@ -168,7 +168,7 @@
                     android:fontFamily="@font/roboto_bold"
                     android:text="2/6"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/fourteen_sp" />
+                    android:textSize="@dimen/dimen12sp" />
 
                 <View
                     android:layout_width="@dimen/dimen2dp"
@@ -183,7 +183,7 @@
                     android:text="Go to next Rack"
                     android:layout_marginStart="@dimen/five_dp"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/dimen14sp" />
+                    android:textSize="@dimen/dimen12sp" />
 
                 <ImageView
                     android:layout_width="@dimen/dimen30dp"

@@ -11,6 +11,8 @@ import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickeduporders.PickedUpOrd
 import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickupverificationprocess.PickUpVerificationActivity;
 import com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersActivity;
 import com.thresholdsoft.mpospicker.ui.orderdetails.OrderDetailsActivity;
+import com.thresholdsoft.mpospicker.ui.pickerhome.PickerNavigationActivity;
+import com.thresholdsoft.mpospicker.ui.pickerhome.ui.dashboard.DashboardFragment;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessActivity;
 import com.thresholdsoft.mpospicker.ui.pickupsummary.PickUpSummmaryActivityNew;
 import com.thresholdsoft.mpospicker.ui.pickupsummarydetails.PickupSummaryDetailsActivity;
@@ -32,7 +34,9 @@ public interface ActivityComponent {
 
     void inject(MainActivity mainActivity);
 
-    void inject(DashboardActivity dashboardActivity);
+    void inject(DashboardFragment dashboardFragment);
+
+    void inject(PickerNavigationActivity pickerNavigationActivity);
 
     void inject(OpenOrdersActivity openOrdersActivity);
 
