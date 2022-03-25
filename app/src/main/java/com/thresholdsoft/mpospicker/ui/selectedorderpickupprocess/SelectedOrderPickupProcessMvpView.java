@@ -5,7 +5,20 @@ import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 
 public interface SelectedOrderPickupProcessMvpView extends MvpView {
     void onClickBack();
+
     void onRackApiCall();
+
     void onSuccessRackApi(RacksDataResponse racksDataResponse);
+
     void onClickStausIcon();
+
+    void onClickFullPicked();
+
+    void onClickPartialPicked();
+
+    void onClickNotAvailable();
+
+    void onClickSkip();
+
+    void onClickBatchDetails();
 }

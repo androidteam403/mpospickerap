@@ -114,6 +114,8 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
             pickupProcessBinding.rackRecycler.setLayoutManager(mLayoutManager);
             pickupProcessBinding.rackRecycler.setAdapter(rackAdapter);
+
+            pickupProcessBinding.selectedFullfillment.setText("Selected Fullfillment: " +racksDataResponse.size()+"/5");
         }
 //        mPresenter.onRackApiCall();
         rackOrderCheckedListener();
@@ -240,7 +242,7 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
                 }
                 if (statusCount == overallProductCount) {
                     pickupProcessBinding.continueBtn.setBackgroundColor(getResources().getColor(R.color.continue_select_color));
-                    pickupProcessBinding.continueBtn.setTextColor(getResources().getColor(R.color.black));
+//                    pickupProcessBinding.continueBtn.setTextColor(getResources().getColor(R.color.black));
                 }
             }
         }

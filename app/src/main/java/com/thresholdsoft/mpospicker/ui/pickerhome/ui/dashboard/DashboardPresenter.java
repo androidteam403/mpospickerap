@@ -1,4 +1,4 @@
-package com.thresholdsoft.mpospicker.ui.dashboard;
+package com.thresholdsoft.mpospicker.ui.pickerhome.ui.dashboard;
 
 import com.thresholdsoft.mpospicker.data.DataManager;
 import com.thresholdsoft.mpospicker.ui.base.BasePresenter;

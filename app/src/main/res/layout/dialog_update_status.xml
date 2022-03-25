@@ -6,8 +6,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#BF000000"
-        android:orientation="vertical"
         android:gravity="center"
+        android:orientation="vertical"
         android:padding="@dimen/dimen10dp">
 
         <RelativeLayout
@@ -123,7 +123,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/ten_dp"
+                        android:clickable="true"
                         android:gravity="center_vertical"
+                        android:onClick="@{()-> callback.onClickFullPicked()}"
                         android:orientation="horizontal">
 
                         <RadioButton
@@ -132,7 +134,8 @@
                             android:layout_height="wrap_content"
                             android:buttonTint="@color/black"
                             android:checked="false"
-                            android:fontFamily="@font/roboto_bold"
+                            android:clickable="false"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="Full Verified"
                             android:textAllCaps="true"
                             android:textColor="@color/black" />
@@ -141,12 +144,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/dimen5dp"
-                            android:fontFamily="@font/roboto_bold"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="full picked"
-                            android:visibility="gone"
                             android:textAllCaps="true"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/dimen16sp" />
+                            android:textSize="@dimen/dimen16sp"
+                            android:visibility="gone" />
 
                         <ImageView
                             android:layout_width="@dimen/dimen25dp"
@@ -286,10 +289,12 @@
                             android:layout_marginTop="@dimen/dimen5dp"
                             android:layout_marginEnd="@dimen/dimen5dp"
                             android:background="@drawable/edit_box_grey_bg"
+                            android:focusable="false"
                             android:fontFamily="@font/roboto_medium"
                             android:hint="@string/label_enter_batch_id"
                             android:importantForAutofill="no"
                             android:inputType="text"
+                            android:onClick="@{()-> callback.onClickBatchDetails()}"
                             android:padding="@dimen/dimen5dp"
                             android:textColor="@color/black" />
                     </LinearLayout>
@@ -307,7 +312,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dimen10dp"
+                        android:clickable="true"
                         android:gravity="center_vertical"
+                        android:onClick="@{()-> callback.onClickPartialPicked()}"
                         android:orientation="horizontal">
 
                         <RadioButton
@@ -316,21 +323,22 @@
                             android:layout_height="wrap_content"
                             android:buttonTint="@color/black"
                             android:checked="false"
-                            android:fontFamily="@font/roboto_bold"
+                            android:clickable="false"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="Partial Verified"
                             android:textAllCaps="true"
                             android:textColor="@color/black" />
 
                         <TextView
-                            android:visibility="gone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/dimen5dp"
-                            android:fontFamily="@font/roboto_bold"
+                            android:fontFamily="@font/roboto_regular"
                             android:text="partially picked"
                             android:textAllCaps="true"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/dimen16sp" />
+                            android:textSize="@dimen/dimen16sp"
+                            android:visibility="gone" />
 
                         <ImageView
                             android:layout_width="@dimen/dimen25dp"
@@ -470,10 +478,12 @@
                             android:layout_marginTop="@dimen/dimen5dp"
                             android:layout_marginEnd="@dimen/dimen5dp"
                             android:background="@drawable/edit_box_grey_bg"
+                            android:focusable="false"
                             android:fontFamily="@font/roboto_medium"
                             android:hint="@string/label_enter_batch_id"
                             android:importantForAutofill="no"
                             android:inputType="text"
+                            android:onClick="@{()-> callback.onClickBatchDetails()}"
                             android:padding="@dimen/dimen5dp"
                             android:textColor="@color/black" />
                     </LinearLayout>
@@ -484,7 +494,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen10dp"
+                    android:clickable="true"
                     android:gravity="center_vertical"
+                    android:onClick="@{()-> callback.onClickNotAvailable()}"
                     android:orientation="horizontal">
 
                     <RadioButton
@@ -493,7 +505,8 @@
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/black"
                         android:checked="false"
-                        android:fontFamily="@font/roboto_bold"
+                        android:clickable="false"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="Not available"
                         android:textAllCaps="true"
                         android:textColor="@color/black" />
@@ -502,12 +515,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dimen5dp"
-                        android:fontFamily="@font/roboto_bold"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="not available"
                         android:textAllCaps="true"
-                        android:visibility="gone"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/dimen16sp" />
+                        android:textSize="@dimen/dimen16sp"
+                        android:visibility="gone" />
 
                     <ImageView
                         android:layout_width="@dimen/dimen25dp"
@@ -516,12 +529,15 @@
                         android:contentDescription="@string/app_name"
                         android:src="@drawable/ic_not_available" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen10dp"
                     android:layout_marginBottom="@dimen/dimen10dp"
+                    android:clickable="true"
                     android:gravity="center_vertical"
+                    android:onClick="@{()-> callback.onClickSkip()}"
                     android:orientation="horizontal">
 
                     <RadioButton
@@ -530,7 +546,8 @@
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/black"
                         android:checked="false"
-                        android:fontFamily="@font/roboto_bold"
+                        android:clickable="false"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="skip"
                         android:textAllCaps="true"
                         android:textColor="@color/black" />
@@ -539,12 +556,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dimen5dp"
-                        android:fontFamily="@font/roboto_bold"
+                        android:fontFamily="@font/roboto_regular"
                         android:text="skip"
                         android:textAllCaps="true"
-                        android:visibility="gone"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/dimen16sp" />
+                        android:textSize="@dimen/dimen16sp"
+                        android:visibility="gone" />
 
                 </LinearLayout>
 
@@ -561,10 +578,17 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dimen3dp"
             android:background="@drawable/btn_signin_ripple_effect"
-            android:fontFamily="@font/roboto_bold"
+            android:fontFamily="@font/roboto_medium"
             android:text="update"
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/dimen18sp" />
     </LinearLayout>
+
+    <data>
+
+        <variable
+            name="callback"
+            type="com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.SelectedOrderPickupProcessMvpPresenter" />
+    </data>
 </layout>

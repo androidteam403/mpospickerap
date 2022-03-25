@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent"
+        tools:context=".ui.loginScreenActivity.LoginScreenActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_marginTop="@dimen/dimen18sp"
+                    android:id="@+id/apollo_logo"
+                    android:layout_gravity="center"
+                    android:layout_width="140dp"
+                    android:padding="5dp"
+                    android:layout_height="140dp"
+                    android:src="@drawable/newapollologo3"
+                    app:civ_border_color="@color/white"
+                    app:civ_border_width="2dp" />
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_marginTop="@dimen/dimen30dp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginRight="70dp"
+                    android:layout_width="match_parent"
+                    android:id="@+id/packer_unselected"
+                    android:layout_height="@dimen/thrity_nine_dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_for_login_unselected"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:padding="@dimen/_4dp"
+                        android:layout_width="@dimen/dimen30dp"
+                        android:layout_height="@dimen/dimen30dp"
+                        android:src="@drawable/black_circle_login"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/packer"
+                        android:textColor="@color/white"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/dimen14sp"
+                        android:fontFamily="@font/roboto_medium"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="visible"
+                    android:layout_marginTop="@dimen/dimen30dp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginRight="70dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/thrity_nine_dp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/packer_selected"
+                    android:background="@drawable/bg_for_login"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:padding="@dimen/_4dp"
+                        android:layout_width="@dimen/dimen30dp"
+                        android:layout_height="@dimen/dimen30dp"
+                        android:src="@drawable/ic_circle_tick"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Packer"
+                        android:textColor="@color/black"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/dimen14sp"
+                        android:fontFamily="@font/roboto_medium"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="visible"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginRight="70dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/thrity_nine_dp"
+                    android:id="@+id/biller_unselected"
+                    android:layout_marginTop="@dimen/dimen5dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_for_login_unselected"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:padding="@dimen/_4dp"
+                        android:layout_width="@dimen/dimen30dp"
+                        android:layout_height="@dimen/dimen30dp"
+                        android:src="@drawable/black_circle_login"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/biller"
+                        android:textColor="@color/white"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/dimen14sp"
+                        android:fontFamily="@font/roboto_medium"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_marginTop="@dimen/dimen5dp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginRight="70dp"
+                    android:id="@+id/biller_selected"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/thrity_nine_dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_for_login"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:padding="@dimen/_4dp"
+                        android:layout_width="@dimen/dimen30dp"
+                        android:layout_height="@dimen/dimen30dp"
+                        android:src="@drawable/ic_circle_tick"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Biller"
+                        android:textColor="@color/black"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/dimen14sp"
+                        android:fontFamily="@font/roboto_medium"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="visible"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginRight="70dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/thrity_nine_dp"
+                    android:layout_marginTop="@dimen/dimen5dp"
+                    android:id="@+id/sealer_unselected"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_for_login_unselected"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:padding="@dimen/_4dp"
+                        android:layout_width="@dimen/dimen30dp"
+                        android:layout_height="@dimen/dimen30dp"
+                        android:src="@drawable/black_circle_login"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sealer"
+                        android:textColor="@color/white"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/dimen14sp"
+                        android:fontFamily="@font/roboto_medium"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_marginTop="@dimen/dimen5dp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginRight="70dp"
+                    android:id="@+id/sealer_selected"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/thrity_nine_dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_for_login"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:padding="@dimen/_4dp"
+                        android:layout_width="@dimen/dimen30dp"
+                        android:layout_height="@dimen/dimen30dp"
+                        android:src="@drawable/ic_circle_tick"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sealer"
+                        android:textColor="@color/black"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/dimen14sp"
+                        android:fontFamily="@font/roboto_medium"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="visible"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginRight="70dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/thrity_nine_dp"
+                    android:layout_marginTop="@dimen/dimen5dp"
+                    android:id="@+id/admin_unselected"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_for_login_unselected"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:padding="@dimen/_4dp"
+                        android:layout_width="@dimen/dimen30dp"
+                        android:layout_height="@dimen/dimen30dp"
+                        android:src="@drawable/black_circle_login"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/admin"
+                        android:textColor="@color/white"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/dimen14sp"
+                        android:fontFamily="@font/roboto_medium"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_marginTop="@dimen/dimen5dp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginRight="70dp"
+                    android:layout_width="match_parent"
+                    android:id="@+id/admin_selected"
+                    android:layout_height="@dimen/thrity_nine_dp"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_for_login"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:padding="@dimen/_4dp"
+                        android:layout_width="@dimen/dimen30dp"
+                        android:layout_height="@dimen/dimen30dp"
+                        android:src="@drawable/ic_circle_tick"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Admin"
+                        android:textColor="@color/black"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/dimen14sp"
+                        android:fontFamily="@font/roboto_medium"/>
+
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/continue_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen22dp"
+                    android:layout_marginEnd="@dimen/dimen22dp"
+                    android:layout_marginTop="@dimen/dimen45dp"
+                    android:background="@drawable/btn_continue_ripple_login"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="Continue"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    tools:ignore="ButtonStyle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/forgot_password"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/dimen16sp"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dimen60dp"/>
+
+                <View
+                    android:layout_width="129dp"
+                    android:layout_height="1dp"
+                    android:background="@color/white"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

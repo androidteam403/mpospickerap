@@ -90,4 +90,24 @@
     <string name="qty1">Qty.</string>
     <string name="rack_id1">Rack ID:</string>
     <string name="g098_98_786">G098-98-786</string>
+    <string name="packer">Packer</string>
+
+    <string name="biller">Biller</string>
+
+    <string name="sealer">Sealer</string>
+
+    <string name="admin">Admin</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="deciderScreen2">deciderScreen</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+    <string name="open" />
+    <string name="close" />
+    <string name="gallery">Gallery</string>
+    <string name="slideshow">Slideshow</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+
+
 </resources>

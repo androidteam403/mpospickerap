@@ -6,13 +6,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.MenuItem;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.navigation.NavigationView;
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.ActivityOpenOrdersBinding;
 import com.thresholdsoft.mpospicker.databinding.DialogFilterBinding;
@@ -42,6 +53,8 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
     public List<RackAdapter.RackBoxModel.ProductData> productDataList;
 
     private boolean isContinueEnable;
+    private AppBarConfiguration mAppBarConfiguration;
+
 
 
 
@@ -50,6 +63,10 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
     }
 
 
+
+//    public static Intent getStartActivity(DashboardFragment dashboardFragment) {
+//        return new Intent(dashboardFragment, OpenOrdersActivity.class);
+//    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,7 +88,12 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
         mPresenter.onRackApiCall();
 
 
+
     }
+
+
+
+
 
     private RacksDataResponse racksDataResponse;
 
@@ -224,6 +246,7 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
 
 
     int gotId;
+    boolean isAnyoneSelect = false;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -239,6 +262,23 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
                         break;
                     }
                 }
+                int selectedItemCount = 0;
+                for (FullfilmentAdapter.FullfilmentModel fullfilmentModel : fullfilmentModelList)
+                    if (fullfilmentModel.isSelected()) {
+                        isAnyoneSelect = true;
+                        selectedItemCount++;
+                    }
+                this.isContinueEnable = isAnyoneSelect;
+                if (isAnyoneSelect) {
+                    openOrdersBinding.selectedFullfillment.setText("Selected fullfillment " + selectedItemCount + "/5.");
+                    openOrdersBinding.continueBtn.setBackgroundColor(getResources().getColor(R.color.continue_select_color));
+                    openOrdersBinding.setIsContinueSelect(true);
+                } else {
+                    openOrdersBinding.selectedFullfillment.setText("Select fullfilment to start pichup process.");
+                    openOrdersBinding.continueBtn.setBackgroundColor(getResources().getColor(R.color.continue_unselect_color));
+                    openOrdersBinding.setIsContinueSelect(false);
+                }
+                openOrdersBinding.selectedItemCount.setText(selectedItemCount + "/5");
             }
         }
     }

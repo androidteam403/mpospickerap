@@ -67,41 +67,41 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/fifteen_dp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen45dp"
-                android:layout_marginStart="@dimen/ten_dp"
-                android:layout_marginTop="@dimen/ten_dp"
-                android:layout_marginEnd="@dimen/ten_dp"
-                android:onClick="@{()-> callback.onClickTakePrint()}"
-                android:orientation="horizontal"
-                android:weightSum="1">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/dimen45dp"-->
+<!--                android:layout_marginStart="@dimen/ten_dp"-->
+<!--                android:layout_marginTop="@dimen/ten_dp"-->
+<!--                android:layout_marginEnd="@dimen/ten_dp"-->
+<!--                android:onClick="@{()-> callback.onClickTakePrint()}"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:weightSum="1">-->
 
-                <!--                    <ImageView-->
-                <!--                        android:layout_width="wrap_content"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:background="@color/black"-->
-                <!--                        android:src="@drawable/ic_white_printer"-->
-                <!--                        android:contentDescription="@string/app_name" />-->
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".5" />
+<!--                &lt;!&ndash;                    <ImageView&ndash;&gt;-->
+<!--                &lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--                &lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--                &lt;!&ndash;                        android:background="@color/black"&ndash;&gt;-->
+<!--                &lt;!&ndash;                        android:src="@drawable/ic_white_printer"&ndash;&gt;-->
+<!--                &lt;!&ndash;                        android:contentDescription="@string/app_name" />&ndash;&gt;-->
+<!--                <View-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight=".5" />-->
 
-                <TextView
-                    android:id="@+id/take_print"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/dimen45dp"
-                    android:layout_marginStart="@dimen/fifteen_dp"
-                    android:layout_weight=".5"
-                    android:background="@drawable/take_print_btn_bg"
-                    android:fontFamily="@font/roboto_bold"
-                    android:gravity="center"
-                    android:text="Take Print"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white"
-                    tools:ignore="ButtonStyle" />
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:id="@+id/take_print"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="@dimen/dimen45dp"-->
+<!--                    android:layout_marginStart="@dimen/fifteen_dp"-->
+<!--                    android:layout_weight=".5"-->
+<!--                    android:background="@drawable/take_print_btn_bg"-->
+<!--                    android:fontFamily="@font/roboto_bold"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="Take Print"-->
+<!--                    android:textAllCaps="true"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    tools:ignore="ButtonStyle" />-->
+<!--            </LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"

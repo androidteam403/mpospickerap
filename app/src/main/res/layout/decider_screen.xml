@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -54,8 +54,26 @@
                     android:textAllCaps="true"
                     android:textColor="@color/black" />
             </LinearLayout>
-
+            <Button
+                android:id="@+id/continue_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen50dp"
+                android:layout_marginStart="@dimen/dimen22dp"
+                android:layout_marginEnd="@dimen/dimen22dp"
+                android:layout_marginTop="@dimen/dimen45dp"
+                android:background="@drawable/btn_signin_ripple_effect"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:padding="@dimen/seven_dp"
+                android:text="Continue"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                tools:ignore="ButtonStyle" />
         </LinearLayout>
 
+
+
     </RelativeLayout>
+
+
 </layout>
