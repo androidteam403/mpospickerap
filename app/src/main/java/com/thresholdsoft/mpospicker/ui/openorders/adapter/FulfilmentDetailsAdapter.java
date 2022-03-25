@@ -54,18 +54,13 @@ public class FulfilmentDetailsAdapter extends RecyclerView.Adapter<FulfilmentDet
 
                 if(dataResponse.getItemStatus().equals("FULL VERIFIED")){
                     holder.pickupSummaryDetailsProductsBinding.statusUpdateIcon.setVisibility(View.GONE);
-                    holder.pickupSummaryDetailsProductsBinding.statusUpdateIconNotavialbale.setVisibility(View.GONE);
-                    holder.pickupSummaryDetailsProductsBinding.statusUpdateIconFullverified.setVisibility(View.VISIBLE);
-                }
+//                    holder.pickupSummaryDetailsProductsBinding.statusUpdateIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.));
+                     }
                 else if(dataResponse.getItemStatus().equals("PARTIAL VERIFIED")){
                     holder.pickupSummaryDetailsProductsBinding.statusUpdateIcon.setVisibility(View.GONE);
-                    holder.pickupSummaryDetailsProductsBinding.statusUpdateIconFullverified.setVisibility(View.GONE);
-                    holder.pickupSummaryDetailsProductsBinding.statusUpdateIconNotavialbale.setVisibility(View.VISIBLE);
                 }
                 else if(dataResponse.getItemStatus().equals("NOT AVAILABLE")){
                     holder.pickupSummaryDetailsProductsBinding.statusUpdateIcon.setVisibility(View.VISIBLE);
-                    holder.pickupSummaryDetailsProductsBinding.statusUpdateIconFullverified.setVisibility(View.GONE);
-                    holder.pickupSummaryDetailsProductsBinding.statusUpdateIconNotavialbale.setVisibility(View.GONE);
 
 
 

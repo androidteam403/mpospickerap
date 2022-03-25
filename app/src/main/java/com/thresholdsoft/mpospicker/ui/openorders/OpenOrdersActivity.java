@@ -15,11 +15,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -53,7 +48,7 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
     public List<RackAdapter.RackBoxModel.ProductData> productDataList;
 
     private boolean isContinueEnable;
-    private AppBarConfiguration mAppBarConfiguration;
+//    private AppBarConfiguration mAppBarConfiguration;
 
 
 
