@@ -19,10 +19,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.billerflow.billerOrdersScreen.BillerOrdersActivity"></activity>
-        <activity android:name=".ui.navigationActivity3.NavigationActivity3" />
-        <activity android:name=".ui.navigationActivity.NavigationActivity" />
-        <activity android:name=".ui.NavigationActivity" />
+        <activity android:name=".ui.billerflow.billerOrdersScreen.BillerOrdersActivity" />
+        <activity android:name=".ui.pickerhome.PickerNavigationActivity" />
         <activity
             android:name=".ui.pickupsummarydetails.PickupSummaryDetailsActivity"
             android:screenOrientation="portrait" />

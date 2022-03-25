@@ -447,8 +447,8 @@
                             android:layout_height="wrap_content"
                             android:nestedScrollingEnabled="false"
                             android:paddingStart="@dimen/five_dp"
-                            android:paddingEnd="@dimen/five_dp"
-                            android:paddingTop="@dimen/five_dp"/>
+                            android:paddingTop="@dimen/five_dp"
+                            android:paddingEnd="@dimen/five_dp" />
                     </LinearLayout>
 
                     <TextView
@@ -466,10 +466,10 @@
                         android:layout_marginStart="@dimen/five_dp"
                         android:layout_marginEnd="@dimen/five_dp"
                         android:layout_marginBottom="@dimen/fifty_dp"
-                        android:padding="@dimen/five_dp"
                         android:background="@drawable/dashboard_edit_bg"
                         android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:padding="@dimen/five_dp">
 
                         <ImageView
                             android:layout_width="@dimen/fifteen_dp"
@@ -478,13 +478,20 @@
                             android:rotation="270"
                             android:src="@drawable/partialcirculargreeenorange" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <Spinner
+                            android:id="@+id/status_spinner"
+                            style="@style/Widget.AppCompat.DropDownItem.Spinner"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/five_dp"
-                            android:fontFamily="@font/roboto_medium"
-                            android:text="Partially Filled"
-                            android:textColor="@color/black" />
+                            android:fontFamily="@font/roboto_regular"
+                            android:spinnerMode="dropdown" />
+                        <!--                        <TextView-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_marginStart="@dimen/five_dp"-->
+                        <!--                            android:fontFamily="@font/roboto_medium"-->
+                        <!--                            android:text="Partially Filled"-->
+                        <!--                            android:textColor="@color/black" />-->
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -507,12 +514,12 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/forty_five_dp"
             android:layout_alignParentBottom="true"
+            android:background="@color/light_grey"
             android:fontFamily="@font/roboto_bold"
             android:gravity="center"
+            android:text="go to next order"
             android:textAllCaps="true"
-            android:background="@color/light_grey"
-            android:textColor="@color/text_color_grey"
-            android:text="go to next order" />
+            android:textColor="@color/text_color_grey" />
     </RelativeLayout>
 
     <data>

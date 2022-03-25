@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.thresholdsoft.mpospicker.R;
@@ -15,7 +14,6 @@ import com.thresholdsoft.mpospicker.databinding.AdapterOrderBinding;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessMvpView;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> {
@@ -48,6 +46,15 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         holder.orderBinding.fullfillmentID.setText(fullFillModel.getFullfillmentId());
         holder.orderBinding.totalItems.setText(String.valueOf(fullfillmentList.get(0).getProducts().size()));
         holder.orderBinding.boxId.setText(fullFillModel.getBoxId());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (pickupProcessMvpView != null)
+                    pickupProcessMvpView.onClickRightArrow(fullFillModel);
+            }
+        });
+
 //        switch (fullFillModel.getExpandStatus()) {
 //            case 0:
 //                holder.orderBinding.orderChildLayout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_bg));
@@ -140,7 +147,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
 //                holder.orderBinding.rackChild2Layout.setBackground(null);
 //                break;
 //            default:
-        }
+    }
 
 //        List<RackAdapter.RackBoxModel.ProductData> productDataList = new ArrayList<>();
 //

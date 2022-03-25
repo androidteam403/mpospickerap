@@ -29,6 +29,9 @@ import com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersPresenter;
 import com.thresholdsoft.mpospicker.ui.orderdetails.OrderDetailsMvpPresenter;
 import com.thresholdsoft.mpospicker.ui.orderdetails.OrderDetailsMvpView;
 import com.thresholdsoft.mpospicker.ui.orderdetails.OrderDetailsPresenter;
+import com.thresholdsoft.mpospicker.ui.pickerhome.PickerNavigationMvpPresenter;
+import com.thresholdsoft.mpospicker.ui.pickerhome.PickerNavigationMvpView;
+import com.thresholdsoft.mpospicker.ui.pickerhome.PickerNavigationPresenter;
 import com.thresholdsoft.mpospicker.ui.pickerhome.ui.dashboard.DashboardMvpPresenter;
 import com.thresholdsoft.mpospicker.ui.pickerhome.ui.dashboard.DashboardMvpView;
 import com.thresholdsoft.mpospicker.ui.pickerhome.ui.dashboard.DashboardPresenter;
@@ -174,6 +177,12 @@ public class ActivityModule {
     @Provides
     @PerActivity
     BatchListMvpPresenter<BatchListMvpView> provideBatchListPresenter(BatchListPresenter<BatchListMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    @PerActivity
+    PickerNavigationMvpPresenter<PickerNavigationMvpView> providePickerNavigationPresenter(PickerNavigationPresenter<PickerNavigationMvpView> presenter) {
         return presenter;
     }
 }

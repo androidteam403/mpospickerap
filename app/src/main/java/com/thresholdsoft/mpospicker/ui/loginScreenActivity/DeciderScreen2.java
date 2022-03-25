@@ -9,7 +9,7 @@ import android.view.View;
 
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.ActivityDeciderScreen2Binding;
-import com.thresholdsoft.mpospicker.ui.navigationActivity3.NavigationActivity3;
+import com.thresholdsoft.mpospicker.ui.pickerhome.PickerNavigationActivity;
 
 public class DeciderScreen2 extends AppCompatActivity {
     ActivityDeciderScreen2Binding activityDeciderScreen2Binding;
@@ -85,7 +85,7 @@ public class DeciderScreen2 extends AppCompatActivity {
         activityDeciderScreen2Binding.continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(DeciderScreen2.this, NavigationActivity3.class);
+                Intent i = new Intent(DeciderScreen2.this, PickerNavigationActivity.class);
                 startActivity(i);
             }
         });

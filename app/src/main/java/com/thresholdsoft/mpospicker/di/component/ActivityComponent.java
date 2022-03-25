@@ -4,7 +4,6 @@ package com.thresholdsoft.mpospicker.di.component;
 import com.thresholdsoft.mpospicker.di.PerActivity;
 import com.thresholdsoft.mpospicker.di.module.ActivityModule;
 import com.thresholdsoft.mpospicker.ui.batchlist.BatchListActivity;
-import com.thresholdsoft.mpospicker.ui.dashboard.DashboardActivity;
 import com.thresholdsoft.mpospicker.ui.login.LoginActivity;
 import com.thresholdsoft.mpospicker.ui.main.MainActivity;
 import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickeduporders.PickedUpOrdersActivity;
@@ -23,7 +22,7 @@ import dagger.Component;
 
 /**
  * Created on : Nov 02, 2021
- * Author     : NAVEEN
+ * Author     : NAVEEN.
  */
 @PerActivity
 @Component(dependencies = ApplicationComponent.class, modules = ActivityModule.class)

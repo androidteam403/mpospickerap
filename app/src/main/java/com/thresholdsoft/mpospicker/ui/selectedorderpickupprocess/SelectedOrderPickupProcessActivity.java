@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -19,6 +20,7 @@ import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
 import com.thresholdsoft.mpospicker.ui.batchlist.BatchListActivity;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 import com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.adapter.SelectedPickupProcessProductsAdapter;
+import com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.adapter.StatusSpinnerAdapter;
 
 import javax.inject.Inject;
 
@@ -28,6 +30,7 @@ public class SelectedOrderPickupProcessActivity extends BaseActivity implements 
     SelectedOrderPickupProcessMvpPresenter<SelectedOrderPickupProcessMvpView> mPresenter;
     private ActivitySelectedOrderPickupProcessBinding selectedOrderPickupProcessBinding;
     private DialogUpdateStatusBinding dialogUpdateStatusBinding;
+    String[] statusSpinnerList = {"Partially Packed", "Fully Packed", "Not Available", "Cancelled"};
 
     public static Intent getStartIntent(Context mContext, RacksDataResponse.FullfillmentDetail fullfillmentDetail) {
         Intent intent = new Intent(mContext, SelectedOrderPickupProcessActivity.class);
@@ -48,6 +51,25 @@ public class SelectedOrderPickupProcessActivity extends BaseActivity implements 
     protected void setUp() {
         selectedOrderPickupProcessBinding.setCallback(mPresenter);
         mPresenter.onRackApiCall();
+        statusSpinner();
+    }
+
+    private String statusSpinnerSelected;
+
+    private void statusSpinner() {
+        StatusSpinnerAdapter customAdapter = new StatusSpinnerAdapter(this, statusSpinnerList, null);
+        selectedOrderPickupProcessBinding.statusSpinner.setAdapter(customAdapter);
+        selectedOrderPickupProcessBinding.statusSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                SelectedOrderPickupProcessActivity.this.statusSpinnerSelected = statusSpinnerList[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     @Override

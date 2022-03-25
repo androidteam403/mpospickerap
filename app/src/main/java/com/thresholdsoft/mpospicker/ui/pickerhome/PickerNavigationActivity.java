@@ -27,7 +27,7 @@ public class PickerNavigationActivity extends BaseActivity implements PickerNavi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityNavigation3Binding = DataBindingUtil.setContentView(this, R.layout.activity_navigation3);
-        getActivityComponent().inject(PickerNavigationActivity.this);
+        getActivityComponent().inject(this);
         mPresenter.onAttach(PickerNavigationActivity.this);
         setUp();
 

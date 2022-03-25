@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_dashboard"
-        android:name="com.thresholdsoft.mpospicker.ui.dashboard.DashboardFragment"
+        android:name="com.thresholdsoft.mpospicker.ui.pickerhome.ui.dashboard.DashboardFragment"
         android:label="Dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
