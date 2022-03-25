@@ -163,7 +163,7 @@ public class DashboardActivity extends BaseActivity implements DashboardMvpView,
     }
 
     private int[] getColors() {
-        int[] colors = {Color.rgb(0, 194, 195), Color.parseColor("#ffc12f"), Color.rgb(255, 1, 1)};
+        int[] colors = {Color.rgb(0, 194, 195), Color.parseColor("#fdb813"), Color.rgb(255, 1, 1)};
         System.arraycopy(colors, 0, colors, 0, 2);
         return colors;
     }

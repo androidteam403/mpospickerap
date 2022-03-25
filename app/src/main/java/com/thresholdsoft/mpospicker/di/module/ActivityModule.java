@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.thresholdsoft.mpospicker.di.ActivityContext;
 import com.thresholdsoft.mpospicker.di.PerActivity;
+import com.thresholdsoft.mpospicker.ui.batchlist.BatchListMvpPresenter;
+import com.thresholdsoft.mpospicker.ui.batchlist.BatchListMvpView;
+import com.thresholdsoft.mpospicker.ui.batchlist.BatchListPresenter;
 import com.thresholdsoft.mpospicker.ui.dashboard.DashboardMvpPresenter;
 import com.thresholdsoft.mpospicker.ui.dashboard.DashboardMvpView;
 import com.thresholdsoft.mpospicker.ui.dashboard.DashboardPresenter;
@@ -164,6 +167,12 @@ public class ActivityModule {
     @Provides
     @PerActivity
     PickUpSummaryDetailsMvpPresenter<PickUpSummaryDetailsMvpView> providePickUpSummaryDetailsPresenter(PickUpSummaryDetailsPresenter<PickUpSummaryDetailsMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    @PerActivity
+    BatchListMvpPresenter<BatchListMvpView> provideBatchListPresenter(BatchListPresenter<BatchListMvpView> presenter) {
         return presenter;
     }
 }

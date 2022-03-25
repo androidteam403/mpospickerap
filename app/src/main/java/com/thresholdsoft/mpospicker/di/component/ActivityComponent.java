@@ -3,6 +3,7 @@ package com.thresholdsoft.mpospicker.di.component;
 
 import com.thresholdsoft.mpospicker.di.PerActivity;
 import com.thresholdsoft.mpospicker.di.module.ActivityModule;
+import com.thresholdsoft.mpospicker.ui.batchlist.BatchListActivity;
 import com.thresholdsoft.mpospicker.ui.dashboard.DashboardActivity;
 import com.thresholdsoft.mpospicker.ui.login.LoginActivity;
 import com.thresholdsoft.mpospicker.ui.main.MainActivity;
@@ -50,4 +51,6 @@ public interface ActivityComponent {
     void inject(OrderDetailsActivity orderDetailsActivity);
 
     void inject(PickupSummaryDetailsActivity pickupSummaryDetailsActivity);
+
+    void inject(BatchListActivity batchListActivity);
 }

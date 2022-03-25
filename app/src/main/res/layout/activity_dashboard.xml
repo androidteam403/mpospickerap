@@ -337,7 +337,7 @@
                         android:layout_width="@dimen/ten_dp"
                         android:layout_height="@dimen/dimen10dp"
                         android:layout_marginStart="@dimen/dimen10dp"
-                        android:background="@color/partial_color" />
+                        android:background="@color/yellow" />
 
                     <TextView
                         android:layout_width="wrap_content"

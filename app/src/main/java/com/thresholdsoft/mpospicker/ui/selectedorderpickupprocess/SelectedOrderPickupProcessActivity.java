@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -15,15 +16,18 @@ import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.ActivitySelectedOrderPickupProcessBinding;
 import com.thresholdsoft.mpospicker.databinding.DialogUpdateStatusBinding;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
+import com.thresholdsoft.mpospicker.ui.batchlist.BatchListActivity;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 import com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.adapter.SelectedPickupProcessProductsAdapter;
 
 import javax.inject.Inject;
 
 public class SelectedOrderPickupProcessActivity extends BaseActivity implements SelectedOrderPickupProcessMvpView {
-    private ActivitySelectedOrderPickupProcessBinding selectedOrderPickupProcessBinding;
+
     @Inject
     SelectedOrderPickupProcessMvpPresenter<SelectedOrderPickupProcessMvpView> mPresenter;
+    private ActivitySelectedOrderPickupProcessBinding selectedOrderPickupProcessBinding;
+    private DialogUpdateStatusBinding dialogUpdateStatusBinding;
 
     public static Intent getStartIntent(Context mContext, RacksDataResponse.FullfillmentDetail fullfillmentDetail) {
         Intent intent = new Intent(mContext, SelectedOrderPickupProcessActivity.class);
@@ -69,10 +73,54 @@ public class SelectedOrderPickupProcessActivity extends BaseActivity implements 
     @Override
     public void onClickStausIcon() {
         Dialog statusUpdateDialog = new Dialog(this, R.style.fadeinandoutcustomDialog);
-        DialogUpdateStatusBinding dialogUpdateStatusBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.dialog_update_status, null, false);
+        dialogUpdateStatusBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.dialog_update_status, null, false);
+        dialogUpdateStatusBinding.setCallback(mPresenter);
         statusUpdateDialog.setContentView(dialogUpdateStatusBinding.getRoot());
         statusUpdateDialog.setCancelable(false);
         dialogUpdateStatusBinding.dismissDialog.setOnClickListener(view -> statusUpdateDialog.dismiss());
         statusUpdateDialog.show();
+    }
+
+    @Override
+    public void onClickFullPicked() {
+        checkAllFalse();
+        dialogUpdateStatusBinding.fullPickedRadio.setChecked(true);
+        dialogUpdateStatusBinding.fullDetails.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onClickPartialPicked() {
+        checkAllFalse();
+        dialogUpdateStatusBinding.partiallyPickedRadio.setChecked(true);
+        dialogUpdateStatusBinding.partialDetails.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onClickNotAvailable() {
+        checkAllFalse();
+        dialogUpdateStatusBinding.notAvailableRadio.setChecked(true);
+    }
+
+    @Override
+    public void onClickSkip() {
+        checkAllFalse();
+        dialogUpdateStatusBinding.skipRadioBtn.setChecked(true);
+    }
+
+    @Override
+    public void onClickBatchDetails() {
+        startActivity(BatchListActivity.getStartIntent(this));
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+    }
+
+    private void checkAllFalse() {
+        dialogUpdateStatusBinding.fullPickedRadio.setChecked(false);
+        dialogUpdateStatusBinding.partiallyPickedRadio.setChecked(false);
+        dialogUpdateStatusBinding.notAvailableRadio.setChecked(false);
+        dialogUpdateStatusBinding.skipRadioBtn.setChecked(false);
+
+        dialogUpdateStatusBinding.fullDetails.setVisibility(View.GONE);
+        dialogUpdateStatusBinding.partialDetails.setVisibility(View.GONE);
+
     }
 }

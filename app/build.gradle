@@ -80,4 +80,7 @@ dependencies {
     // BarChart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.1'
     implementation 'com.github.hadiidbouk:ChartProgressBar-Android:2.0.6'
+
+    //Dropdown Spinner
+    implementation 'com.github.tiper:MaterialSpinner:1.4.1'
 }

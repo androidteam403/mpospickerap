@@ -210,7 +210,7 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
                 }
                 if (statusCount == overallProductCount) {
                     pickupProcessBinding.continueBtn.setBackgroundColor(getResources().getColor(R.color.continue_select_color));
-                    pickupProcessBinding.continueBtn.setTextColor(getResources().getColor(R.color.black));
+//                    pickupProcessBinding.continueBtn.setTextColor(getResources().getColor(R.color.black));
                 }
             }
         }

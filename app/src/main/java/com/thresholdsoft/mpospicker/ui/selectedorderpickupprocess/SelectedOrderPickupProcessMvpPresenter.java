@@ -8,4 +8,14 @@ public interface SelectedOrderPickupProcessMvpPresenter<V extends SelectedOrderP
     void onRackApiCall();
 
     void onClickStausIcon();
+
+    void onClickFullPicked();
+
+    void onClickPartialPicked();
+
+    void onClickNotAvailable();
+
+    void onClickSkip();
+
+    void onClickBatchDetails();
 }

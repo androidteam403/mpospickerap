@@ -70,6 +70,9 @@
         <activity
             android:name=".ui.selectedorderpickupprocess.SelectedOrderPickupProcessActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.batchlist.BatchListActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

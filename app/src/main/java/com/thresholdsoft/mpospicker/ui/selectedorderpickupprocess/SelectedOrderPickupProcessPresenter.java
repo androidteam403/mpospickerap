@@ -62,4 +62,29 @@ public class SelectedOrderPickupProcessPresenter<V extends SelectedOrderPickupPr
     public void onClickStausIcon() {
         getMvpView().onClickStausIcon();
     }
+
+    @Override
+    public void onClickFullPicked() {
+        getMvpView().onClickFullPicked();
+    }
+
+    @Override
+    public void onClickPartialPicked() {
+        getMvpView().onClickPartialPicked();
+    }
+
+    @Override
+    public void onClickNotAvailable() {
+        getMvpView().onClickNotAvailable();
+    }
+
+    @Override
+    public void onClickSkip() {
+        getMvpView().onClickSkip();
+    }
+
+    @Override
+    public void onClickBatchDetails() {
+        getMvpView().onClickBatchDetails();
+    }
 }
