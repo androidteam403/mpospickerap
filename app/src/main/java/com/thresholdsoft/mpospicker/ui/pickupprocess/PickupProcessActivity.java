@@ -2,10 +2,12 @@ package com.thresholdsoft.mpospicker.ui.pickupprocess;
 
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -23,12 +25,17 @@ import com.bumptech.glide.Glide;
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.ActivityPickupProcessBinding;
 import com.thresholdsoft.mpospicker.databinding.AdapterOrderBinding;
+import com.thresholdsoft.mpospicker.databinding.DialogUpdateStatusBinding;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
+import com.thresholdsoft.mpospicker.ui.batchlist.BatchListActivity;
+import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.FullfillmentProductListAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.OrderAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.RackAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 import com.thresholdsoft.mpospicker.ui.pickupsummary.PickUpSummmaryActivityNew;
 import com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.SelectedOrderPickupProcessActivity;
+import com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.SelectedOrderPickupProcessMvpPresenter;
+import com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.SelectedOrderPickupProcessMvpView;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -46,6 +53,8 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
     private OrderAdapter orderAdapter;
     private RackAdapter rackAdapter;
     public AdapterOrderBinding orderBinding;
+    private DialogUpdateStatusBinding dialogUpdateStatusBinding;
+
 
     public String[] items;
     private List<List<RackAdapter.RackBoxModel.ProductData>> rackListOfList = new ArrayList<>();

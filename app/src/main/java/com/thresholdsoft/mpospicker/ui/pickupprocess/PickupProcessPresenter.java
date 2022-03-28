@@ -15,8 +15,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class PickupProcessPresenter<V extends PickupProcessMvpView> extends BasePresenter<V>
-        implements PickupProcessMvpPresenter<V> {
+public class PickupProcessPresenter<V extends PickupProcessMvpView> extends BasePresenter<V>implements PickupProcessMvpPresenter<V> {
     @Inject
     public PickupProcessPresenter(DataManager manager, SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable) {
         super(manager, schedulerProvider, compositeDisposable);
@@ -62,4 +61,37 @@ public class PickupProcessPresenter<V extends PickupProcessMvpView> extends Base
             getMvpView().onError("Internet Connection Not Available");
         }
     }
+
+    @Override
+    public void onClickStausIcon() {
+        getMvpView().onClickStausIcon();
+    }
+
+    @Override
+    public void onClickFullPicked() {
+        getMvpView().onClickFullPicked();
+    }
+
+    @Override
+    public void onClickPartialPicked() {
+        getMvpView().onClickPartialPicked();
+    }
+
+    @Override
+    public void onClickNotAvailable() {
+        getMvpView().onClickNotAvailable();
+    }
+
+    @Override
+    public void onClickSkip() {
+        getMvpView().onClickSkip();
+    }
+
+
+
+    @Override
+    public void onClickBatchDetails() {
+        getMvpView().onClickBatchDetails();
+    }
 }
+

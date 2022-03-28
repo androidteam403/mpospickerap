@@ -608,6 +608,7 @@ public class RackAdapter extends RecyclerView.Adapter<RackAdapter.ViewHolder> {
             private String requiredQuantity;
             private String capturedQuantity;
             private String batchId;
+            private String itemStatus;
             private String status;
 
             private boolean productStatusFillingUpdate;
@@ -615,6 +616,14 @@ public class RackAdapter extends RecyclerView.Adapter<RackAdapter.ViewHolder> {
             private boolean finalStatusUpdate;
 
             private String packerStatus;
+
+            public String getItemStatus() {
+                return itemStatus;
+            }
+
+            public void setItemStatus(String itemStatus) {
+                this.itemStatus = itemStatus;
+            }
 
             public String getPackerStatus() {
                 return packerStatus;

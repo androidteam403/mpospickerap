@@ -14,6 +14,21 @@ public interface PickupProcessMvpView extends MvpView {
     void onClickBack();
 
     void onClickContinue();
+
+
+
+    void onClickFullPicked();
+    void onClickStausIcon();
+
+    void onClickBatchDetails();
+
+    void onClickPartialPicked();
+
+    void onClickNotAvailable();
+
+    void onClickSkip();
+
+
     void onClickDropDown(Spinner spinner);
 
     void onSuccessRackApi(RacksDataResponse racksDataResponse);
