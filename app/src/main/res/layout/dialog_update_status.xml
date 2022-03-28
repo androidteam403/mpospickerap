@@ -585,10 +585,12 @@
             android:textSize="@dimen/dimen18sp" />
     </LinearLayout>
 
+
     <data>
 
         <variable
             name="callback"
-            type="com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.SelectedOrderPickupProcessMvpPresenter" />
+            type="com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.NewSelectedOrderAdapterCallback" />
     </data>
+
 </layout>

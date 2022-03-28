@@ -2,11 +2,13 @@ package com.thresholdsoft.mpospicker.ui.pickupprocess;
 
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -26,13 +28,17 @@ import com.google.gson.Gson;
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.ActivityPickupProcessBinding;
 import com.thresholdsoft.mpospicker.databinding.AdapterOrderBinding;
+import com.thresholdsoft.mpospicker.databinding.DialogUpdateStatusBinding;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
+import com.thresholdsoft.mpospicker.ui.batchlist.BatchListActivity;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.FullfillmentProductListAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.OrderAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.RackAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 import com.thresholdsoft.mpospicker.ui.pickupsummary.PickUpSummmaryActivityNew;
 import com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.SelectedOrderPickupProcessActivity;
+import com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.SelectedOrderPickupProcessMvpPresenter;
+import com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.SelectedOrderPickupProcessMvpView;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -51,7 +57,9 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
     private ActivityPickupProcessBinding pickupProcessBinding;
     private OrderAdapter orderAdapter;
     private RackAdapter rackAdapter;
-   public AdapterOrderBinding orderBinding;
+    private DialogUpdateStatusBinding dialogUpdateStatusBinding;
+
+    public AdapterOrderBinding orderBinding;
 
     public String[] items;
     private List<List<RackAdapter.RackBoxModel.ProductData>> rackListOfList = new ArrayList<>();
@@ -337,6 +345,77 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
 
     }
 
+//    @Override
+//    public void onClickStatusUpdate(int fullFillmentPos, int pos) {
+//
+//
+//        Dialog statusUpdateDialog = new Dialog(this, R.style.fadeinandoutcustomDialog);
+//        DialogUpdateStatusBinding dialogUpdateStatusBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.dialog_update_status, null, false);
+//        statusUpdateDialog.setContentView(dialogUpdateStatusBinding.getRoot());
+//        statusUpdateDialog.setCancelable(false);
+//        dialogUpdateStatusBinding.dismissDialog.setOnClickListener(view -> statusUpdateDialog.dismiss());
+//
+////dialogUpdateStatusBinding.update.setOnClickListener(new View.OnClickListener() {
+////    @Override
+////    public void onClick(View view) {
+////
+////        racksDataResponse.get(fullFillmentPos).getProducts().get(pos).getItemStatus();
+////    }
+////});
+//
+//        statusUpdateDialog.show();
+//
+//    }
+
+    @Override
+    public void onClickStausIcon() {
+//        Dialog statusUpdateDialog = new Dialog(this, R.style.fadeinandoutcustomDialog);
+//        dialogUpdateStatusBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.dialog_update_status, null, false);
+//        dialogUpdateStatusBinding.setCallback(mPresenter);
+//        statusUpdateDialog.setContentView(dialogUpdateStatusBinding.getRoot());
+//        statusUpdateDialog.setCancelable(false);
+//        dialogUpdateStatusBinding.dismissDialog.setOnClickListener(view -> statusUpdateDialog.dismiss());
+//        statusUpdateDialog.show();
+
+    }
+
+    @Override
+    public void onClickBatchDetails() {
+        startActivity(BatchListActivity.getStartIntent(this));
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+
+    }
+
+    @Override
+    public void onClickFullPicked() {
+        checkAllFalse();
+        dialogUpdateStatusBinding.fullPickedRadio.setChecked(true);
+        dialogUpdateStatusBinding.fullDetails.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onClickPartialPicked() {
+        checkAllFalse();
+        dialogUpdateStatusBinding.partiallyPickedRadio.setChecked(true);
+        dialogUpdateStatusBinding.partialDetails.setVisibility(View.VISIBLE);
+
+    }
+
+    @Override
+    public void onClickNotAvailable() {
+        checkAllFalse();
+        dialogUpdateStatusBinding.notAvailableRadio.setChecked(true);
+
+
+    }
+
+    @Override
+    public void onClickSkip() {
+        checkAllFalse();
+        dialogUpdateStatusBinding.skipRadioBtn.setChecked(true);
+
+    }
+
     @Override
     public void onClickDropDown(Spinner spinner) {
         String[] items = new String[]{"Partially Filled", "Fully Filled", "Not Available"};
@@ -411,5 +490,15 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+    }
+    private void checkAllFalse() {
+        dialogUpdateStatusBinding.fullPickedRadio.setChecked(false);
+        dialogUpdateStatusBinding.partiallyPickedRadio.setChecked(false);
+        dialogUpdateStatusBinding.notAvailableRadio.setChecked(false);
+        dialogUpdateStatusBinding.skipRadioBtn.setChecked(false);
+
+        dialogUpdateStatusBinding.fullDetails.setVisibility(View.GONE);
+        dialogUpdateStatusBinding.partialDetails.setVisibility(View.GONE);
+
     }
 }

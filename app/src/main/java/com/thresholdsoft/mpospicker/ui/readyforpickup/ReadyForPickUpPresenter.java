@@ -8,7 +8,10 @@ import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
 
-public class ReadyForPickUpPresenter<V extends ReadyForPickUpMvpView> extends BasePresenter<V>
+public class
+
+
+ReadyForPickUpPresenter<V extends ReadyForPickUpMvpView> extends BasePresenter<V>
         implements ReadyForPickUpMvpPresenter<V> {
 
     @Inject

@@ -96,7 +96,7 @@ public class SelectedOrderPickupProcessActivity extends BaseActivity implements 
     public void onClickStausIcon() {
         Dialog statusUpdateDialog = new Dialog(this, R.style.fadeinandoutcustomDialog);
         dialogUpdateStatusBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.dialog_update_status, null, false);
-        dialogUpdateStatusBinding.setCallback(mPresenter);
+        dialogUpdateStatusBinding.setCallback(null);
         statusUpdateDialog.setContentView(dialogUpdateStatusBinding.getRoot());
         statusUpdateDialog.setCancelable(false);
         dialogUpdateStatusBinding.dismissDialog.setOnClickListener(view -> statusUpdateDialog.dismiss());
