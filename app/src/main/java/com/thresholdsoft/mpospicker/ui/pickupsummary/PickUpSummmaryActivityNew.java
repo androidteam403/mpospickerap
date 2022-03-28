@@ -17,7 +17,6 @@ import com.thresholdsoft.mpospicker.databinding.ActivityPickUpSummaryBinding;
 import com.thresholdsoft.mpospicker.databinding.DialogFarwardtoPackerAlertBinding;
 import com.thresholdsoft.mpospicker.databinding.DialogFarwardtoPackerBinding;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
-import com.thresholdsoft.mpospicker.ui.loginScreenActivity.DeciderScreen2;
 import com.thresholdsoft.mpospicker.ui.pickerhome.PickerNavigationActivity;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.OrderAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.RackAdapter;

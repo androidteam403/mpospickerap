@@ -21,4 +21,8 @@ public interface SelectedOrderPickupProcessMvpView extends MvpView {
     void onClickSkip();
 
     void onClickBatchDetails();
+
+    void statusSpinnerCallback(int status);
+
+    void onClickItemStatusDropdown();
 }

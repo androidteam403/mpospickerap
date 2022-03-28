@@ -5,24 +5,23 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.AdapterOrderBinding;
+import com.thresholdsoft.mpospicker.databinding.DialogItemStatusDropdownBinding;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessMvpView;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> {
+public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> implements StatusListAdapter.StatusListAdapterCallback {
     private Context context;
     private List<RacksDataResponse.FullfillmentDetail> fullfillmentList;
     private FullfillmentProductListAdapter productListAdapter;
@@ -53,29 +52,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         holder.orderBinding.fullfillmentID.setText(fullFillModel.getFullfillmentId());
         holder.orderBinding.totalItems.setText(String.valueOf(fullfillmentList.get(0).getProducts().size()));
 
-        pickupProcessMvpView.onClickDropDown(holder.orderBinding.spinner);
-        if (holder.orderBinding.spinner.equals("Partially Filled")){
-            holder.orderBinding.prioritys.setVisibility(View.VISIBLE);
-            holder.orderBinding.partiallyFilled.setVisibility(View.VISIBLE);
-            holder.orderBinding.fullPrority.setVisibility(View.GONE);
-            holder.orderBinding.notAvailable.setVisibility(View.GONE);
-        }else  if (holder.orderBinding.spinner.equals("Fully Filled")){
-            holder.orderBinding.prioritys.setVisibility(View.VISIBLE);
-            holder.orderBinding.fullPrority.setVisibility(View.VISIBLE);
-            holder.orderBinding.notAvailable.setVisibility(View.GONE);
-            holder.orderBinding.partiallyFilled.setVisibility(View.GONE);
-
-        }else if (holder.orderBinding.spinner.equals("Not Available")){
-            holder.orderBinding.prioritys.setVisibility(View.VISIBLE);
-            holder.orderBinding.fullPrority.setVisibility(View.GONE);
-            holder.orderBinding.notAvailable.setVisibility(View.VISIBLE);
-            holder.orderBinding.partiallyFilled.setVisibility(View.GONE);
-
-        }
-
-
-
-
 
         holder.orderBinding.boxId.setText(fullFillModel.getBoxId());
         switch (fullFillModel.getExpandStatus()) {
@@ -86,6 +62,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 holder.orderBinding.statusLayout.setVisibility(View.GONE);
                 holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
                 holder.orderBinding.rackChild2Layout.setBackground(null);
+                holder.orderBinding.rightArrow.setRotation(90);
                 break;
             case 1:
                 holder.orderBinding.orderChildLayout.setBackground(context.getResources().getDrawable(R.drawable.square_stroke_yellow_bg));
@@ -94,6 +71,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.in_progress));
 //                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
                 holder.orderBinding.rackChild2Layout.setVisibility(View.VISIBLE);
+                holder.orderBinding.rightArrow.setRotation(0);
                 holder.orderBinding.rackChild2Layout.setBackground(context.getResources().getDrawable(R.drawable.yellow_stroke_bg));
                 break;
             case 2:
@@ -103,6 +81,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.in_progress));
 //                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
                 holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
+                holder.orderBinding.rightArrow.setRotation(90);
                 holder.orderBinding.rackChild2Layout.setBackground(context.getResources().getDrawable(R.drawable.yellow_stroke_bg));
                 break;
             case 3:
@@ -112,6 +91,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_partial));
 //                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
                 holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
+                holder.orderBinding.rightArrow.setRotation(90);
                 holder.orderBinding.rackChild2Layout.setBackground(null);
                 break;
 
@@ -122,6 +102,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_partial));
 //                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
                 holder.orderBinding.rackChild2Layout.setVisibility(View.VISIBLE);
+                holder.orderBinding.rightArrow.setRotation(0);
                 holder.orderBinding.rackChild2Layout.setBackground(null);
                 break;
             case 5:
@@ -131,6 +112,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_not_available));
 //                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
                 holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
+                holder.orderBinding.rightArrow.setRotation(90);
                 holder.orderBinding.rackChild2Layout.setBackground(null);
                 break;
             case 6:
@@ -140,6 +122,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_not_available));
 //                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
                 holder.orderBinding.rackChild2Layout.setVisibility(View.VISIBLE);
+                holder.orderBinding.rightArrow.setRotation(0);
                 holder.orderBinding.rackChild2Layout.setBackground(null);
                 break;
             case 7:
@@ -149,6 +132,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_circle_tick));
 //                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
                 holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
+                holder.orderBinding.rightArrow.setRotation(90);
                 holder.orderBinding.rackChild2Layout.setBackground(null);
                 break;
             case 8:
@@ -158,6 +142,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_circle_tick));
 //                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
                 holder.orderBinding.rackChild2Layout.setVisibility(View.VISIBLE);
+                holder.orderBinding.rightArrow.setRotation(0);
                 holder.orderBinding.rackChild2Layout.setBackground(null);
                 break;
             case 9:
@@ -167,6 +152,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 holder.orderBinding.statusIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_circle_tick));
 //                holder.orderBinding.statusLayout.setVisibility(View.VISIBLE);
                 holder.orderBinding.rackChild2Layout.setVisibility(View.GONE);
+                holder.orderBinding.rightArrow.setRotation(90);
                 holder.orderBinding.rackChild2Layout.setBackground(null);
                 break;
             default:
@@ -219,7 +205,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         if (!firstAccessCheck)
             firstTimeMultipleStatusCheck(productDataList, position, holder.orderBinding);
 
-        NewSelectedOrderAdapter productListAdapter=new NewSelectedOrderAdapter(context, productDataList, pickupProcessMvpView, false, listOfList, fullFillModel.getFullfillmentId());
+        NewSelectedOrderAdapter productListAdapter = new NewSelectedOrderAdapter(context, productDataList, pickupProcessMvpView, false, listOfList, fullFillModel.getFullfillmentId());
         new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, true);
         holder.orderBinding.productListRecycler.setLayoutManager(new LinearLayoutManager(context));
         holder.orderBinding.productListRecycler.setAdapter(productListAdapter);
@@ -236,13 +222,13 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
 
             if (fullfillmentList.get(position).getExpandStatus() == 0) {
                 fullfillmentList.get(position).setExpandStatus(1);
-                holder.orderBinding.prioritys.setVisibility(View.VISIBLE);
+                holder.orderBinding.itemStatusDropdown.setVisibility(View.VISIBLE);
                 holder.orderBinding.presentStatus.setVisibility(View.VISIBLE);
 
                 notifyDataSetChanged();
             } else if (fullfillmentList.get(position).getExpandStatus() == 1) {
                 fullfillmentList.get(position).setExpandStatus(0);
-                holder.orderBinding.prioritys.setVisibility(View.GONE);
+                holder.orderBinding.itemStatusDropdown.setVisibility(View.GONE);
                 holder.orderBinding.presentStatus.setVisibility(View.GONE
 
 
@@ -304,7 +290,24 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
 //            }
         });
 
+        holder.orderBinding.itemStatusDropdown.setOnClickListener(view -> {
+            BottomSheetDialog itemStatusDropdownDialog = new BottomSheetDialog(context);
+            DialogItemStatusDropdownBinding itemStatusDropdownBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_item_status_dropdown, null, false);
+            itemStatusDropdownDialog.setContentView(itemStatusDropdownBinding.getRoot());
 
+            List<String> statusList = new ArrayList<>();
+            statusList.add("Partially Filled");
+            statusList.add("Fully Filled");
+            statusList.add("Not Available");
+            statusList.add("Skipped");
+
+            StatusListAdapter statusListAdapter = new StatusListAdapter(context, statusList, this, holder.orderBinding, itemStatusDropdownDialog);
+            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context);
+            itemStatusDropdownBinding.statusListRecycler.setLayoutManager(mLayoutManager);
+            itemStatusDropdownBinding.statusListRecycler.setAdapter(statusListAdapter);
+
+            itemStatusDropdownDialog.show();
+        });
         holder.orderBinding.gotoNextRack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -661,6 +664,34 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     @Override
     public int getItemCount() {
         return fullfillmentList.size();
+    }
+
+    @Override
+    public void onClickStatusListItem(String status, AdapterOrderBinding adapterOrderBinding, BottomSheetDialog itemStatusDropdownDialog) {
+        switch (status) {
+            case "Partially Filled":
+                adapterOrderBinding.itemStatusText.setText(status);
+                adapterOrderBinding.icItemStatus.setRotation(270);
+                adapterOrderBinding.icItemStatus.setImageDrawable(context.getResources().getDrawable(R.drawable.partialcirculargreeenorange));
+                itemStatusDropdownDialog.dismiss();
+                break;
+            case "Fully Filled":
+                adapterOrderBinding.itemStatusText.setText(status);
+                adapterOrderBinding.icItemStatus.setRotation(0);
+                adapterOrderBinding.icItemStatus.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_circle_tick));
+                itemStatusDropdownDialog.dismiss();
+                break;
+            case "Not Available":
+                adapterOrderBinding.itemStatusText.setText(status);
+                adapterOrderBinding.icItemStatus.setRotation(270);
+                adapterOrderBinding.icItemStatus.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_not_available));
+                itemStatusDropdownDialog.dismiss();
+                break;
+            case "Skipped":
+                itemStatusDropdownDialog.dismiss();
+                break;
+            default:
+        }
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

@@ -1,38 +1,27 @@
 package com.thresholdsoft.mpospicker.ui.openorders;
+
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.MenuItem;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.navigation.NavigationView;
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.ActivityOpenOrdersBinding;
 import com.thresholdsoft.mpospicker.databinding.DialogFilterBinding;
 import com.thresholdsoft.mpospicker.databinding.DialogUpdateStatusBinding;
-import com.thresholdsoft.mpospicker.ui.DeciderScreen;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
-
 import com.thresholdsoft.mpospicker.ui.openorders.adapter.FullfilmentAdapter;
-import com.thresholdsoft.mpospicker.ui.orderdetails.OrderDetailsActivity;
-import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.OrderAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.RackAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpActivity;
-import com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.SelectedOrderPickupProcessActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,12 +40,9 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
 //    private AppBarConfiguration mAppBarConfiguration;
 
 
-
-
     public static Intent getStartActivity(Context context) {
         return new Intent(context, OpenOrdersActivity.class);
     }
-
 
 
 //    public static Intent getStartActivity(DashboardFragment dashboardFragment) {
@@ -83,11 +69,7 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
         mPresenter.onRackApiCall();
 
 
-
     }
-
-
-
 
 
     private RacksDataResponse racksDataResponse;
@@ -229,16 +211,8 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
 //            openOrdersBinding.rackRecycler.setAdapter(fulfimentDetailsAdapter);
 
 
-
         }
     }
-
-    @Override
-    public void onBackPressed() {
-        startActivity(DeciderScreen.getStartActivity(OpenOrdersActivity.this));
-        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
-    }
-
 
     int gotId;
     boolean isAnyoneSelect = false;
@@ -277,11 +251,4 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
             }
         }
     }
-
-
-//    @Override
-//    public void onBackPressed() {
-//        startActivity(DeciderScreen.getStartActivity(OpenOrdersActivity.this));
-//        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
-//    }
 }

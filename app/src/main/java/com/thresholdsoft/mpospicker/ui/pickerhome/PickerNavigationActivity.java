@@ -1,5 +1,7 @@
 package com.thresholdsoft.mpospicker.ui.pickerhome;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 
@@ -12,7 +14,6 @@ import androidx.navigation.ui.NavigationUI;
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.ActivityNavigation3Binding;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
-import com.thresholdsoft.mpospicker.ui.orderdetails.OrderDetailsActivity;
 
 import javax.inject.Inject;
 
@@ -22,6 +23,12 @@ public class PickerNavigationActivity extends BaseActivity implements PickerNavi
     PickerNavigationMvpPresenter<PickerNavigationMvpView> mPresenter;
     ActivityNavigation3Binding activityNavigation3Binding;
     private AppBarConfiguration mAppBarConfiguration;
+
+    public static Intent getStartIntent(Context mContext) {
+        Intent intent = new Intent(mContext, PickerNavigationActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

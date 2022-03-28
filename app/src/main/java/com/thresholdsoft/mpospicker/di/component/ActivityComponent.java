@@ -16,6 +16,7 @@ import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessActivity;
 import com.thresholdsoft.mpospicker.ui.pickupsummary.PickUpSummmaryActivityNew;
 import com.thresholdsoft.mpospicker.ui.pickupsummarydetails.PickupSummaryDetailsActivity;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpActivity;
+import com.thresholdsoft.mpospicker.ui.selectappflow.SelectAppFlowActivity;
 import com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.SelectedOrderPickupProcessActivity;
 
 import dagger.Component;
@@ -30,6 +31,8 @@ public interface ActivityComponent {
 
 
     void inject(LoginActivity loginActivity);
+
+    void inject(SelectAppFlowActivity selectAppFlowActivity);
 
     void inject(MainActivity mainActivity);
 

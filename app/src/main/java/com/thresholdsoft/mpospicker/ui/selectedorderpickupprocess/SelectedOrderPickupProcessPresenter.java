@@ -87,4 +87,9 @@ public class SelectedOrderPickupProcessPresenter<V extends SelectedOrderPickupPr
     public void onClickBatchDetails() {
         getMvpView().onClickBatchDetails();
     }
+
+    @Override
+    public void onClickItemStatusDropdown() {
+        getMvpView().onClickItemStatusDropdown();
+    }
 }

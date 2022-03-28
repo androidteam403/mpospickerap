@@ -23,6 +23,7 @@
             android:layout_gravity="start"
             android:background="@color/actionbar_color"
             android:fitsSystemWindows="true"
+            android:paddingTop="@dimen/five_dp"
             app:headerLayout="@layout/nav_header_main"
             app:menu="@menu/activity_main_drawer" />
     </androidx.drawerlayout.widget.DrawerLayout>

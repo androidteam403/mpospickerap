@@ -18,4 +18,6 @@ public interface SelectedOrderPickupProcessMvpPresenter<V extends SelectedOrderP
     void onClickSkip();
 
     void onClickBatchDetails();
+
+    void onClickItemStatusDropdown();
 }

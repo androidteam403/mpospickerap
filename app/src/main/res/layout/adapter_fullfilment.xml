@@ -328,6 +328,7 @@
                 android:layout_height="@dimen/dimen40dp"
                 android:background="@color/yellow"
                 android:text="SELECT"
+                android:fontFamily="@font/roboto_medium"
                 android:textColor="@color/black" />
 
         </LinearLayout>

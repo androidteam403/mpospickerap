@@ -19,6 +19,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingStart="@dimen/dimen10dp"
+                android:visibility="gone"
                 android:paddingEnd="@dimen/dimen10dp">
 
                 <LinearLayout

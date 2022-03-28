@@ -45,7 +45,7 @@ public class StatusSpinnerAdapter extends BaseAdapter {
         TextView names = view.findViewById(R.id.reason_id);
         names.setText(reasonList[position]);
         if (mListener != null) {
-//            mListener.onClickHandoverTheParcelItem(reasonList[position]);
+            mListener.statusSpinnerCallback(position);
         }
         return view;
     }

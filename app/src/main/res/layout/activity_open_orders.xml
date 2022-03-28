@@ -9,6 +9,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/dimen55dp"
             android:background="@color/white"
             android:orientation="vertical">
 
@@ -72,7 +73,7 @@
                         android:layout_height="30dp"
                         android:contentDescription="@string/app_name"
                         android:onClick="@{()-> callback.onClickFilterIcon()}"
-                        android:src="@drawable/ic_baseline_filter_list_24" />
+                        android:src="@drawable/ic_filter_white" />
                 </LinearLayout>
             </RelativeLayout>
 
@@ -90,10 +91,6 @@
                 tools:ignore="RtlSymmetry" />
 
 
-
-
-
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/fullfilment_recycler"
                 android:layout_width="match_parent"
@@ -105,13 +102,13 @@
 
 
             <LinearLayout
+                android:id="@+id/layout_fulfilment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/square_stroke_yellow_bg"
                 android:orientation="horizontal"
-                android:visibility="gone"
-                android:id="@+id/layout_fulfilment"
                 android:padding="@dimen/ten_dp"
+                android:visibility="gone"
                 android:weightSum="1">
 
                 <LinearLayout
@@ -149,9 +146,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/price_bold"
                         android:text="19 Feb, 2020-10:10:44"
-                        android:textSize="@dimen/ten_sp"
                         android:textColor="@color/black"
-                        />
+                        android:textSize="@dimen/ten_sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -167,8 +163,7 @@
                         android:fontFamily="@font/price_bold"
                         android:text="Home delivery"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/ten_sp"
-                        />
+                        android:textSize="@dimen/ten_sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -261,7 +256,6 @@
                 </LinearLayout>
 
 
-
             </LinearLayout>
 
 
@@ -270,11 +264,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
                 android:layout_marginStart="5dp"
-                android:visibility="gone"
                 android:layout_marginTop="@dimen/dimen2dp"
                 android:layout_marginEnd="5dp"
-                />
-
+                android:visibility="gone" />
 
 
         </LinearLayout>

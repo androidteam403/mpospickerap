@@ -461,6 +461,7 @@
                         android:textSize="@dimen/twelve_sp" />
 
                     <LinearLayout
+                        android:id="@+id/item_status_dropdown"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/five_dp"
@@ -468,6 +469,7 @@
                         android:layout_marginBottom="@dimen/fifty_dp"
                         android:background="@drawable/dashboard_edit_bg"
                         android:gravity="center_vertical"
+                        android:onClick="@{()-> callback.onClickItemStatusDropdown()}"
                         android:orientation="horizontal"
                         android:padding="@dimen/five_dp">
 
@@ -478,20 +480,13 @@
                             android:rotation="270"
                             android:src="@drawable/partialcirculargreeenorange" />
 
-                        <Spinner
-                            android:id="@+id/status_spinner"
-                            style="@style/Widget.AppCompat.DropDownItem.Spinner"
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/roboto_regular"
-                            android:spinnerMode="dropdown" />
-                        <!--                        <TextView-->
-                        <!--                            android:layout_width="wrap_content"-->
-                        <!--                            android:layout_height="wrap_content"-->
-                        <!--                            android:layout_marginStart="@dimen/five_dp"-->
-                        <!--                            android:fontFamily="@font/roboto_medium"-->
-                        <!--                            android:text="Partially Filled"-->
-                        <!--                            android:textColor="@color/black" />-->
+                            android:layout_marginStart="@dimen/five_dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Partially Filled"
+                            android:textColor="@color/black" />
 
                         <RelativeLayout
                             android:layout_width="match_parent"

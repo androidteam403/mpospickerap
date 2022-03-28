@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.thresholdsoft.mpospicker.di.ActivityContext;
 import com.thresholdsoft.mpospicker.di.PerActivity;
-
 import com.thresholdsoft.mpospicker.ui.batchlist.BatchListMvpPresenter;
 import com.thresholdsoft.mpospicker.ui.batchlist.BatchListMvpView;
 import com.thresholdsoft.mpospicker.ui.batchlist.BatchListPresenter;
@@ -47,6 +46,9 @@ import com.thresholdsoft.mpospicker.ui.pickupsummarydetails.PickUpSummaryDetails
 import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpMvpPresenter;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpMvpView;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpPresenter;
+import com.thresholdsoft.mpospicker.ui.selectappflow.SelectAppFlowMvpPresenter;
+import com.thresholdsoft.mpospicker.ui.selectappflow.SelectAppFlowMvpView;
+import com.thresholdsoft.mpospicker.ui.selectappflow.SelectAppFlowPresenter;
 import com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.SelectedOrderPickupProcessMvpPresenter;
 import com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.SelectedOrderPickupProcessMvpView;
 import com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.SelectedOrderPickupProcessPresenter;
@@ -183,6 +185,12 @@ public class ActivityModule {
     @Provides
     @PerActivity
     PickerNavigationMvpPresenter<PickerNavigationMvpView> providePickerNavigationPresenter(PickerNavigationPresenter<PickerNavigationMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    @PerActivity
+    SelectAppFlowMvpPresenter<SelectAppFlowMvpView> provideSelectAppFlowPresenter(SelectAppFlowPresenter<SelectAppFlowMvpView> presenter) {
         return presenter;
     }
 }

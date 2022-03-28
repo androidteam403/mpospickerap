@@ -18,7 +18,6 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.ActivityPickedUpOrdersBinding;
-import com.thresholdsoft.mpospicker.ui.DeciderScreen;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
 import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickeduporders.adapter.PickedUpOrdersAdapter;
 import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickupverificationprocess.PickUpVerificationActivity;
@@ -41,8 +40,10 @@ public class PickedUpOrdersActivity extends BaseActivity implements PickedUpOrde
     List<RackAdapter.RackBoxModel.ProductData> productDataList;
     List<RacksDataResponse.FullfillmentDetail> fullfillmentDetailList;
 
-    public static Intent getStartActivity(Context context) {
-        return new Intent(context, PickedUpOrdersActivity.class);
+    public static Intent getStartActivity(Context mContext) {
+        Intent intent = new Intent(mContext, PickedUpOrdersActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        return intent;
     }
 
     @Override
@@ -66,7 +67,7 @@ public class PickedUpOrdersActivity extends BaseActivity implements PickedUpOrde
             activityPickedUpOrdersBinding.fullfilmentRecycler.setLayoutManager(mLayoutManager1);
             activityPickedUpOrdersBinding.fullfilmentRecycler.setItemAnimator(new DefaultItemAnimator());
             activityPickedUpOrdersBinding.fullfilmentRecycler.setAdapter(pickedUpOrdersAdapter);
-        }else {
+        } else {
             activityPickedUpOrdersBinding.zeropicked.setVisibility(View.VISIBLE);
         }
     }
@@ -75,10 +76,12 @@ public class PickedUpOrdersActivity extends BaseActivity implements PickedUpOrde
     public void startPickUp() {
 
     }
-private boolean removeItsStatis;
+
+    private boolean removeItsStatis;
+
     @Override
     public void onClickScanCode() {
-        if(removeItsStatis) {
+        if (removeItsStatis) {
             IntentIntegrator intentIntegrator = new IntentIntegrator(this);
             intentIntegrator.setDesiredBarcodeFormats(intentIntegrator.ALL_CODE_TYPES);
             intentIntegrator.setBeepEnabled(false);
@@ -175,9 +178,9 @@ private boolean removeItsStatis;
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        startActivity(DeciderScreen.getStartActivity(PickedUpOrdersActivity.this));
-        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
-    }
+//    @Override
+//    public void onBackPressed() {
+//        startActivity(DeciderScreen.getStartActivity(PickedUpOrdersActivity.this));
+//        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+//    }
 }
