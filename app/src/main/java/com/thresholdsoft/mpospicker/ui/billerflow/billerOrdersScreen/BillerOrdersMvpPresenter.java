@@ -6,4 +6,6 @@ public interface BillerOrdersMvpPresenter  <V extends BillerOrdersMvpView> exten
     void onClickFilterIcon();
 
     void onRackApiCall();
+
+    void onScanCodeClick();
 }

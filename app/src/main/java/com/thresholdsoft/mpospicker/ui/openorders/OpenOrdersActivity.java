@@ -13,6 +13,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.zxing.integration.android.IntentIntegrator;
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.ActivityOpenOrdersBinding;
 import com.thresholdsoft.mpospicker.databinding.DialogFilterBinding;
@@ -22,6 +23,7 @@ import com.thresholdsoft.mpospicker.ui.openorders.adapter.FullfilmentAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.RackAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpActivity;
+import com.thresholdsoft.mpospicker.ui.readyforpickup.scanner.ScannerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -116,6 +118,12 @@ public class OpenOrdersActivity extends BaseActivity implements OpenOrdersMvpVie
         racksDataResponse.getFullfillmentDetails().get(0).getProducts().get(0).getItemStatus();
 
         statusUpdateDialog.show();
+    }
+
+    @Override
+    public void onClickScanCode() {
+        new IntentIntegrator(this).setCaptureActivity(ScannerActivity.class).initiateScan();
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
     }
 
 

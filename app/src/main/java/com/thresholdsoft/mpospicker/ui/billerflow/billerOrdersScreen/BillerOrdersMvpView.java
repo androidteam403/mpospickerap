@@ -13,4 +13,6 @@ public interface BillerOrdersMvpView extends MvpView {
     void onSuccessRackApi(RacksDataResponse body);
 
     void onClickFilterIcon();
+
+    void onScanCodeClick();
 }

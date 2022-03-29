@@ -60,5 +60,10 @@ public class BillerOrdersPresenter <V extends BillerOrdersMvpView> extends BaseP
             getMvpView().onError("Internet Connection Not Available");
         }
     }
+
+    @Override
+    public void onScanCodeClick() {
+        getMvpView().onScanCodeClick();
+    }
 }
 

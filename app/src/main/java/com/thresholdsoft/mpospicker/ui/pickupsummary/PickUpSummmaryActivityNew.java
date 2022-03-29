@@ -12,18 +12,21 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.zxing.integration.android.IntentIntegrator;
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.ActivityPickUpSummaryBinding;
 import com.thresholdsoft.mpospicker.databinding.DialogFarwardtoPackerAlertBinding;
 import com.thresholdsoft.mpospicker.databinding.DialogFarwardtoPackerBinding;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
 import com.thresholdsoft.mpospicker.ui.billerflow.billerOrdersScreen.BillerOrdersActivity;
+import com.thresholdsoft.mpospicker.ui.openorders.OpenOrdersActivity;
 import com.thresholdsoft.mpospicker.ui.pickerhome.PickerNavigationActivity;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.OrderAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.RackAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 import com.thresholdsoft.mpospicker.ui.pickupsummary.adapter.SummaryFullfillmentAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupsummarydetails.PickupSummaryDetailsActivity;
+import com.thresholdsoft.mpospicker.ui.readyforpickup.scanner.ScannerActivity;
 
 import java.io.Serializable;
 import java.util.List;
@@ -64,7 +67,7 @@ public class PickUpSummmaryActivityNew extends BaseActivity implements PickUpSum
 
     @Override
     protected void setUp() {
-
+        activityPickUpSummaryBinding.setCallback(mPresenter);
         if (getIntent() != null) {
             racksDataResponse = (List<RacksDataResponse.FullfillmentDetail>) getIntent().getSerializableExtra("rackDataResponse");
 
@@ -148,6 +151,12 @@ public class PickUpSummmaryActivityNew extends BaseActivity implements PickUpSum
     }
 
     @Override
+    public void onClickScanCode() {
+        new IntentIntegrator(this).setCaptureActivity(ScannerActivity.class).initiateScan();
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+    }
+
+    @Override
     public void forwardtoPacker() {
         Dialog dialog = new Dialog(this);
         DialogFarwardtoPackerAlertBinding updateStatusBinding = DataBindingUtil.inflate(LayoutInflater.from(this),
@@ -195,8 +204,7 @@ public class PickUpSummmaryActivityNew extends BaseActivity implements PickUpSum
         updateStatusBinding.gotoOpenOrders.setOnClickListener(v -> {
             mPresenter.setFullfillmentData(racksDataResponse);
             mPresenter.setListOfListFullfillmentData(rackListOfListFiltered);
-            Intent i = new Intent(PickUpSummmaryActivityNew.this, BillerOrdersActivity.class);
-            i.putExtra("rackDataResponse", (Serializable) racksDataResponse);
+            Intent i = new Intent(PickUpSummmaryActivityNew.this, OpenOrdersActivity.class);
             startActivity(i);            overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
             dialog.dismiss();
         });

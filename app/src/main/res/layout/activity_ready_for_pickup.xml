@@ -96,6 +96,7 @@
                     android:layout_height="@dimen/thirty_five_dp"
                     android:layout_marginStart="@dimen/five_dp"
                     android:layout_weight="0.3"
+                    android:onClick="@{()-> callback.onClickScanCode()}"
                     android:background="@drawable/ic_rectangular_shape"
                     android:backgroundTint="@color/green"
                     android:orientation="horizontal">

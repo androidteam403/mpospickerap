@@ -103,6 +103,12 @@ public class BillerOrdersActivity extends BaseActivity implements BillerOrdersMv
         filterDialog.show();
     }
 
+    @Override
+    public void onScanCodeClick() {
+        new IntentIntegrator(this).setCaptureActivity(ScannerActivity.class).initiateScan();
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

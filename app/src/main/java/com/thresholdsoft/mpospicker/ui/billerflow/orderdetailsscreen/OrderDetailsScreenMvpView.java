@@ -26,4 +26,6 @@ public interface OrderDetailsScreenMvpView extends MvpView {
 
     void onSendBacktoPackerLabel();
 
+    void onClickScanCode();
+
 }

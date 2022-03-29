@@ -313,6 +313,12 @@ public class ReadyForPickUpActivity extends BaseActivity implements ReadyForPick
         takePrintDialog.show();
     }
 
+    @Override
+    public void onClickScanCode() {
+        new IntentIntegrator(this).setCaptureActivity(ScannerActivity.class).initiateScan();
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+    }
+
 
     public class FullfillmentData {
         private String fullfillmentId;

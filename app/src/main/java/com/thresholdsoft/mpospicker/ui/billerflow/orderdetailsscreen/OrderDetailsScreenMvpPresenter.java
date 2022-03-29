@@ -27,5 +27,7 @@ public interface OrderDetailsScreenMvpPresenter <V extends OrderDetailsScreenMvp
 
     void onSendBacktoPackerLabel();
 
+    void onClickScanCode();
+
 
 }

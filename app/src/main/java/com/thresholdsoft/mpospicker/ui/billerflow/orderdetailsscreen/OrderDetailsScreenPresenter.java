@@ -70,5 +70,10 @@ public class OrderDetailsScreenPresenter <V extends OrderDetailsScreenMvpView> e
     public void onSendBacktoPackerLabel() {
         getMvpView().onSendBacktoPackerLabel();
     }
+
+    @Override
+    public void onClickScanCode() {
+        getMvpView().onClickScanCode();
+    }
 }
 

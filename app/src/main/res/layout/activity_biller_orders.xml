@@ -149,7 +149,7 @@
                         android:backgroundTint="@color/green"
                         android:fontFamily="@font/roboto_bold"
                         android:text="Scan code"
-
+                        android:onClick="@{()-> callback.onScanCodeClick()}"
                         android:id="@+id/scancode"
                         android:textAllCaps="true"
                         android:textColor="@color/white"

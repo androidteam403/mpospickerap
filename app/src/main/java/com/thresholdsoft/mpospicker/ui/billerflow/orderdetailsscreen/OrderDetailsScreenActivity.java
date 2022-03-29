@@ -13,12 +13,14 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.google.zxing.integration.android.IntentIntegrator;
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.ActivityOrderDetailsScreenBinding;
 import com.thresholdsoft.mpospicker.databinding.DialogBillerSelectActionBinding;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
 import com.thresholdsoft.mpospicker.ui.billerflow.orderdetailsscreen.adapter.OrderDetailsScreenAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
+import com.thresholdsoft.mpospicker.ui.readyforpickup.scanner.ScannerActivity;
 
 import javax.inject.Inject;
 
@@ -173,5 +175,11 @@ public class OrderDetailsScreenActivity extends BaseActivity implements OrderDet
         selectActionLayoutBinding.uncheckedShippingLabel.setVisibility(View.VISIBLE);
         selectActionLayoutBinding.checkedSendToPacker.setVisibility(View.VISIBLE);
         selectActionLayoutBinding.uncheckedSendToPacker.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onClickScanCode() {
+        new IntentIntegrator(this).setCaptureActivity(ScannerActivity.class).initiateScan();
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
     }
 }
