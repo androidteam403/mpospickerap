@@ -56,7 +56,7 @@
             android:name=".ui.readyforpickup.ReadyForPickUpActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.readyforpickup.ScannerActivity"
+            android:name=".ui.readyforpickup.scanner.ScannerActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.mpospackerflow.pickeduporders.PickedUpOrdersActivity"
