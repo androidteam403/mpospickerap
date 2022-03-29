@@ -4,6 +4,8 @@ package com.thresholdsoft.mpospicker.di.component;
 import com.thresholdsoft.mpospicker.di.PerActivity;
 import com.thresholdsoft.mpospicker.di.module.ActivityModule;
 import com.thresholdsoft.mpospicker.ui.batchlist.BatchListActivity;
+import com.thresholdsoft.mpospicker.ui.billerflow.billerOrdersScreen.BillerOrdersActivity;
+import com.thresholdsoft.mpospicker.ui.billerflow.orderdetailsscreen.OrderDetailsScreenActivity;
 import com.thresholdsoft.mpospicker.ui.login.LoginActivity;
 import com.thresholdsoft.mpospicker.ui.main.MainActivity;
 import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickeduporders.PickedUpOrdersActivity;
@@ -59,4 +61,8 @@ public interface ActivityComponent {
     void inject(PickupSummaryDetailsActivity pickupSummaryDetailsActivity);
 
     void inject(BatchListActivity batchListActivity);
+
+    void inject(BillerOrdersActivity billerOrdersActivity);
+
+    void inject(OrderDetailsScreenActivity orderDetailsScreenActivity);
 }
