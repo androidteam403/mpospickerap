@@ -71,7 +71,13 @@ public class ReadyForPickUpAdapter extends RecyclerView.Adapter<ReadyForPickUpAd
                 }
             }
         });
-
+    holder.adapterReadyForPickupBinding.takePrintNew.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            if(readyForPickUpMvpView!=null)
+                readyForPickUpMvpView.onTakePrintClick(position);
+        }
+    });
 
     }
 

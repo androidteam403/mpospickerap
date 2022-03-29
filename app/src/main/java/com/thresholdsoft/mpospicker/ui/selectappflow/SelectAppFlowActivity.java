@@ -88,8 +88,8 @@ public class SelectAppFlowActivity extends BaseActivity implements SelectAppFlow
                         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
                         break;
                     case "Biller":
-                        startActivity(BillerOrdersActivity.getStartIntent(SelectAppFlowActivity.this));
-                        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+//                        startActivity(BillerOrdersActivity.(SelectAppFlowActivity.this));
+//                        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
                         break;
                     case "Sealer":
                         break;
