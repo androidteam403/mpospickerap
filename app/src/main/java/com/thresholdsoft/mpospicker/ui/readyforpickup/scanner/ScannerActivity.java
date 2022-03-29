@@ -1,31 +1,49 @@
-package com.thresholdsoft.mpospicker.ui.readyforpickup;
+package com.thresholdsoft.mpospicker.ui.readyforpickup.scanner;
 
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 import com.thresholdsoft.mpospicker.R;
+import com.thresholdsoft.mpospicker.ui.billerflow.billerOrdersScreen.BillerOrdersActivity;
+import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
+import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpActivity;
 
-public class ScannerActivity extends AppCompatActivity implements DecoratedBarcodeView.TorchListener {
+import java.util.ArrayList;
+import java.util.List;
+
+public class ScannerActivity extends AppCompatActivity implements DecoratedBarcodeView.TorchListener, CaptureManagerCallback {
     private CaptureManager capture;
     private DecoratedBarcodeView barcodeScannerView;
     private Button switchFlashlightButton;
     private boolean isFlashLightOn = false;
+    private List<RacksDataResponse.FullfillmentDetail> racksDataResponse;
+    Bundle savedInstanceState;
+    private List<String> barcodeList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scanner);
-
+        TextView barcodeCount = (TextView) findViewById(R.id.barcode_count);
+        if (!BillerOrdersActivity.isBillerActivity) {
+            barcodeCount.setText("0/" + ReadyForPickUpActivity.fullfillmentDetailList.size());
+        } else {
+            barcodeCount.setVisibility(View.GONE);
+        }
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         }
+
+        this.racksDataResponse = ReadyForPickUpActivity.fullfillmentDetailList;
+
 
         //Initialize barcode scanner view
         barcodeScannerView = findViewById(R.id.zxing_barcode_scanner);
@@ -39,6 +57,9 @@ public class ScannerActivity extends AppCompatActivity implements DecoratedBarco
 
         //start capture
         capture = new CaptureManager(this, barcodeScannerView);
+        capture.setCaptureManagerCallback(this);
+        capture.setBarcodeList(barcodeList);
+        this.savedInstanceState = savedInstanceState;
         capture.initializeFromIntent(getIntent(), savedInstanceState);
         capture.decode();
     }
@@ -106,6 +127,18 @@ public class ScannerActivity extends AppCompatActivity implements DecoratedBarco
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+    }
+
+    @Override
+    public void scannedListener(List<String> barcodeList) {
+        TextView barcodeCount = (TextView) findViewById(R.id.barcode_count);
+        barcodeCount.setText(barcodeList.size() + "/" + ReadyForPickUpActivity.fullfillmentDetailList.size());
+        capture = new CaptureManager(this, barcodeScannerView);
+        capture.setCaptureManagerCallback(this);
+        capture.setBarcodeList(barcodeList);
+        capture.initializeFromIntent(getIntent(), savedInstanceState);
+        capture.decode();
+        Toast.makeText(this, "naveen", Toast.LENGTH_SHORT).show();
     }
 
 //    @Override

@@ -10,7 +10,7 @@ public interface BillerOrdersMvpView extends MvpView {
 
     void onRightArrowClickedContinue(int position);
 
-//    void onSuccessRackApi(RacksDataResponse body);
+    void onSuccessRackApi(RacksDataResponse body);
 
     void onClickFilterIcon();
 }
