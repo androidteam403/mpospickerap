@@ -17,6 +17,7 @@ import com.thresholdsoft.mpospicker.databinding.ActivityPickUpSummaryBinding;
 import com.thresholdsoft.mpospicker.databinding.DialogFarwardtoPackerAlertBinding;
 import com.thresholdsoft.mpospicker.databinding.DialogFarwardtoPackerBinding;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
+import com.thresholdsoft.mpospicker.ui.billerflow.billerOrdersScreen.BillerOrdersActivity;
 import com.thresholdsoft.mpospicker.ui.pickerhome.PickerNavigationActivity;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.OrderAdapter;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.RackAdapter;
@@ -194,7 +195,8 @@ public class PickUpSummmaryActivityNew extends BaseActivity implements PickUpSum
         updateStatusBinding.gotoOpenOrders.setOnClickListener(v -> {
             mPresenter.setFullfillmentData(racksDataResponse);
             mPresenter.setListOfListFullfillmentData(rackListOfListFiltered);
-            Intent i = new Intent(PickUpSummmaryActivityNew.this, PickerNavigationActivity.class);
+            Intent i = new Intent(PickUpSummmaryActivityNew.this, BillerOrdersActivity.class);
+            i.putExtra("rackDataResponse", (Serializable) racksDataResponse);
             startActivity(i);            overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
             dialog.dismiss();
         });

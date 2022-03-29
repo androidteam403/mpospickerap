@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.thresholdsoft.mpospicker.R;
 import com.thresholdsoft.mpospicker.databinding.ActivitySelectAppFlowBinding;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
+import com.thresholdsoft.mpospicker.ui.billerflow.billerOrdersScreen.BillerOrdersActivity;
 import com.thresholdsoft.mpospicker.ui.mpospackerflow.pickeduporders.PickedUpOrdersActivity;
 import com.thresholdsoft.mpospicker.ui.pickerhome.PickerNavigationActivity;
 import com.thresholdsoft.mpospicker.ui.selectappflow.adapter.SelectAppFlowListAdapter;
@@ -87,6 +88,8 @@ public class SelectAppFlowActivity extends BaseActivity implements SelectAppFlow
                         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
                         break;
                     case "Biller":
+                        startActivity(BillerOrdersActivity.getStartIntent(SelectAppFlowActivity.this));
+                        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
                         break;
                     case "Sealer":
                         break;

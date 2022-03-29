@@ -9,6 +9,12 @@ import com.thresholdsoft.mpospicker.di.PerActivity;
 import com.thresholdsoft.mpospicker.ui.batchlist.BatchListMvpPresenter;
 import com.thresholdsoft.mpospicker.ui.batchlist.BatchListMvpView;
 import com.thresholdsoft.mpospicker.ui.batchlist.BatchListPresenter;
+import com.thresholdsoft.mpospicker.ui.billerflow.billerOrdersScreen.BillerOrdersMvpPresenter;
+import com.thresholdsoft.mpospicker.ui.billerflow.billerOrdersScreen.BillerOrdersMvpView;
+import com.thresholdsoft.mpospicker.ui.billerflow.billerOrdersScreen.BillerOrdersPresenter;
+import com.thresholdsoft.mpospicker.ui.billerflow.orderdetailsscreen.OrderDetailsScreenMvpPresenter;
+import com.thresholdsoft.mpospicker.ui.billerflow.orderdetailsscreen.OrderDetailsScreenMvpView;
+import com.thresholdsoft.mpospicker.ui.billerflow.orderdetailsscreen.OrderDetailsScreenPresenter;
 import com.thresholdsoft.mpospicker.ui.login.LoginMvpPresenter;
 import com.thresholdsoft.mpospicker.ui.login.LoginMvpView;
 import com.thresholdsoft.mpospicker.ui.login.LoginPresenter;
@@ -136,6 +142,12 @@ public class ActivityModule {
 
     @Provides
     @PerActivity
+    BillerOrdersMvpPresenter<BillerOrdersMvpView> billerOrdersPickupPresenter(BillerOrdersPresenter<BillerOrdersMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    @PerActivity
     PickedUpOrdersMvpPresenter<PickedUpOrdersMvpView> pickedUpOrdersMvpPresenter(PickedUpOrdersPresenter<PickedUpOrdersMvpView> presenter) {
         return presenter;
     }
@@ -191,6 +203,12 @@ public class ActivityModule {
     @Provides
     @PerActivity
     SelectAppFlowMvpPresenter<SelectAppFlowMvpView> provideSelectAppFlowPresenter(SelectAppFlowPresenter<SelectAppFlowMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    @PerActivity
+    OrderDetailsScreenMvpPresenter<OrderDetailsScreenMvpView> orderDetailsScreenPresenter (OrderDetailsScreenPresenter<OrderDetailsScreenMvpView> presenter) {
         return presenter;
     }
 }
