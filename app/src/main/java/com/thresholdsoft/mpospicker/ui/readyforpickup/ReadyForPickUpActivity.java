@@ -21,6 +21,7 @@ import com.thresholdsoft.mpospicker.databinding.ActivityReadyForPickupBinding;
 import com.thresholdsoft.mpospicker.databinding.DialogPrinterDevicesBinding;
 import com.thresholdsoft.mpospicker.databinding.DialogTakePrintBinding;
 import com.thresholdsoft.mpospicker.ui.base.BaseActivity;
+import com.thresholdsoft.mpospicker.ui.billerflow.billerOrdersScreen.BillerOrdersActivity;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessActivity;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.adapter.PrinterDeviceListAdapter;
@@ -140,6 +141,7 @@ public class ReadyForPickUpActivity extends BaseActivity implements ReadyForPick
 //        intentIntegrator.setPrompt("SCAN");
 //        intentIntegrator.setBarcodeImageEnabled(false);
 //        intentIntegrator.initiateScan();
+        BillerOrdersActivity.isBillerActivity = false;
         this.fullfillmentDetailList = racksDataResponse;
         new IntentIntegrator(this).setCaptureActivity(ScannerActivity.class).initiateScan();
         overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);

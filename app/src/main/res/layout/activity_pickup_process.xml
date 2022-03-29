@@ -133,7 +133,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/ten_dp"
                 android:background="@drawable/toggle_btn_bg"
-                android:checked="true"
+                android:checked="false"
                 android:textOff=""
                 android:textOn="" />
 

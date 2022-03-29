@@ -31,6 +31,7 @@ import com.journeyapps.barcodescanner.BarcodeCallback;
 import com.journeyapps.barcodescanner.BarcodeResult;
 import com.journeyapps.barcodescanner.CameraPreview;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
+import com.thresholdsoft.mpospicker.ui.billerflow.billerOrdersScreen.BillerOrdersActivity;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpActivity;
 
 import java.io.Serializable;
@@ -84,15 +85,18 @@ public class CaptureManager {
                 @Override
                 public void run() {
                     barcodeList.add(result.toString());
-                    if (barcodeList.size() == ReadyForPickUpActivity.fullfillmentDetailList.size())
+                    if (ReadyForPickUpActivity.fullfillmentDetailList != null && barcodeList.size() == ReadyForPickUpActivity.fullfillmentDetailList.size())
                         returnResult(result, barcodeList);
                     else {
-                        barcodeView.resume();
-                        mCallback.scannedListener(barcodeList);
+                        if (!BillerOrdersActivity.isBillerActivity) {
+                            barcodeView.resume();
+                            mCallback.scannedListener(barcodeList);
+                        } else {
+                            returnResult(result, barcodeList);
+                        }
                     }
                 }
             });
-
         }
 
         @Override

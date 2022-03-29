@@ -148,7 +148,8 @@
                             android:id="@+id/customer_details_minus_symbol"
                             android:layout_height="@dimen/dimen15dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/minus_icons8" />
+                            android:src="@drawable/minus_icons8"
+                            android:contentDescription="@string/app_name" />
 
                         <ImageView
                             android:visibility="visible"

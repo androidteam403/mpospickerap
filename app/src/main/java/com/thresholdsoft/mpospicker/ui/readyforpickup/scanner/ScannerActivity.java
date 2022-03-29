@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 import com.thresholdsoft.mpospicker.R;
+import com.thresholdsoft.mpospicker.ui.billerflow.billerOrdersScreen.BillerOrdersActivity;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 import com.thresholdsoft.mpospicker.ui.readyforpickup.ReadyForPickUpActivity;
 
@@ -32,7 +33,11 @@ public class ScannerActivity extends AppCompatActivity implements DecoratedBarco
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scanner);
         TextView barcodeCount = (TextView) findViewById(R.id.barcode_count);
-        barcodeCount.setText("0/" + ReadyForPickUpActivity.fullfillmentDetailList.size());
+        if (!BillerOrdersActivity.isBillerActivity) {
+            barcodeCount.setText("0/" + ReadyForPickUpActivity.fullfillmentDetailList.size());
+        } else {
+            barcodeCount.setVisibility(View.GONE);
+        }
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         }
