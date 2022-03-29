@@ -244,32 +244,32 @@ public class ReadyForPickUpActivity extends BaseActivity implements ReadyForPick
         onBackPressed();
     }
 
-    @Override
-    public void onClickTakePrint() {
-//        Dialog takePrintDialog = new Dialog(this);
-//        DialogTakePrintBinding takePrintBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.dialog_take_print, null, false);
-//        takePrintDialog.setContentView(takePrintBinding.getRoot());
-//        takePrintDialog.setCancelable(false);
-//        takePrintBinding.no.setOnClickListener(view -> {
-//            takePrintDialog.dismiss();
-//        });
-//        takePrintBinding.yes.setOnClickListener(view -> {
-//            takePrintDialog.dismiss();
-//            Dialog printerDeviceListDialog = new Dialog(this);
-//            DialogPrinterDevicesBinding printerDevicesBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.dialog_printer_devices, null, false);
-//            printerDeviceListDialog.setContentView(printerDevicesBinding.getRoot());
-//            printerDeviceListDialog.setCancelable(false);
-//            PrinterDeviceListAdapter printerDeviceListAdapter = new PrinterDeviceListAdapter(ReadyForPickUpActivity.this, printerDeviceList);
-//            RecyclerView.LayoutManager mLayoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-//            printerDevicesBinding.printerDevicesList.setLayoutManager(mLayoutManager1);
-//            printerDevicesBinding.printerDevicesList.setItemAnimator(new DefaultItemAnimator());
-//            printerDevicesBinding.printerDevicesList.setAdapter(printerDeviceListAdapter);
-//
-//            printerDevicesBinding.printerDevicesListDialogClose.setOnClickListener(view1 -> printerDeviceListDialog.dismiss());
-//            printerDeviceListDialog.show();
-//        });
-//        takePrintDialog.show();
-    }
+//    @Override
+//    public void onClickTakePrint() {
+////        Dialog takePrintDialog = new Dialog(this);
+////        DialogTakePrintBinding takePrintBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.dialog_take_print, null, false);
+////        takePrintDialog.setContentView(takePrintBinding.getRoot());
+////        takePrintDialog.setCancelable(false);
+////        takePrintBinding.no.setOnClickListener(view -> {
+////            takePrintDialog.dismiss();
+////        });
+////        takePrintBinding.yes.setOnClickListener(view -> {
+////            takePrintDialog.dismiss();
+////            Dialog printerDeviceListDialog = new Dialog(this);
+////            DialogPrinterDevicesBinding printerDevicesBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.dialog_printer_devices, null, false);
+////            printerDeviceListDialog.setContentView(printerDevicesBinding.getRoot());
+////            printerDeviceListDialog.setCancelable(false);
+////            PrinterDeviceListAdapter printerDeviceListAdapter = new PrinterDeviceListAdapter(ReadyForPickUpActivity.this, printerDeviceList);
+////            RecyclerView.LayoutManager mLayoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+////            printerDevicesBinding.printerDevicesList.setLayoutManager(mLayoutManager1);
+////            printerDevicesBinding.printerDevicesList.setItemAnimator(new DefaultItemAnimator());
+////            printerDevicesBinding.printerDevicesList.setAdapter(printerDeviceListAdapter);
+////
+////            printerDevicesBinding.printerDevicesListDialogClose.setOnClickListener(view1 -> printerDeviceListDialog.dismiss());
+////            printerDeviceListDialog.show();
+////        });
+////        takePrintDialog.show();
+//    }
 
     @Override
     public void onClickStartPickingWithoutQrCode() {

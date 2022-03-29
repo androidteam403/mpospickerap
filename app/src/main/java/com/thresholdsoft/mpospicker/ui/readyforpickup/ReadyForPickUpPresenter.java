@@ -30,10 +30,6 @@ ReadyForPickUpPresenter<V extends ReadyForPickUpMvpView> extends BasePresenter<V
         getMvpView().onClickBack();
     }
 
-    @Override
-    public void onClickTakePrint() {
-        getMvpView().onClickTakePrint();
-    }
 
     @Override
     public void onClickStartPickingWithoutQrCode() {

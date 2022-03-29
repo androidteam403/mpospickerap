@@ -7,7 +7,6 @@ public interface ReadyForPickUpMvpPresenter<V extends ReadyForPickUpMvpView> ext
 
     void onClickBack();
 
-    void onClickTakePrint();
 
     void onClickStartPickingWithoutQrCode();
 }

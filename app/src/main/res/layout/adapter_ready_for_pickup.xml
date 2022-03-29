@@ -132,7 +132,6 @@
                 </LinearLayout>
 
                 <ImageView
-
                     android:id="@+id/scan_delete"
                     android:layout_width="19dp"
                     android:layout_height="20dp"
@@ -141,43 +140,16 @@
                     android:layout_marginEnd="@dimen/five_dp"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/cross_red_delete_icon"
-                    android:visibility="visible" />
+                    android:visibility="gone" />
 
 
             </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/take_print_new"
-                    android:layout_marginTop="4dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen25dp"
-                    android:background="@drawable/background_for_takeprint"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="@dimen/dimen15dp"
-                        android:layout_height="@dimen/dimen15dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/dimen6dp"
-                        android:src="@drawable/white_printer"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="TAKE PRINT"
-                        android:layout_marginStart="@dimen/_4dp"
-                        android:fontFamily="@font/roboto_regular"
-                        android:textSize="@dimen/dimen_11sp"
-                        android:layout_gravity="center"
-                        android:textColor="@color/white"/>
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="23dp"
                     android:padding="4dp"
-                    android:id="@+id/take_print1"
+                    android:id="@+id/take_print_new"
                     android:visibility="gone"
                     android:layout_marginTop="@dimen/_4dp"
                     android:orientation="horizontal"
