@@ -3,10 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.thresholdsoft.mpospicker">
 
-<uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name="com.thresholdsoft.mpospicker.root.ApplicatinApp"
+        android:name=".root.ApplicatinApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -14,19 +19,64 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.billerflow.billerOrdersScreen.BillerOrdersActivity" />
         <activity
-            android:name="com.thresholdsoft.mpospicker.ui.main.MainActivity"
-            android:label="@string/title_home" />
+            android:name=".ui.pickerhome.PickerNavigationActivity"
+            android:theme="@style/PickerNavigationActivityAppTheme">
+
+        </activity>
         <activity
-            android:name="com.thresholdsoft.mpospicker.ui.login.LoginActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".ui.pickupsummarydetails.PickupSummaryDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.orderdetails.OrderDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:label="@string/title_home"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.selectappflow.SelectAppFlowActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.openorders.OpenOrdersActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.readyforpickup.ReadyForPickUpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.readyforpickup.ScannerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.mpospackerflow.pickeduporders.PickedUpOrdersActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.mpospackerflow.pickupverificationprocess.PickUpVerificationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.pickupprocess.PickupProcessActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.pickupsummary.PickUpSummmaryActivityNew"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.selectedorderpickupprocess.SelectedOrderPickupProcessActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.batchlist.BatchListActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

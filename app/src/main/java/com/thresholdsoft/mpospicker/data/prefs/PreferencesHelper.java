@@ -1,6 +1,10 @@
 package com.thresholdsoft.mpospicker.data.prefs;
 
 import com.thresholdsoft.mpospicker.data.utils.LoggedInMode;
+import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.RackAdapter;
+import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
+
+import java.util.List;
 
 public interface PreferencesHelper {
     int getUserLoggedInMode();
@@ -40,4 +44,12 @@ public interface PreferencesHelper {
     void setFirstTime(boolean firstTime);
 
     void logoutUser();
+
+    void setFullFillmentList(List<RacksDataResponse.FullfillmentDetail> fullfillmentDetailList);
+
+    List<RacksDataResponse.FullfillmentDetail> getFullFillmentList();
+
+    void setfullFillListOfListFiltered(List<List<RackAdapter.RackBoxModel.ProductData>> fullFillListOfListFiltered);
+
+    List<List<RackAdapter.RackBoxModel.ProductData>> getfullFillListOfListFiltered();
 }

@@ -12,6 +12,8 @@ import com.thresholdsoft.mpospicker.data.network.pojo.WrapperResponse;
 import com.thresholdsoft.mpospicker.data.prefs.PreferencesHelper;
 import com.thresholdsoft.mpospicker.data.utils.LoggedInMode;
 import com.thresholdsoft.mpospicker.di.ApplicationContext;
+import com.thresholdsoft.mpospicker.ui.pickupprocess.adapter.RackAdapter;
+import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
 
 import java.util.List;
 
@@ -204,4 +206,25 @@ public class BaseDataManager implements DataManager {
     public void logoutUser() {
         mPreferencesHelper.logoutUser();
     }
+
+    @Override
+    public void setFullFillmentList(List<RacksDataResponse.FullfillmentDetail> fullfillmentDetailList) {
+        mPreferencesHelper.setFullFillmentList(fullfillmentDetailList);
+    }
+
+    @Override
+    public List<RacksDataResponse.FullfillmentDetail> getFullFillmentList() {
+        return mPreferencesHelper.getFullFillmentList();
+    }
+
+    @Override
+    public void setfullFillListOfListFiltered(List<List<RackAdapter.RackBoxModel.ProductData>> fullFillListOfListFiltered) {
+        mPreferencesHelper.setfullFillListOfListFiltered(fullFillListOfListFiltered);
+    }
+
+    @Override
+    public List<List<RackAdapter.RackBoxModel.ProductData>> getfullFillListOfListFiltered() {
+        return mPreferencesHelper.getfullFillListOfListFiltered();
+    }
+
 }
