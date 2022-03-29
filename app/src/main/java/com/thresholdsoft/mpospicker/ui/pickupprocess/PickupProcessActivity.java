@@ -104,12 +104,22 @@ public class PickupProcessActivity extends BaseActivity implements PickupProcess
 
 //            ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(PickupProcessActivity.this, android.R.layout.simple_spinner_item, items);
 //            pickupProcessBinding.autoincomplete.setAdapter(myAdapter);
+            pickupProcessBinding.farwarToPackerBtn.setVisibility(View.GONE);
+            pickupProcessBinding.continueOrders.setVisibility(View.VISIBLE);
 
 
-            rackAdapter = new RackAdapter(this, rackIdList, racksDataResponse, this, rackListOfList, false);
-            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+            if (rackListOfListFiltered != null)
+                orderAdapter = new OrderAdapter(PickupProcessActivity.this, racksDataResponse, PickupProcessActivity.this, rackListOfListFiltered, false);
+            else
+                orderAdapter = new OrderAdapter(PickupProcessActivity.this, racksDataResponse, PickupProcessActivity.this, rackListOfList, false);
+            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(PickupProcessActivity.this);
             pickupProcessBinding.rackRecycler.setLayoutManager(mLayoutManager);
-            pickupProcessBinding.rackRecycler.setAdapter(rackAdapter);
+            pickupProcessBinding.rackRecycler.setAdapter(orderAdapter);
+
+//            rackAdapter = new RackAdapter(this, rackIdList, racksDataResponse, this, rackListOfList, false);
+//            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+//            pickupProcessBinding.rackRecycler.setLayoutManager(mLayoutManager);
+//            pickupProcessBinding.rackRecycler.setAdapter(rackAdapter);
 
             pickupProcessBinding.selectedFullfillment.setText("Selected Fullfillment: " + racksDataResponse.size() + "/5");
         }
