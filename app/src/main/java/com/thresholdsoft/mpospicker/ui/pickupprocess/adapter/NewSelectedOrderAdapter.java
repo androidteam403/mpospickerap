@@ -11,14 +11,9 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.thresholdsoft.mpospicker.R;
-import com.thresholdsoft.mpospicker.databinding.AdapterPickupSummaryDetailsProductsBinding;
 import com.thresholdsoft.mpospicker.databinding.AdapterSelectedPickupProcessProductsBinding;
 import com.thresholdsoft.mpospicker.databinding.DialogUpdateStatusBinding;
-import com.thresholdsoft.mpospicker.ui.batchlist.BatchListActivity;
 import com.thresholdsoft.mpospicker.ui.pickupprocess.PickupProcessMvpView;
-import com.thresholdsoft.mpospicker.ui.pickupprocess.model.RacksDataResponse;
-import com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.SelectedOrderPickupProcessMvpPresenter;
-import com.thresholdsoft.mpospicker.ui.selectedorderpickupprocess.SelectedOrderPickupProcessMvpView;
 
 import java.util.List;
 
@@ -26,12 +21,13 @@ public class NewSelectedOrderAdapter extends RecyclerView.Adapter<NewSelectedOrd
     private PickupProcessMvpView pickupProcessMvpView;
     private boolean isRackFlow;
     String fullfillmentId;
-     int fullFillmentPos;
+    int fullFillmentPos;
 
     List<List<RackAdapter.RackBoxModel.ProductData>> listOfList;
     public List<RackAdapter.RackBoxModel.ProductData> racksDataResponse;
     public Context context;
-private DialogUpdateStatusBinding dialogUpdateStatusBinding;
+    private DialogUpdateStatusBinding dialogUpdateStatusBinding;
+
     public NewSelectedOrderAdapter(Context context, List<RackAdapter.RackBoxModel.ProductData> racksDataResponse, PickupProcessMvpView pickupProcessMvpView, boolean isRackFlow, List<List<RackAdapter.RackBoxModel.ProductData>> listOfList, String fullfillmentId) {
         this.context = context;
         this.racksDataResponse = racksDataResponse;
@@ -66,25 +62,20 @@ private DialogUpdateStatusBinding dialogUpdateStatusBinding;
                 statusUpdateDialog.setContentView(dialogUpdateStatusBinding.getRoot());
                 statusUpdateDialog.setCancelable(false);
                 dialogUpdateStatusBinding.dismissDialog.setOnClickListener(vie -> statusUpdateDialog.dismiss());
-               dialogUpdateStatusBinding.update.setOnClickListener(new View.OnClickListener() {
-                   @Override
-                   public void onClick(View view) {
-                               if(dialogUpdateStatusBinding.fullPickedRadio.isChecked()){
-            holder.pickupSummaryDetailsProductsBinding.statusUpdateIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_circle_tick));
-                                   statusUpdateDialog.dismiss();
-        }
-        else if (dialogUpdateStatusBinding.partiallyPickedRadio.isChecked()){
-            holder.pickupSummaryDetailsProductsBinding.statusUpdateIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.partialcirculargreeenorange));
-                                   statusUpdateDialog.dismiss();
-        }
-        else if (dialogUpdateStatusBinding.notAvailableRadio.isChecked()){
-            holder.pickupSummaryDetailsProductsBinding.statusUpdateIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_not_available));
-                                   statusUpdateDialog.dismiss();
-        }else if (dialogUpdateStatusBinding.skipRadioBtn.isChecked()){
-                                   statusUpdateDialog.dismiss();
-                               }
-                   }
-               });
+                dialogUpdateStatusBinding.update.setOnClickListener(view1 -> {
+                    if (dialogUpdateStatusBinding.fullPickedRadio.isChecked()) {
+                        holder.pickupSummaryDetailsProductsBinding.statusUpdateIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_circle_tick));
+                        statusUpdateDialog.dismiss();
+                    } else if (dialogUpdateStatusBinding.partiallyPickedRadio.isChecked()) {
+                        holder.pickupSummaryDetailsProductsBinding.statusUpdateIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.partialcirculargreeenorange));
+                        statusUpdateDialog.dismiss();
+                    } else if (dialogUpdateStatusBinding.notAvailableRadio.isChecked()) {
+                        holder.pickupSummaryDetailsProductsBinding.statusUpdateIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_not_available));
+                        statusUpdateDialog.dismiss();
+                    } else if (dialogUpdateStatusBinding.skipRadioBtn.isChecked()) {
+                        statusUpdateDialog.dismiss();
+                    }
+                });
                 statusUpdateDialog.show();
 
 
@@ -102,7 +93,7 @@ private DialogUpdateStatusBinding dialogUpdateStatusBinding;
 
     @Override
     public void onClickBatchDetails() {
-        if (pickupProcessMvpView != null){
+        if (pickupProcessMvpView != null) {
             pickupProcessMvpView.onClickBatchDetails();
         }
 //        startActivity(BatchListActivity.getStartIntent(context));

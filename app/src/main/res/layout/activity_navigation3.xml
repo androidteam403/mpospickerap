@@ -23,8 +23,12 @@
             android:layout_gravity="start"
             android:background="@color/actionbar_color"
             android:fitsSystemWindows="true"
-            android:paddingTop="@dimen/five_dp"
+            android:paddingTop="@dimen/fifteen_dp"
+            android:theme="@style/NavigationTheme"
             app:headerLayout="@layout/nav_header_main"
+            app:itemBackground="@drawable/nav_item_drawable"
+            app:itemIconTint="@color/white"
+            app:itemTextColor="@color/white"
             app:menu="@menu/activity_main_drawer" />
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

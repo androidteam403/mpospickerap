@@ -31,11 +31,13 @@
         <item name="android:shadowDy">10</item>
         <item name="android:shadowRadius">5</item>
     </style>
+
     <style name="dashboardtheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
     <style name="fadeinandoutcustomDialog" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -69,6 +71,7 @@
     <style name="spinnerTheme">
         <item name="android:textColor">@color/black</item>
     </style>
+
     <style name="EditTextInputLayoutStylenew" parent="Theme.AppCompat.NoActionBar">
         <item name="android:textSize">7sp</item>
         <item name="errorTextAppearance">@style/ErrorText</item>
@@ -84,5 +87,19 @@
     <style name="ErrorText" parent="TextAppearance.Design.Error">
         <item name="android:textSize">11sp</item>
         <item name="android:textColor">@color/red</item>
+    </style>
+
+    <style name="PickerNavigationActivityAppTheme" parent="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+    <!--      navigation iten theme-->
+    <style name="NavigationTheme" parent="AppTheme">
+        <item name="android:textSize">15sp</item>
+        <!--        <item name="android:statusBarColor">#027d9e</item>-->
+        <!--        <item name="colorPrimaryDark">#027d9e</item>-->
+        <item name="android:fontFamily">@font/roboto_regular</item>
     </style>
 </resources>

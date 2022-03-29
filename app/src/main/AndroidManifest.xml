@@ -20,7 +20,11 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ui.billerflow.billerOrdersScreen.BillerOrdersActivity" />
-        <activity android:name=".ui.pickerhome.PickerNavigationActivity" />
+        <activity
+            android:name=".ui.pickerhome.PickerNavigationActivity"
+            android:theme="@style/PickerNavigationActivityAppTheme">
+
+        </activity>
         <activity
             android:name=".ui.pickupsummarydetails.PickupSummaryDetailsActivity"
             android:screenOrientation="portrait" />

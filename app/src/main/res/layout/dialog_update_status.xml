@@ -293,6 +293,7 @@
                             android:fontFamily="@font/roboto_medium"
                             android:hint="@string/label_enter_batch_id"
                             android:importantForAutofill="no"
+                            android:clickable="true"
                             android:inputType="text"
                             android:onClick="@{()-> callback.onClickBatchDetails()}"
                             android:padding="@dimen/dimen5dp"
