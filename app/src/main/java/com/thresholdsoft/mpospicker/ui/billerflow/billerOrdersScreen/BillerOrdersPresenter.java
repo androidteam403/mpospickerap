@@ -21,6 +21,7 @@ public class BillerOrdersPresenter <V extends BillerOrdersMvpView> extends BaseP
     @Inject
     public BillerOrdersPresenter(DataManager manager, SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable) {
         super(manager, schedulerProvider, compositeDisposable);
+        int i = 0;
     }
 
 
